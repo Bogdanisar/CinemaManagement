@@ -22,7 +22,7 @@ public class Main {
 
         // add foods
         String food1 = "Popcorn - large", food2 = "Popcorn - small",
-               food3 = "Soda - large", food4 = "Soda - small";
+                food3 = "Soda - large", food4 = "Soda - small";
         as.addFood(food1, 13);
         as.addFood(food2, 7);
         as.addFood(food3, 25);
@@ -188,16 +188,19 @@ public class Main {
         for (Person person : personList) {
             System.out.println(person.getName() + " was at the screening with id " + screeningId1);
         }
+        System.out.println("\n");
 
         personList = as.getPersonsAtScreening(screeningId3);
         for (Person person : personList) {
             System.out.println(person.getName() + " was at the screening with id " + screeningId2);
         }
+        System.out.println("\n");
 
         List<Screening> screeningList = as.getScreeningsForEmployee(employeeId1);
         for (Screening screening : screeningList) {
             System.out.println("Employee with id " + employeeId1 + " has attended the screening with id " + screening.getId());
         }
+        System.out.println("\n");
 
         // clientService
         System.out.println();
@@ -239,13 +242,13 @@ public class Main {
 
         System.out.println("Movies after 04/01/2020: ");
         for (Movie movie : cs.getMoviesAfterDay(2020, 1, 4)) {
-            System.out.println("Movie " + movie.getName() + " plays on 04/01/2020");
+            System.out.println("Movie " + movie.getName() + " plays after 04/01/2020");
         }
         System.out.println("\n");
 
         System.out.println("Movie " + movie4 + " can be seen at the following screenings:");
         for (Screening screening : cs.getScreeningsForMovieAfter(movie4, 2020, 1, 4)) {
-            System.out.println("Client can watch " + screening.getMovie().getName() + " at screening with id " + screening.getId());
+            System.out.println("Movie " + screening.getMovie().getName() + " is available for watching at screening with id " + screening.getId());
         }
         System.out.println("\n");
     }
