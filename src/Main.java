@@ -203,7 +203,7 @@ public class Main {
         System.out.println();
         ClientService cs = new ClientService(clientId2);
         System.out.println("Age of " + cs.getClient().getName() + " is " + cs.getClient().getAge());
-        
+
         System.out.println(cs.getClient().getName() + ((cs.isOldEnoughFor("Live")) ? " is " : " is not ") + "old enough for Live" );
         System.out.println("Total spending of " + cs.getClient().getName() + " is " + cs.getTotalSpent());
 
