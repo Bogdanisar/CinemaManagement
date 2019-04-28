@@ -1,5 +1,7 @@
-import cinema.*;
-import cinema.Exception.CinemaException;
+import cinema.data.*;
+import cinema.exception.CinemaException;
+import cinema.service.AdminService;
+import cinema.service.ClientService;
 
 import java.util.List;
 import java.util.Map;

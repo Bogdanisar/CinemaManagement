@@ -1,4 +1,4 @@
-package cinema;
+package cinema.data;
 
 import java.util.Comparator;
 

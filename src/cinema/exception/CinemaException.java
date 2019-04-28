@@ -1,6 +1,4 @@
-package cinema.Exception;
-
-import cinema.AdminService;
+package cinema.exception;
 
 public class CinemaException extends Exception {
     public CinemaException(String message) {

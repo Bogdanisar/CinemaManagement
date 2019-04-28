@@ -1,12 +1,10 @@
-package cinema;
+package cinema.data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Client extends Person {
-    protected List<Purchase> purchaseList = new ArrayList<>();
     protected double funds;
 
     public Client(Long id, String firstName, String lastName, String email, LocalDate birthDate) {
@@ -14,11 +12,16 @@ public class Client extends Person {
         this.funds = 0;
     }
 
-    protected double getFunds() {
+    public double getFunds() {
         return funds;
     }
 
-    public int getAge() {
+    public void setFunds(double funds) {
+        this.funds = funds;
+    }
+
+
+    public int getAgeNow() {
         return getAgeAt(LocalDate.now());
     }
 
@@ -30,7 +33,6 @@ public class Client extends Person {
         if (thenDate.compareTo(now) > 0) {
             age -= 1;
         }
-//        System.out.println(thenDate.getYear() + " " + thenDate.getMonthValue() + " " + thenDate.getDayOfMonth());
 
         return age;
     }

@@ -1,9 +1,9 @@
-package cinema;
+package cinema.service;
 
-import cinema.Exception.CinemaException;
+import cinema.data.*;
+import cinema.exception.CinemaException;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class ClientService {
