@@ -1,0 +1,10 @@
+xargs commands:
+
+- for constants:
+
+file=$(mktemp tmp.XXXXX); head xargs -n -1 | xargs -L 1 bash -c 'echo String `echo $0 | tr a-z A-Z`_FILE = \"$0.csv\"\;' > $file; sublime $file -w; rm $file
+
+
+- for functions in getterService:
+
+file=$(mktemp tmp.XXXXX); head xargs -n -3 | xargs -L 1 bash -c 'echo -e public static "${0^}" get"${0^}"\(long "${0^}"Id\) {\\n"    "return null\;\\n}\\n' > $file; sublime $file -w; rm $file
