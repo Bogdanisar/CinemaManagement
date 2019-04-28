@@ -1,7 +1,5 @@
 package cinema;
 
-import javafx.scene.Scene;
-
 import java.util.Comparator;
 
 public class ScreeningComparatorById implements Comparator<Screening> {
