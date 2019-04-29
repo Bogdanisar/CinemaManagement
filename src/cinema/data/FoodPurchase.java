@@ -2,13 +2,13 @@ package cinema.data;
 
 import cinema.service.GetterService;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public final class FoodPurchase extends Purchase {
     protected long foodProductId;
     double price;
 
-    public FoodPurchase(long purchaseId, long clientId, LocalDateTime purchaseDate, long foodProductId, double price) {
+    public FoodPurchase(long purchaseId, long clientId, LocalDate purchaseDate, long foodProductId, double price) {
         super(purchaseId, clientId, purchaseDate);
         this.foodProductId = foodProductId;
         this.price = price;

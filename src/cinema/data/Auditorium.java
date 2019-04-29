@@ -1,8 +1,6 @@
 package cinema.data;
 
-import java.util.TreeSet;
-
-public class Auditorium {
+public class Auditorium implements Identifiable {
     protected long id;
     protected int number_of_seats;
 

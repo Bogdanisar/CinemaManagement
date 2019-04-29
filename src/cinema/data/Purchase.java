@@ -1,12 +1,12 @@
 package cinema.data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-public abstract class Purchase {
+public abstract class Purchase implements Identifiable {
     protected long id, clientId;
-    protected LocalDateTime purchaseDate;
+    protected LocalDate purchaseDate;
 
-    public Purchase(long id, long clientId, LocalDateTime purchaseDate) {
+    public Purchase(long id, long clientId, LocalDate purchaseDate) {
         this.id = id;
         this.clientId = clientId;
         this.purchaseDate = purchaseDate;
@@ -31,11 +31,11 @@ public abstract class Purchase {
     }
 
 
-    public LocalDateTime getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 

@@ -1,6 +1,6 @@
 package cinema.data;
 
-public final class Food {
+public final class Food implements Identifiable {
     protected long id;
     protected String name;
 

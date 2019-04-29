@@ -2,7 +2,7 @@ package cinema.data;
 
 import java.time.LocalDate;
 
-public class Person implements Comparable<Person> {
+public class Person implements Identifiable {
     protected long id;
     protected String firstName, lastName, email;
     protected LocalDate birthDate;
@@ -60,18 +60,5 @@ public class Person implements Comparable<Person> {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-
-    @Override
-    public int compareTo(Person other) {
-        if (this.id == other.id) {
-            return 0;
-        }
-
-        if (this.id < other.id) {
-            return -1;
-        }
-        return 1;
     }
 }

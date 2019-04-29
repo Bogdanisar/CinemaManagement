@@ -3,7 +3,7 @@ package cinema.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Movie implements Comparable<Movie> {
+public final class Movie implements Identifiable {
     protected long id;
     protected String name;
     protected int durationInMinutes;
@@ -39,11 +39,5 @@ public final class Movie implements Comparable<Movie> {
 
     public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
-    }
-
-
-    @Override
-    public int compareTo(Movie other) {
-        return this.name.compareTo(other.name);
     }
 }

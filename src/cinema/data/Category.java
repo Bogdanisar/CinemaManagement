@@ -1,6 +1,6 @@
 package cinema.data;
 
-public final class Category {
+public final class Category implements Identifiable {
     protected long id;
     protected String name;
     protected int minimumAge;

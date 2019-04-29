@@ -2,7 +2,7 @@ package cinema.data;
 
 import cinema.service.GetterService;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public final class TicketPurchase extends Purchase {
     protected long screeningId;
@@ -10,7 +10,7 @@ public final class TicketPurchase extends Purchase {
     private Screening screening;
     private Movie movie;
 
-    public TicketPurchase(long id, long clientId, LocalDateTime purchaseDate, long screeningId, int seatNumber) {
+    public TicketPurchase(long id, long clientId, LocalDate purchaseDate, long screeningId, int seatNumber) {
         super(id, clientId, purchaseDate);
         this.screeningId = screeningId;
         this.seatNumber = seatNumber;

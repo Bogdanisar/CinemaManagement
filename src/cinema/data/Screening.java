@@ -1,24 +1,24 @@
 package cinema.data;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Screening implements Comparable<Screening> {
-    protected long id;
-    protected long movieId, auditoriumId;
+public class Screening implements Identifiable {
+    protected long id, movieId, auditoriumId;
     protected double price;
-    protected LocalDateTime startTime, endTime;
+    protected LocalDate startTime;
+    protected int hour;
     protected long technicianId;
 
-    public Screening(long id, long movieId, long auditoriumId, double price, LocalDateTime startTime, LocalDateTime endTime, long technicianId) {
+    public Screening(long id, long movieId, long auditoriumId, double price, LocalDate startTime, int hour, long technicianId) {
         this.id = id;
         this.movieId = movieId;
         this.auditoriumId = auditoriumId;
         this.price = price;
         this.startTime = startTime;
-        this.endTime = endTime;
+        this.hour = hour;
         this.technicianId = technicianId;
     }
 
@@ -59,22 +59,21 @@ public class Screening implements Comparable<Screening> {
     }
 
 
-    public LocalDateTime getStartTime() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
+    public int getHour() {
+        return hour;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+    public void setHour(int hour) {
+        this.hour = hour;
     }
-
 
     public long getTechnicianId() {
         return technicianId;
@@ -82,42 +81,5 @@ public class Screening implements Comparable<Screening> {
 
     public void setTechnicianId(long technicianId) {
         this.technicianId = technicianId;
-    }
-
-
-    private static boolean doIntersect(Screening s1, Screening s2) {
-        LocalDateTime maxLeft, minRight;
-        LocalDateTime a = s1.startTime, b = s1.endTime;
-        LocalDateTime x = s2.startTime, y = s2.endTime;
-        if (a.compareTo(x) < 0) {
-            maxLeft = x;
-        }
-        else {
-            maxLeft = a;
-        }
-
-        if (b.compareTo(y) < 0) {
-            minRight = b;
-        }
-        else {
-            minRight = y;
-        }
-
-        if (maxLeft.compareTo(minRight) <= 0) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public int compareTo(Screening other) {
-        if (doIntersect(this, other)) {
-            return 0;
-        }
-
-        if (this.endTime.compareTo(other.endTime) < 0) {
-            return -1;
-        }
-        return 1;
     }
 }
