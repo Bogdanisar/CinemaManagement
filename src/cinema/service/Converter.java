@@ -40,6 +40,27 @@ public interface Converter {
     }
 
     // implementing classes
+    public static class AssociativeEntry implements Converter {
+        @Override
+        public cinema.data.AssociativeEntry convert(CSVRecord record) {
+            long id = Long.parseLong(record.get(0));
+            long firstId = Long.parseLong(record.get(1));
+            long secondId = Long.parseLong(record.get(1));
+
+            return new cinema.data.AssociativeEntry(id, firstId, secondId);
+        }
+
+        @Override
+        public void parse(CSVPrinter printer, Identifiable object) throws IOException {
+            cinema.data.AssociativeEntry item = (cinema.data.AssociativeEntry) object;
+            printer.printRecord(
+                    item.getId(),
+                    item.getFirstId(),
+                    item.getSecondId()
+            );
+        }
+    }
+
     public static class Auditorium implements Converter {
         @Override
         public cinema.data.Auditorium convert(CSVRecord record) {
@@ -53,8 +74,8 @@ public interface Converter {
         public void parse(CSVPrinter printer, Identifiable object) throws IOException {
             cinema.data.Auditorium auditorium = (cinema.data.Auditorium) object;
             printer.printRecord(
-                auditorium.getId(),
-                auditorium.getNumber_of_seats()
+                    auditorium.getId(),
+                    auditorium.getNumber_of_seats()
             );
         }
     }

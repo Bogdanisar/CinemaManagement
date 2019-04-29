@@ -39,6 +39,10 @@ public class SetterService {
         parser.close();
 
         if (matchFound == false) {
+            if (updateObject.getId() == -1) {
+                updateObject.setId(list.size() + 1);
+            }
+
             list.add(updateObject);
         }
 
@@ -47,6 +51,17 @@ public class SetterService {
             converter.parse(printer, currIdentifiable);
         }
         printer.close();
+    }
+
+
+    public static void updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException {
+        SetterService.update(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry(), object);
+    }
+    public static void updateScreeningClient(cinema.data.AssociativeEntry object) throws IOException {
+        SetterService.update(DatabaseConstants.SCREENING_CLIENT_FILE, new Converter.AssociativeEntry(), object);
+    }
+    public static void updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException {
+        SetterService.update(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry(), object);
     }
 
     public static void update(cinema.data.Auditorium object) throws IOException {
