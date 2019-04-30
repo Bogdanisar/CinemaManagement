@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class testCSV {
     public static void main(String[] args) throws IOException {
@@ -62,5 +63,11 @@ public class testCSV {
 //        Category c3 = GetterService.getCategory(3);
 //        System.out.println(c3.getName());
 //        System.out.println(c3.getMinimumAge());
+
+        Scanner scanner = new Scanner(System.in);
+        String s1 = scanner.next();
+        String s2 = scanner.next();
+        System.out.println(s1);
+        System.out.println(s2);
     }
 }
