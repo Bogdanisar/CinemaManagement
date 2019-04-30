@@ -35,21 +35,25 @@ public class ClientService {
         return ret;
     }
 
-    public List<Long> getWatchedMovies() throws IOException {
-        Set<Long> screeningIds = new TreeSet<>(this.getScreenings());
+    public List<Movie> getWatchedMovies() throws IOException {
+        Set<Screening> screenings = new TreeSet<>(this.getScreenings());
 
         Set<Long> movieIds = new TreeSet<>();
-        List<Screening> allScreenings = GetterService.getAllScreening();
-        for (Screening screening : allScreenings) {
-            if (screeningIds.contains(screening.getId())) {
-                movieIds.add(screening.getMovieId());
+        for (Screening screening : screenings) {
+            movieIds.add(screening.getMovieId());
+        }
+
+        List<Movie> ans = new ArrayList<>();
+        for (Movie movie : GetterService.getAllMovie()) {
+            if ( movieIds.contains(movie.getId()) ) {
+                ans.add(movie);
             }
         }
 
-        return new ArrayList<Long>(movieIds);
+        return ans;
     }
 
-    public List<Long> getScreenings() throws IOException {
+    public List<Screening> getScreenings() throws IOException {
         Set<Long> screeningIds = new TreeSet<>();
 
         for (AssociativeEntry entry : GetterService.getAllScreeningClient()) {
@@ -58,25 +62,32 @@ public class ClientService {
             }
         }
 
-        return new ArrayList<>(screeningIds);
-    }
-
-    public List<Long> getPurchases() throws IOException {
-        List<Long> ret = new ArrayList<>();
-
-        for (Purchase purchase : GetterService.getAllFoodPurchase()) {
-            if (purchase.getClientId() == this.clientId) {
-                ret.add(purchase.getId());
+        List<Screening> ans = new ArrayList<>();
+        for (Screening screening : GetterService.getAllScreening()) {
+            if (screeningIds.contains(screening.getId())) {
+                ans.add(screening);
             }
         }
+
+        return ans;
+    }
+
+    public List<Purchase> getPurchases() throws IOException {
+        List<Purchase> ans = new ArrayList<>();
 
         for (Purchase purchase : GetterService.getAllTicketPurchase()) {
             if (purchase.getClientId() == this.clientId) {
-                ret.add(purchase.getId());
+                ans.add(purchase);
             }
         }
 
-        return ret;
+        for (Purchase purchase : GetterService.getAllFoodPurchase()) {
+            if (purchase.getClientId() == this.clientId) {
+                ans.add(purchase);
+            }
+        }
+
+        return ans;
     }
 
     public boolean isOldEnoughForAt(long movieId, LocalDate date) throws CinemaException, IOException {
