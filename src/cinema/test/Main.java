@@ -5,6 +5,7 @@ import cinema.exception.CinemaException;
 import cinema.service.AdminService;
 import cinema.service.ClientService;
 import cinema.service.InfoService;
+import cinema.service.LoggerService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,30 +25,7 @@ public class Main {
     public static Logger logger = null;
 
     public static void main(String[] args) throws CinemaException, IOException {
-        logger = Logger.getLogger("cinema.Logger");
-
-        FileHandler handler = new FileHandler("logging/logMessages.txt", true);
-        Formatter CSVFormat = new Formatter() {
-            @Override
-            public String format(LogRecord record) {
-                String level = record.getLevel().toString();
-
-                LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli( record.getMillis() ), ZoneId.systemDefault());
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss - dd/MM/yyyy");;
-                String timestamp = date.format(formatter);
-
-                String action = record.getMessage();
-                String name = record.getLoggerName();
-
-                String ans = level + ", " + timestamp + ", " + action + ", " + name + "\n\n";
-                return ans;
-            }
-        };
-
-        handler.setFormatter(CSVFormat);
-
-        logger.addHandler(handler);
-        logger.setUseParentHandlers(false);
+        logger = LoggerService.getInstance();
 
 
         String[] prompts = {
