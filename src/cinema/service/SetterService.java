@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SetterService {
-    public static void update(String pathName, Converter converter, Identifiable updateObject) throws IOException {
+    public static long update(String pathName, Converter converter, Identifiable updateObject) throws IOException {
         FileReader reader = new FileReader(pathName);
         CSVParser parser = new CSVParser(reader, CSVFormat.DEFAULT);
 
@@ -26,6 +26,7 @@ public class SetterService {
             Identifiable nextIdentifiable = currentIdentifiable;
             if (currentIdentifiable.getId() == updateObject.getId()) {
                 if (matchFound) {
+                    parser.close();
                     throw new IllegalArgumentException("Two objects with the same id(" + updateObject.getId() + ") found in " + pathName);
                 }
                 else {
@@ -38,11 +39,14 @@ public class SetterService {
         }
         parser.close();
 
+        long retId = -1;
         if (matchFound == false) {
-            if (updateObject.getId() == -1) {
-                updateObject.setId(list.size() + 1);
+            if (updateObject.getId() != -1) {
+                throw new IllegalArgumentException("Object with id: " + updateObject.getId() + " not found");
             }
 
+            updateObject.setId(list.size() + 1);
+            retId = updateObject.getId();
             list.add(updateObject);
         }
 
@@ -51,52 +55,54 @@ public class SetterService {
             converter.parse(printer, currIdentifiable);
         }
         printer.close();
+        
+        return retId;
     }
 
 
-    public static void updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException {
-        SetterService.update(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry(), object);
+    public static long updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException {
+        return SetterService.update(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry(), object);
     }
-    public static void updateScreeningClient(cinema.data.AssociativeEntry object) throws IOException {
-        SetterService.update(DatabaseConstants.SCREENING_CLIENT_FILE, new Converter.AssociativeEntry(), object);
+    public static long updateScreeningClient(cinema.data.AssociativeEntry object) throws IOException {
+        return SetterService.update(DatabaseConstants.SCREENING_CLIENT_FILE, new Converter.AssociativeEntry(), object);
     }
-    public static void updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException {
-        SetterService.update(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry(), object);
-    }
-
-    public static void update(cinema.data.Auditorium object) throws IOException {
-        SetterService.update(DatabaseConstants.AUDITORIUM_FILE, new Converter.Auditorium(), object);
+    public static long updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException {
+        return SetterService.update(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry(), object);
     }
 
-    public static void update(cinema.data.Category object) throws IOException {
-        SetterService.update(DatabaseConstants.CATEGORY_FILE, new Converter.Category(), object);
+    public static long update(cinema.data.Auditorium object) throws IOException {
+        return SetterService.update(DatabaseConstants.AUDITORIUM_FILE, new Converter.Auditorium(), object);
     }
 
-    public static void update(cinema.data.Client object) throws IOException {
-        SetterService.update(DatabaseConstants.CLIENT_FILE, new Converter.Client(), object);
+    public static long update(cinema.data.Category object) throws IOException {
+        return SetterService.update(DatabaseConstants.CATEGORY_FILE, new Converter.Category(), object);
     }
 
-    public static void update(cinema.data.Employee object) throws IOException {
-        SetterService.update(DatabaseConstants.EMPLOYEE_FILE, new Converter.Employee(), object);
+    public static long update(cinema.data.Client object) throws IOException {
+        return SetterService.update(DatabaseConstants.CLIENT_FILE, new Converter.Client(), object);
     }
 
-    public static void update(cinema.data.Food object) throws IOException {
-        SetterService.update(DatabaseConstants.FOOD_FILE, new Converter.Food(), object);
+    public static long update(cinema.data.Employee object) throws IOException {
+        return SetterService.update(DatabaseConstants.EMPLOYEE_FILE, new Converter.Employee(), object);
     }
 
-    public static void update(cinema.data.FoodPurchase object) throws IOException {
-        SetterService.update(DatabaseConstants.FOOD_PURCHASE_FILE, new Converter.FoodPurchase(), object);
+    public static long update(cinema.data.Food object) throws IOException {
+        return SetterService.update(DatabaseConstants.FOOD_FILE, new Converter.Food(), object);
     }
 
-    public static void update(cinema.data.Movie object) throws IOException {
-        SetterService.update(DatabaseConstants.MOVIE_FILE, new Converter.Movie(), object);
+    public static long update(cinema.data.FoodPurchase object) throws IOException {
+        return SetterService.update(DatabaseConstants.FOOD_PURCHASE_FILE, new Converter.FoodPurchase(), object);
     }
 
-    public static void update(cinema.data.Screening object) throws IOException {
-        SetterService.update(DatabaseConstants.SCREENING_FILE, new Converter.Screening(), object);
+    public static long update(cinema.data.Movie object) throws IOException {
+        return SetterService.update(DatabaseConstants.MOVIE_FILE, new Converter.Movie(), object);
     }
 
-    public static void update(cinema.data.TicketPurchase object) throws IOException {
-        SetterService.update(DatabaseConstants.TICKET_PURCHASE_FILE, new Converter.TicketPurchase(), object);
+    public static long update(cinema.data.Screening object) throws IOException {
+        return SetterService.update(DatabaseConstants.SCREENING_FILE, new Converter.Screening(), object);
+    }
+
+    public static long update(cinema.data.TicketPurchase object) throws IOException {
+        return SetterService.update(DatabaseConstants.TICKET_PURCHASE_FILE, new Converter.TicketPurchase(), object);
     }
 }

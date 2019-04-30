@@ -160,21 +160,18 @@ public interface Converter {
         public cinema.data.Food convert(CSVRecord record) {
             long id = Long.parseLong(record.get(0));
             String name = record.get(1);
+            double price = Double.valueOf(record.get(1));
 
-            return new cinema.data.Food(id, name);
+            return new cinema.data.Food(id, name, price);
         }
 
         @Override
         public void parse(CSVPrinter printer, Identifiable object) throws IOException {
-            cinema.data.Employee here = (cinema.data.Employee) object;
+            cinema.data.Food food = (cinema.data.Food) object;
             printer.printRecord(
-                    here.getId(),
-                    here.getFirstName(),
-                    here.getLastName(),
-                    here.getEmail(),
-                    Converter.localDateToString(here.getBirthDate()),
-                    Converter.localDateToString(here.getHireDate()),
-                    here.getSalary()
+                    food.getId(),
+                    food.getName(),
+                    food.getPrice()
             );
         }
     }

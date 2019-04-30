@@ -2,52 +2,54 @@ package cinema.data;
 
 import cinema.service.GetterService;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public final class TicketPurchase extends Purchase {
     protected long screeningId;
     protected int seatNumber;
-    private Screening screening;
-    private Movie movie;
+
+    private Double price;
+    private String movieName;
 
     public TicketPurchase(long id, long clientId, LocalDate purchaseDate, long screeningId, int seatNumber) {
         super(id, clientId, purchaseDate);
         this.screeningId = screeningId;
         this.seatNumber = seatNumber;
 
-        this.screening = null;
+        this.price = null;
+        this.movieName = null;
     }
 
 
-    private void retrieveScreening() {
-        if (this.screening == null) {
-            this.screening = GetterService.getScreening(this.getScreeningId());
-        }
-    }
+    private void retrieveData() {
+        if (this.price == null || this.movieName == null) {
+            Screening screening = null;
+            Movie movie = null;
 
-    private void retrieveMovie() {
-        this.retrieveScreening();
-        if (this.movie == null) {
-            this.movie = GetterService.getMovie(this.screening.getMovieId());
+            try {
+                screening = GetterService.getScreening(this.screeningId);
+                movie = GetterService.getMovie(screening.getMovieId());
+
+                this.price = screening.getPrice();
+                this.movieName = movie.getName();
+            }
+            catch (Exception except) {
+                this.price = -1D;
+                this.movieName = "GetterService.getScreening or getMovie error: " + except.toString();
+            }
         }
     }
 
 
     @Override
     public double getPrice() {
-        this.retrieveScreening();
-
-        return this.screening.getPrice();
+        return this.price;
     }
 
     @Override
     public String getName() {
-        this.retrieveScreening();
-        this.retrieveMovie();
-
-        String movieName = this.movie.getName();
-        double price = this.screening.getPrice();
-        return "TicketPurchase Purchase: " + movieName + ", price: " + price;
+        return "TicketPurchase Purchase: " + this.movieName + ", price: " + this.price;
     }
 
 

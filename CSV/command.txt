@@ -1,0 +1,1 @@
+sublime CSV/auditorium.csv CSV/screening.csv CSV/category.csv CSV/movie.csv CSV/movie_category.csv CSV/food.csv CSV/client.csv CSV/employee.csv CSV/screening_client.csv CSV/screening_employee.csv CSV/ticket_purchase.csv CSV/food_purchase.csv

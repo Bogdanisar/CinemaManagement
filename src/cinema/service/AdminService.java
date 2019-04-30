@@ -3,275 +3,218 @@ package cinema.service;
 import cinema.data.*;
 import cinema.exception.CinemaException;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
 public final class AdminService {
-//    private static Logger logger = Logger.getLogger(Movie.class.getName());
-//    private static Map<String, Category> categoryMap = new HashMap<>();
-//    private static Map<String, Food> foodMap = new HashMap<>();
-//    private static Map<String, Movie> movieMap = new HashMap<>();
-//    private static Map<Long, Client> clientMap = new HashMap<>();
-//    private static Map<Long, Employee> employeeMap = new HashMap<>();
-//    private static Map<Long, Auditorium> auditoriumMap = new HashMap<>();
-//    private static Map<Long, Screening> screeningMap = new HashMap<>();
-//    private static long personCounter = 0;
-//    private static long auditoriumCounter = 0;
-//    private static long screeningCounter = 0;
-//
-//    public AdminService(String username, String password) throws CinemaException {
-//        if (username.equals("admin") == false || password.equals("123") == false) {
-//            throw new CinemaException("bad admin login");
-//        }
-//
-//        // for debugging in .getObjectFromId
-//        categoryMap.put(null, new Category(null, 0));
-//        foodMap.put(null, new Food(null,0.0));
-//        movieMap.put(null, new Movie.Builder(null, 0).build());
-//        clientMap.put(null, new Client(0L,null,null,null,LocalDate.now()));
-//        employeeMap.put(null, new Employee(0L,null, null, null,null, null, 0.0));
-//        auditoriumMap.put(null, new Auditorium(0L, 0));
-//        screeningMap.put(null, new Screening(0L, movieMap.get(null), null, 0.0, LocalDateTime.now(), null));
-//    }
-//
-//    public static Map<String, Category> getCategoryMap() {
-//        return categoryMap;
-//    }
-//
-//    public static Map<String, Food> getFoodMap() {
-//        return foodMap;
-//    }
-//
-//    public static Map<String, Movie> getMovieMap() {
-//        return movieMap;
-//    }
-//
-//    public static Map<Long, Client> getClientMap() {
-//        return clientMap;
-//    }
-//
-//    public static Map<Long, Employee> getEmployeeMap() {
-//        return employeeMap;
-//    }
-//
-//    public static Map<Long, Auditorium> getAuditoriumMap() {
-//        return auditoriumMap;
-//    }
-//
-//    public static Map<Long, Screening> getScreeningMap() {
-//        return screeningMap;
-//    }
-//
-//    public static long getPersonCounter() {
-//        return personCounter;
-//    }
-//
-//    public static long getAuditoriumCounter() {
-//        return auditoriumCounter;
-//    }
-//
-//    public static long getScreeningCounter() {
-//        return screeningCounter;
-//    }
-//
-//    <Key, Value> Value getObjectFromId(Key id, Map<Key, ? extends Value> map) throws CinemaException {
-//        if (map.get(id) == null) {
-//            CinemaException ex = null;
-//            if (map.get(null) != null) {
-//                ex = new CinemaException("id " + id + " is not a valid id from " + map.get(null).getClass().getSimpleName());
-//            }
-//            else {
-//                ex = new CinemaException("id " + id + " is not a valid id from map");
-//            }
-//            throw ex;
-//        }
-//
-//        return map.get(id);
-//    }
-//
-//    public void addCategory(String name, int minimumAge) {
-//        categoryMap.put(name, new Category(name, minimumAge));
-//    }
-//
-//    public void addFood(String name, double price) {
-//        foodMap.put(name, new Food(name, price));
-//    }
-//
-//    public void addMovie(String name, int duration, String... categoryNames) throws CinemaException {
-//        Movie.Builder builder = new Movie.Builder(name, duration);
-//        for (String catName : categoryNames) {
-//            Category cat = getObjectFromId(catName, categoryMap);
-//            builder.withCategory(cat);
-//        }
-//
-//        Movie movie = builder.build();
-//        movieMap.put(movie.getName(), movie);
-//    }
-//
-//    public long addEmployee(String firstName, String lastName, String email,
-//                           int birthYear, int birthMonth, int birthDay,
-//                           int hireYear, int hireMonth, int hireDay, double salary) {
-//
-//        LocalDate birth = LocalDate.of(birthYear, birthMonth, birthDay);
-//        LocalDate hire = LocalDate.of(hireYear, hireMonth, hireDay);
-//        Employee employee = new Employee(++personCounter, firstName, lastName, email, birth, hire, salary);
-//
-//        employeeMap.put(employee.id, employee);
-//        return employee.id;
-//    }
-//
-//    public long addEmployee(String firstName, String lastName, String email,
-//                           int birthYear, int birthMonth, int birthDay, double salary) {
-//
-//        LocalDate now = LocalDate.now();
-//        return addEmployee(firstName, lastName, email, birthYear, birthMonth, birthDay, now.getYear(), now.getMonthValue(), now.getDayOfMonth(), salary);
-//    }
-//
-//    public long addAuditorium(int number_of_seats) {
-//        Auditorium auditorium = new Auditorium(++auditoriumCounter, number_of_seats);
-//        auditoriumMap.put(auditorium.getId(), auditorium);
-//        return auditorium.getId();
-//    }
-//
-//    public long addScreeningToAuditorium(Long auditoriumId, String movieName, double price, int year, int month, int day, int hour, int minute, Long technicianId) throws CinemaException {
-//        Movie movie = getObjectFromId(movieName, movieMap);
-//        Employee technician = getObjectFromId(technicianId, employeeMap);
-//        Auditorium auditorium = getObjectFromId(auditoriumId, auditoriumMap);
-//        Screening screening = new Screening(++screeningCounter, movie, auditorium, price, LocalDateTime.of(year, month, day, hour, minute), technician);
-//
-//        if (auditorium.screeningTreeSet.add(screening) == false) {
-//            --screeningCounter;
-//            throw new CinemaException("New screening of " + movieName + " overlaps with other screenings for auditorium with id " + auditoriumId);
-//        }
-//
-//        screeningMap.put(screening.getId(), screening);
-//        return screening.getId();
-//    }
-//
-//    public long addScreeningToAuditorium(Long auditoriumId, String movieName, double price, Long technicianId) throws CinemaException {
-//        LocalDateTime d = LocalDateTime.now();
-//        return addScreeningToAuditorium(auditoriumId, movieName, price, d.getYear(), d.getMonthValue(), d.getDayOfMonth(), d.getHour(), d.getMinute(), technicianId);
-//    }
-//
-//    public void addUsherToScreening(Long screeningId, Long employeeId) throws CinemaException {
-//        Screening screening = getObjectFromId(screeningId, screeningMap);
-//        Employee usher = getObjectFromId(employeeId, employeeMap);
-//
-//        if (usher == screening.technician) {
-//            String message = "Can't add usher to screening with id " + screeningId +
-//                    "; Employee with id " + employeeId + " is already a technician";
-//            throw new CinemaException(message);
-//        }
-//
-//        if (usher.hireDate.atStartOfDay().compareTo(screening.startTime) > 0) {
-//            throw new CinemaException("Employee with id " + employeeId + " can't be an usher before his hire date for the screening with id " + screeningId);
-//        }
-//
-//        screening.ushers.add(usher);
-//    }
-//
-//    public long addClient(String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay) {
-//        Client client = new Client(++personCounter, firstName, lastName, email, LocalDate.of(birthYear, birthMonth, birthDay));
-//        clientMap.put(client.id, client);
-//        return client.id;
-//    }
-//
-//    public void addFundsToClient(Long clientId, double amount) throws CinemaException {
-//        Client client = getObjectFromId(clientId, clientMap);
-//        client.funds += amount;
-//    }
-//
-//    public void purchaseTicketForClient(Long clientId, int year, int month, int day, int hour, int minute, Long screeningId, int seatNumber) throws CinemaException {
-//        Client client = getObjectFromId(clientId, clientMap);
-//        Screening screening = getObjectFromId(screeningId, screeningMap);
-//
-//        if (client.funds < screening.price) {
-//            throw new CinemaException("Client " + clientId + " named " + client.getFirstName() + " doesn't have enough funds for the screening " + screeningId + " of movie " + screening.movie.getName());
-//        }
-//
-//        // check if the auditorium has such a seat
-//        if (!(0 < seatNumber && seatNumber <= screening.auditorium.number_of_seats)) {
-//            throw new CinemaException("The seat id " + seatNumber + " is more than " + screening.auditorium.number_of_seats);
-//        }
-//        // check if the seat is already taken
-//        if (screening.seatSet.contains(seatNumber)) {
-//            throw new CinemaException("The seat id " + seatNumber +
-//                    " is already taken for the screening with movie " + screening.getMovie().getName());
-//        }
-//
-//        // check if the client is old enough to see the movie
-//        ClientService cs = new ClientService(clientId);
-//        if (cs.isOldEnoughForAt(screening.getMovie().getName(), screening.startTime.toLocalDate()) == false) {
-//            throw new CinemaException("Client with id " + clientId + " is not old enough for the movie " + screening.getMovie().getName());
-//        }
-//
-//        TicketPurchase purchase = new TicketPurchase(LocalDateTime.of(year, month, day, hour, minute), screening, seatNumber);
-//        client.purchaseList.add(purchase);
-//        client.funds -= screening.price;
-//        screening.addClient(client);
-//        screening.seatSet.add(seatNumber);
-//    }
-//
-//    public void purchaseFoodForClient(Long clientId, String foodName, int year, int month, int day, int hour, int minute) throws CinemaException {
-//        Client client = getObjectFromId(clientId, clientMap);
-//        Food food = getObjectFromId(foodName, foodMap);
-//
-//        if (client.funds < food.getPrice()) {
-//            String mes = "Client " + clientId + " " + client.getFirstName() + " doesn't have enough funds for: " + food.getName();
-//            throw new CinemaException(mes);
-//        }
-//
-//        LocalDateTime date = LocalDateTime.of(year, month, day, hour, minute);
-//        FoodPurchase purchase = new FoodPurchase(food, date);
-//        client.purchaseList.add(purchase);
-//        client.funds -= food.getPrice();
-//    }
-//
-//    public List<Person> getPersonsAtScreening(Long screeningId) throws CinemaException {
-//        Screening screening = getObjectFromId(screeningId, screeningMap);
-//        List<Person> ret = new ArrayList<>();
-//        for (Person p : screening.clients) {
-//            ret.add(p);
-//        }
-//        for (Person p : screening.ushers) {
-//            ret.add(p);
-//        }
-//        ret.add(screening.technician);
-//
-//        return ret;
-//    }
-//
-//    public List<Screening> getScreeningsForEmployee(Long employeeId) throws CinemaException {
-//        Employee employee = getObjectFromId(employeeId, employeeMap);
-//        List<Screening> ret = new ArrayList<>();
-//
-//        for (Screening screening : screeningMap.values()) {
-//            if (employee == screening.technician) {
-//                ret.add(screening);
-//                continue;
-//            }
-//
-//            for (Employee usher : screening.ushers) {
-//                if (employee == usher) {
-//                    ret.add(screening);
-//                    break;
-//                }
-//            }
-//        }
-//
-//        return ret;
-//    }
-//
-////    public static void main(String[] args) throws CinemaException {
-////        AdminService as = new AdminService("admin", "123");
-////        as.getObjectFromId(20L, as.clientMap);
-////        as.getObjectFromId("hi", as.foodMap);
-////
-////        as.addMovie("test", 2);
-////    }
+    public static void checkReference(Identifiable identifiable) throws CinemaException {
+        if (identifiable == null) {
+            throw new CinemaException("Couldn't find the line with that id: " + identifiable.getId());
+        }
+    }
+
+    public long addCategory(String name, int minimumAge) throws IOException {
+        Category category = new Category(-1, name, minimumAge);
+        return SetterService.update(category);
+    }
+
+    public long addFood(String name, double price) throws IOException {
+        Food food = new Food(-1, name, price);
+        return SetterService.update(food);
+    }
+
+    public long addMovie(String name, int duration, String... categoryNames) throws CinemaException, IOException {
+        Movie movie = new Movie(-1, name, duration);
+        long newMovieId = SetterService.update(movie);
+
+        List<Category> allCategories = GetterService.getAllCategory();
+
+        for (String categoryName : categoryNames) {
+            boolean found = false;
+
+            for (Category category : allCategories) {
+                if (categoryName != null && categoryName.equals(category.getName())) {
+                    AssociativeEntry entry = new AssociativeEntry(-1, newMovieId, category.getId());
+                    SetterService.updateMovieCategory(entry);
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                throw new CinemaException("Couldn't find that category: " + categoryName);
+            }
+        }
+
+        return newMovieId;
+    }
+
+    public long addEmployee(String firstName, String lastName, String email,
+                           int birthYear, int birthMonth, int birthDay,
+                           int hireYear, int hireMonth, int hireDay, double salary) throws IOException {
+
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+        LocalDate hireDate = LocalDate.of(hireYear, hireMonth, hireDay);
+        Employee employee = new Employee(-1L, firstName, lastName, email, birthDate, hireDate, salary);
+        return SetterService.update(employee);
+    }
+
+    public long addEmployee(String firstName, String lastName, String email,
+                           int birthYear, int birthMonth, int birthDay, double salary) throws IOException {
+
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+        LocalDate hireDate = LocalDate.now();
+        Employee employee = new Employee(-1L, firstName, lastName, email, birthDate, hireDate, salary);
+        return SetterService.update(employee);
+    }
+
+    public long addAuditorium(int number_of_seats) throws IOException {
+        Auditorium auditorium = new Auditorium(-1L, number_of_seats);
+        return SetterService.update(auditorium);
+    }
+
+    public long addScreeningToAuditorium(long auditoriumId, long movieId, double price, int year, int month, int day, int hour, long technicianId) throws CinemaException, IOException {
+        Auditorium auditorium = GetterService.getAuditorium(auditoriumId);
+        Movie movie = GetterService.getMovie(movieId);
+        checkReference(auditorium);
+        checkReference(movie);
+
+        LocalDate date = LocalDate.of(year, month, day);
+        Screening screening = new Screening(-1, movieId, auditoriumId, price, date, hour, technicianId);
+        return SetterService.update(screening);
+    }
+
+    public long addScreeningToAuditorium(long auditoriumId, long movieId, double price, int hour, long technicianId) throws CinemaException, IOException {
+        LocalDate d = LocalDate.now();
+        return addScreeningToAuditorium(
+                auditoriumId,
+                movieId,
+                price,
+                d.getYear(),
+                d.getMonthValue(),
+                d.getDayOfMonth(),
+                hour,
+                technicianId);
+    }
+
+    public void addUsherToScreening(long screeningId, long employeeId) throws CinemaException, IOException {
+        Screening screening = GetterService.getScreening(screeningId);
+        checkReference( screening );
+        Employee usher = GetterService.getEmployee(employeeId);
+        checkReference( usher );
+
+        if (employeeId == screening.getTechnicianId()) {
+            String message = "Can't add usher to screening with id " + screeningId +
+                    "; Employee with id " + employeeId + " is already a technician";
+            throw new CinemaException(message);
+        }
+
+        if (usher.getHireDate().compareTo(screening.getStartTime()) > 0) {
+            throw new CinemaException("Employee with id " + employeeId + " can't be an usher before his hire date for the screening with id " + screeningId);
+        }
+
+        AssociativeEntry entry = new AssociativeEntry(-1, screeningId, employeeId);
+        SetterService.updateScreeningEmployee(entry);
+    }
+
+    public long addClient(String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay) throws IOException {
+        LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
+        Client client = new Client((long) -1, firstName, lastName, email, birthDate);
+
+        return SetterService.update(client);
+    }
+
+    public void addFundsToClient(long clientId, double amount) throws CinemaException, IOException {
+        Client client = GetterService.getClient(clientId);
+        client.setFunds(client.getFunds() + amount);
+
+        SetterService.update(client);
+    }
+
+    public long purchaseTicketForClient(long clientId, int year, int month, int day, long screeningId, int seatNumber) throws CinemaException, IOException {
+        Client client = GetterService.getClient(clientId);
+        checkReference(client);
+        Screening screening = GetterService.getScreening(screeningId);
+        checkReference(screening);
+        Auditorium auditorium = GetterService.getAuditorium(screening.getAuditoriumId());
+        checkReference(auditorium);
+
+        if (client.getFunds() < screening.getPrice()) {
+            throw new CinemaException("Client " + clientId + " named " + client.getFirstName() + " doesn't have enough funds for the screening with movie id: " + screening.getMovieId());
+        }
+
+        // check if the auditorium has such a seat
+        if (!(0 < seatNumber && seatNumber <= auditorium.getNumber_of_seats())) {
+            throw new CinemaException("The seat id " + seatNumber + " is more than " + auditorium.getNumber_of_seats());
+        }
+
+        // check if the client is old enough to see the movie
+        ClientService cs = new ClientService(clientId);
+        if (cs.isOldEnoughForAt(screening.getMovieId(), screening.getStartTime()) == false) {
+            throw new CinemaException("Client with id " + clientId + " is not old enough for the movie with id: " + screening.getMovieId());
+        }
+
+        client.setFunds(client.getFunds() - screening.getPrice());
+
+        AssociativeEntry entry = new AssociativeEntry(-1, screeningId, clientId);
+        SetterService.updateScreeningClient(entry);
+
+        LocalDate purchaseDate = LocalDate.of(year, month, day);
+        TicketPurchase purchase = new TicketPurchase(-1, clientId, purchaseDate, screeningId, seatNumber);
+        return SetterService.update(purchase);
+    }
+
+    public long purchaseFoodForClient(long clientId, long foodId, int year, int month, int day) throws CinemaException, IOException {
+        Client client = GetterService.getClient(clientId);
+        checkReference(client);
+        Food food = GetterService.getFood(foodId);
+        checkReference(food);
+
+        if (client.getFunds() < food.getPrice()) {
+            String mes = "Client " + clientId + " " + client.getFirstName() + " doesn't have enough funds for: " + food.getName();
+            throw new CinemaException(mes);
+        }
+
+        client.setFunds(client.getFunds() - food.getPrice());
+
+        LocalDate date = LocalDate.of(year, month, day);
+        FoodPurchase purchase = new FoodPurchase(-1L, clientId, date, foodId, food.getPrice());
+        return SetterService.update(purchase);
+    }
+
+    public List<Long> getPersonsAtScreening(long screeningId) throws CinemaException, IOException {
+        List<Long> ans = new ArrayList<>();
+
+        List<AssociativeEntry> list = GetterService.getAllScreeningClient();
+        for (AssociativeEntry entry : list) {
+            if (entry.getFirstId() == screeningId) {
+                ans.add(entry.getSecondId());
+            }
+        }
+
+        return ans;
+    }
+
+    public List<Long> getScreeningsForEmployee(long employeeId) throws CinemaException, IOException {
+        Set<Long> retSet = new TreeSet<>();
+
+        List<Screening> allScreenings = GetterService.getAllScreening();
+        for (Screening screening : allScreenings) {
+            if (screening.getTechnicianId() == employeeId) {
+                retSet.add(screening.getId());
+            }
+        }
+
+        for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
+            if (entry.getSecondId() == employeeId) {
+                retSet.add(entry.getFirstId());
+            }
+        }
+
+        return new ArrayList<>(retSet);
+    }
 }

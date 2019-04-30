@@ -89,6 +89,22 @@ public class GetterService {
         return ret;
     }
 
+    public static List<cinema.data.AssociativeEntry> getAllScreeningClient() throws IOException {
+        return Converter.cast(
+                GetterService.getAll(DatabaseConstants.SCREENING_CLIENT_FILE, new Converter.AssociativeEntry())
+        );
+    }
+    public static List<cinema.data.AssociativeEntry> getAllScreeningEmployee() throws IOException {
+        return Converter.cast(
+                GetterService.getAll(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry())
+        );
+    }
+    public static List<cinema.data.AssociativeEntry> getAllMovieCategory() throws IOException {
+        return Converter.cast(
+                GetterService.getAll(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry())
+        );
+    }
+
     public static List<cinema.data.Auditorium> getAllAuditorium() throws IOException {
         return Converter.cast(
                 GetterService.getAll(DatabaseConstants.AUDITORIUM_FILE, new Converter.Auditorium())

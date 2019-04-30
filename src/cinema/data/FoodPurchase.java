@@ -2,6 +2,7 @@ package cinema.data;
 
 import cinema.service.GetterService;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public final class FoodPurchase extends Purchase {
@@ -36,9 +37,17 @@ public final class FoodPurchase extends Purchase {
 
     @Override
     public String getName() {
-        Food food = GetterService.getFood(foodProductId);
+        Food food = null;
+        String name = null;
+        try {
+            food = GetterService.getFood(foodProductId);
+            name = food.getName();
+        }
+        catch (Exception except) {
+            name = "GetterService.getFood error: " + except.toString();
+        }
 
-        return "FoodPurchase Purchase: " + food.getName() + ", price: " + price;
+        return "FoodPurchase Purchase: " + name + ", price: " + price;
     }
 
 }
