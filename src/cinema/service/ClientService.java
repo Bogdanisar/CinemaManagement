@@ -43,7 +43,9 @@ public class ClientService {
             movieIds.add(screening.getMovieId());
         }
 
-//        cinema.test.Main.logger.debug(movieIds);
+        for (Long id : movieIds) {
+            cinema.test.Main.logger.severe("found movie id: " + id);
+        }
 
         List<Movie> ans = new ArrayList<>();
         for (Movie movie : GetterService.getAllMovie()) {

@@ -281,7 +281,7 @@ public class Main {
             else if (choice == 19) {
                 logger.info(prompts[choice - 1]);
 
-                System.out.println(prompts[choice - 1] + ": Get movies after day: (int year, int month, int day");
+                System.out.println(prompts[choice - 1] + ": (int year, int month, int day");
                 int year = scanner.nextInt();
                 int month = scanner.nextInt();
                 int day = scanner.nextInt();
@@ -295,7 +295,7 @@ public class Main {
             else if (choice == 20) {
                 logger.info(prompts[choice - 1]);
 
-                System.out.println(prompts[choice - 1] + ": Get screenings for movie after day");
+                System.out.println(prompts[choice - 1] + ": (long movieId, int year, int month, int day)");
                 long movieId = scanner.nextLong();
                 int year = scanner.nextInt();
                 int month = scanner.nextInt();

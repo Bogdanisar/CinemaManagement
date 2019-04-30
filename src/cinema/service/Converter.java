@@ -45,7 +45,7 @@ public interface Converter {
         public cinema.data.AssociativeEntry convert(CSVRecord record) {
             long id = Long.parseLong(record.get(0));
             long firstId = Long.parseLong(record.get(1));
-            long secondId = Long.parseLong(record.get(1));
+            long secondId = Long.parseLong(record.get(2));
 
             return new cinema.data.AssociativeEntry(id, firstId, secondId);
         }
