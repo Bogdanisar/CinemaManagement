@@ -35,10 +35,6 @@ public class ClientService {
         return ret;
     }
 
-    public List<Food> getAllFoods() throws IOException {
-        return GetterService.getAllFood();
-    }
-
     public List<Long> getWatchedMovies() throws IOException {
         Set<Long> screeningIds = new TreeSet<>(this.getScreenings());
 
@@ -107,58 +103,5 @@ public class ClientService {
 
     public boolean isOldEnoughFor(long movieId) throws CinemaException, IOException {
         return isOldEnoughForAt(movieId, LocalDate.now());
-    }
-
-    public List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException {
-        LocalDate date = LocalDate.of(year, month, day);
-
-        Set<Long> movieIds = new TreeSet<>();
-        for (Screening screening : GetterService.getAllScreening()) {
-            if (screening.getStartTime().equals(date)) {
-                movieIds.add(screening.getMovieId());
-            }
-        }
-
-        List<Movie> ans = new ArrayList<>();
-        for (Movie movie : GetterService.getAllMovie()) {
-            if ( movieIds.contains(movie.getId()) ) {
-                ans.add(movie);
-            }
-        }
-
-        return ans;
-    }
-
-    public List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException {
-        LocalDate date = LocalDate.of(year, month, day);
-
-        Set<Long> movieIds = new TreeSet<>();
-        for (Screening screening : GetterService.getAllScreening()) {
-            if (screening.getStartTime().compareTo(date) >= 0) {
-                movieIds.add(screening.getMovieId());
-            }
-        }
-
-        List<Movie> ans = new ArrayList<>();
-        for (Movie movie : GetterService.getAllMovie()) {
-            if ( movieIds.contains(movie.getId()) ) {
-                ans.add(movie);
-            }
-        }
-
-        return ans;
-    }
-
-    public List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException {
-        LocalDate date = LocalDate.of(year, month, day);
-
-        List<Screening> ans = new ArrayList<>();
-        for (Screening screening : GetterService.getAllScreening()) {
-            if (screening.getMovieId() == movieId) {
-                ans.add(screening);
-            }
-        }
-
-        return ans;
     }
 }
