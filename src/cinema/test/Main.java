@@ -1,3 +1,5 @@
+package cinema.test;
+
 import cinema.data.*;
 import cinema.exception.CinemaException;
 import cinema.service.AdminService;
