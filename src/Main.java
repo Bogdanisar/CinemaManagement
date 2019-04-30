@@ -2,11 +2,13 @@ import cinema.data.*;
 import cinema.exception.CinemaException;
 import cinema.service.AdminService;
 import cinema.service.ClientService;
+import cinema.service.InfoService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -17,11 +19,13 @@ import java.util.Scanner;
 import java.util.logging.*;
 
 public class Main {
+    public static Logger logger = null;
+
     public static void main(String[] args) throws CinemaException, IOException {
-        Logger logger = Logger.getLogger("cinema.Logger");
+        logger = Logger.getLogger("cinema.Logger");
 
         FileHandler handler = new FileHandler("logging/logMessages.txt", true);
-        handler.setFormatter(new Formatter() {
+        Formatter CSVFormat = new Formatter() {
             @Override
             public String format(LogRecord record) {
                 String level = record.getLevel().toString();
@@ -33,32 +37,48 @@ public class Main {
                 String action = record.getMessage();
                 String name = record.getLoggerName();
 
-                String ans = "\n" + "Level: " + level + "; at " + timestamp + ":\n================\n" + action + "\n================\nLogger: " + name + "\n";
+                String ans = level + ", " + timestamp + ", " + action + ", " + name + "\n\n";
                 return ans;
             }
-        });
+        };
+
+        handler.setFormatter(CSVFormat);
+
         logger.addHandler(handler);
+        logger.setUseParentHandlers(false);
 
 
+        String[] prompts = {
+                "1.  AdminService: Add Category",
+                "2.  AdminService: Add Food",
+                "3.  AdminService: Add Movie",
+                "4.  AdminService: Add Employee",
+                "5.  AdminService: Add Auditorium",
+                "6.  AdminService: Add Screening To Auditorium",
+                "7.  AdminService: Add Usher To Screening",
+                "8.  AdminService: Add Client",
+                "9.  AdminService: Add funds to client",
+                "10. AdminService: Purchase ticket for client",
+                "11. AdminService: Purchase food for client",
+                "12. AdminService: Get persons at screening",
+                "13. AdminService: Get screenings for employee",
+                "14. ClientService: Get total spent for client",
+                "15. ClientService: Get watched movies for client",
+                "16. ClientService: Get screenings for client",
+                "17. ClientService: Client is old enough for movie",
+                "18. InfoService: Get foods",
+                "19. InfoService: Get movies after day",
+                "20. InfoService: Get screenings for movie after day"
+        };
 
 
-
-        logger.info("\nProgram started");
+        logger.info("Program started");
 
         System.out.println("Choices:");
-        System.out.println("1.  Add Category");
-        System.out.println("2.  Add Food");
-        System.out.println("3.  Add Movie");
-        System.out.println("4.  Add Employee");
-        System.out.println("5.  Add Auditorium");
-        System.out.println("6.  Add Screening To Auditorium");
-        System.out.println("7.  Add Usher To Screening");
-        System.out.println("8.  Add Client");
-        System.out.println("9.  Add funds to client");
-        System.out.println("10. Purchase ticket for client");
-        System.out.println("11. Purchase food for client");
-        System.out.println("12. Get persons at screening");
-        System.out.println("13. Get screenings for employee");
+        for (String p : prompts) {
+            System.out.println(p);
+        }
+        System.out.println();
 
         boolean caughtException = false;
         try {
@@ -66,19 +86,27 @@ public class Main {
             Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
             if (choice == 1) {
-                System.out.println("Insert Category: (String name, int minimumAge)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (String name, int minimumAge)");
                 as.addCategory(scanner.next(), scanner.nextInt());
             }
             else if (choice == 2) {
-                System.out.println("Insert Food: (String name, double price)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (String name, double price)");
                 as.addFood(scanner.next(), scanner.nextDouble());
             }
             else if (choice == 3) {
-                System.out.println("Insert Movie: (String name, int durationInMinutes, String categoryName)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (String name, int durationInMinutes, String categoryName)");
                 as.addMovie(scanner.next(), scanner.nextInt(), scanner.next());
             }
             else if (choice == 4) {
-                System.out.println("Insert Employee: (String firstName, String lastName, String email,\n" +
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (String firstName, String lastName, String email,\n" +
                         "                           int birthYear, int birthMonth, int birthDay,\n" +
                         "                           int hireYear, int hireMonth, int hireDay, double salary)");
                 as.addEmployee(
@@ -95,11 +123,15 @@ public class Main {
                 );
             }
             else if (choice == 5) {
-                System.out.println("Insert Auditorium: (int numberOfSeats)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (int numberOfSeats)");
                 as.addAuditorium(scanner.nextInt());
             }
             else if (choice == 6) {
-                System.out.println("Add screening to auditorium: (long auditoriumId, long movieId, double price, int year, int month, int day, int hour, long technicianId)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long auditoriumId, long movieId, double price, int year, int month, int day, int hour, long technicianId)");
                 as.addScreeningToAuditorium(
                         scanner.nextLong(),
                         scanner.nextLong(),
@@ -112,14 +144,18 @@ public class Main {
                 );
             }
             else if (choice == 7) {
-                System.out.println("Add usher to screening: (long screeningId, long employeeId)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long screeningId, long employeeId)");
                 as.addUsherToScreening(
                         scanner.nextLong(),
                         scanner.nextLong()
                 );
             }
             else if (choice == 8) {
-                System.out.println("Add client: (String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay)");
                 as.addClient(
                         scanner.next(),
                         scanner.next(),
@@ -130,14 +166,18 @@ public class Main {
                 );
             }
             else if (choice == 9) {
-                System.out.println("Add funds to client: (long clientId, double amount)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId, double amount)");
                 as.addFundsToClient(
                         scanner.nextLong(),
                         scanner.nextDouble()
                 );
             }
             else if (choice == 10) {
-                System.out.println("Purchase ticket for client: (long clientId, int year, int month, int day, long screeningId, int seatNumber)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId, int year, int month, int day, long screeningId, int seatNumber)");
                 as.purchaseTicketForClient(
                         scanner.nextLong(),
                         scanner.nextInt(),
@@ -148,7 +188,9 @@ public class Main {
                 );
             }
             else if (choice == 11) {
-                System.out.println("purchase Food For Client: (long clientId, long foodId, int year, int month, int day)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId, long foodId, int year, int month, int day)");
                 as.purchaseFoodForClient(
                         scanner.nextLong(),
                         scanner.nextLong(),
@@ -158,21 +200,110 @@ public class Main {
                 );
             }
             else if (choice == 12) {
-                System.out.println("get Persons At Screening: (long screeningId)");
-                List<Long> personList = as.getPersonsAtScreening(scanner.nextLong());
+                logger.info(prompts[choice - 1]);
 
-                System.out.println("The people with the following ids were at this screening:");
-                for (Long id : personList) {
-                    System.out.print(id + " ");
+                System.out.println(prompts[choice - 1] + ": (long screeningId)");
+                List<Person> personList = as.getPersonsAtScreening(scanner.nextLong());
+
+                System.out.println("The following people were at this screening:");
+                for (Person person : personList) {
+                    System.out.println("Person id: " + person.getId() + "; Person name: " + person.getName());
                 }
             }
             else if (choice == 13) {
-                System.out.println("get Screenings For Employee: (long employeeId)");
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long employeeId)");
                 List<Long> list = as.getScreeningsForEmployee(scanner.nextLong());
 
                 System.out.println("This employee was at the screenings with the following ids: ");
                 for (Long id : list) {
                     System.out.print(id + " ");
+                }
+            }
+            else if (choice == 14) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId");
+                long clientId = scanner.nextLong();
+                double totalSpent = ( new ClientService(clientId) ).getTotalSpent();
+                System.out.println("Total spent amount of client " + clientId + " is " + totalSpent);
+            }
+            else if (choice == 15) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId)");
+
+                long clientId = scanner.nextLong();
+                List<Movie> list = (new ClientService(clientId)).getWatchedMovies();
+
+                System.out.println("The client with id " + clientId + " watched:");
+                for (Movie movie : list) {
+                    System.out.println(movie.getName());
+                }
+            }
+            else if (choice == 16) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId)");
+
+                long clientId = scanner.nextLong();
+                List<Screening> list = (new ClientService(clientId)).getScreenings();
+
+                System.out.println("The client with id " + clientId + " was at the screenings with the following ids:");
+                for (Screening screening : list) {
+                    System.out.println(screening.getId());
+                }
+            }
+            else if (choice == 17) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": (long clientId, long movieId)");
+
+                long clientId = scanner.nextLong();
+                long movieId = scanner.nextLong();
+                boolean result = (new ClientService(clientId)).isOldEnoughFor(movieId);
+                System.out.println("Result of isClientOldEnoughForMovie: " + result);
+            }
+            else if (choice == 18) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": Get foods: ()");
+
+                System.out.println("All available foods: ");
+                List<Food> list = InfoService.getAllFoods();
+                for (Food food : list) {
+                    System.out.println("Food name: " + food.getName() + "; Food price: " + food.getPrice());
+                }
+            }
+            else if (choice == 19) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": Get movies after day: (int year, int month, int day");
+                int year = scanner.nextInt();
+                int month = scanner.nextInt();
+                int day = scanner.nextInt();
+                List<Movie> list = InfoService.getMoviesAfterDay(year, month, day);
+
+                System.out.println("Movies after the day: " + day + "/" + month + "/" + year + ":");
+                for (Movie movie : list) {
+                    System.out.println(movie.getName());
+                }
+            }
+            else if (choice == 20) {
+                logger.info(prompts[choice - 1]);
+
+                System.out.println(prompts[choice - 1] + ": Get screenings for movie after day");
+                long movieId = scanner.nextLong();
+                int year = scanner.nextInt();
+                int month = scanner.nextInt();
+                int day = scanner.nextInt();
+
+                List<Screening> list = InfoService.getScreeningsForMovieAfter(movieId, year, month, day);
+                System.out.println("Screenings for the movie with id " + movieId + " after " + day + "/" + month + "/" + year + ":");
+                for (Screening screening : list) {
+                    LocalDate d = screening.getStartTime();
+                    System.out.println("Screening id: " + screening.getId() + "; on " + d.getDayOfMonth() + "/" + d.getMonthValue() + "/" + d.getYear());
                 }
             }
         }
@@ -182,12 +313,13 @@ public class Main {
             except.printStackTrace(pw);
             String sStackTrace = sw.toString();
 
-            logger.severe("Abnormal program termination with stack trace:\n" + sStackTrace);
             caughtException = true;
+            logger.severe("Abnormal program termination with stack trace:\n" + sStackTrace);
+            except.printStackTrace();
         }
 
         if (!caughtException) {
-            logger.info("Normal program termination\n");
+            logger.info("Normal program termination");
         }
     }
 }

@@ -1,0 +1,351 @@
+Level, Timestamp, Message, LoggerName
+INFO, 22:23:23 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:23:55 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:23:58 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 22:26:32 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:26:35 - 30/04/2019, add category task, cinema.Logger
+INFO, 22:28:47 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:29:49 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:29:56 - 30/04/2019, add category task, cinema.Logger
+INFO, 22:30:47 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:30:54 - 30/04/2019, add category task, cinema.Logger
+INFO, 22:31:12 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 22:56:46 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:56:54 - 30/04/2019, add employee task, cinema.Logger
+SEVERE, 22:58:03 - 30/04/2019, Abnormal program termination with stack trace:
+java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12): 1930
+	at java.base/java.time.temporal.ValueRange.checkValidValue(ValueRange.java:311)
+	at java.base/java.time.temporal.ChronoField.checkValidValue(ChronoField.java:717)
+	at java.base/java.time.LocalDate.of(LocalDate.java:269)
+	at cinema.service.AdminService.addEmployee(AdminService.java:60)
+	at Main.main(Main.java:104)
+, cinema.Logger
+INFO, 22:58:59 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:59:02 - 30/04/2019, add category task, cinema.Logger
+SEVERE, 22:59:08 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Main.main(Main.java:84)
+, cinema.Logger
+INFO, 22:59:28 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:59:31 - 30/04/2019, add employee task, cinema.Logger
+INFO, 22:59:46 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 22:59:52 - 30/04/2019, Program started, cinema.Logger
+INFO, 22:59:55 - 30/04/2019, add employee task, cinema.Logger
+INFO, 23:01:06 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:01:19 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:01:21 - 30/04/2019, add auditorium task, cinema.Logger
+INFO, 23:01:23 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:01:27 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:01:29 - 30/04/2019, add auditorium task, cinema.Logger
+INFO, 23:01:31 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:01:35 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:01:37 - 30/04/2019, add auditorium task, cinema.Logger
+INFO, 23:01:38 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:01:57 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:02:24 - 30/04/2019, add screening to auditorium task, cinema.Logger
+SEVERE, 23:02:49 - 30/04/2019, Abnormal program termination with stack trace:
+java.lang.NullPointerException
+	at cinema.service.AdminService.checkReference(AdminService.java:15)
+	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:84)
+	at Main.main(Main.java:127)
+, cinema.Logger
+INFO, 23:03:16 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:16:48 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:16:52 - 30/04/2019, add employee task, cinema.Logger
+SEVERE, 23:17:02 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Main.main(Main.java:108)
+, cinema.Logger
+INFO, 23:17:23 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:17:26 - 30/04/2019, add movie task, cinema.Logger
+SEVERE, 23:17:36 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Main.main(Main.java:96)
+, cinema.Logger
+INFO, 23:17:44 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:17:46 - 30/04/2019, add movie task, cinema.Logger
+INFO, 23:17:55 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:20:06 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:20:09 - 30/04/2019, add auditorium task, cinema.Logger
+INFO, 23:20:10 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:20:15 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:20:28 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:25:43 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:25:51 - 30/04/2019, add screening to auditorium task, cinema.Logger
+SEVERE, 23:26:04 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextLong(Scanner.java:2373)
+	at java.base/java.util.Scanner.nextLong(Scanner.java:2328)
+	at Main.main(Main.java:134)
+, cinema.Logger
+INFO, 23:26:14 - 30/04/2019, Program started, cinema.Logger
+INFO, 23:26:25 - 30/04/2019, add screening to auditorium task, cinema.Logger
+INFO, 23:26:48 - 30/04/2019, Normal program termination, cinema.Logger
+INFO, 23:27:44 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:27:48 - 30/04/2019, add usher to screening task, cinema.Logger
+
+INFO, 23:27:52 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:27:57 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:28:04 - 30/04/2019, add usher to screening task, cinema.Logger
+
+SEVERE, 23:28:05 - 30/04/2019, Abnormal program termination with stack trace:
+cinema.exception.CinemaException: Can't add usher to screening with id 1; Employee with id 2 is already a technician
+	at cinema.service.AdminService.addUsherToScreening(AdminService.java:113)
+	at Main.main(Main.java:148)
+, cinema.Logger
+
+INFO, 23:28:12 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:28:17 - 30/04/2019, add usher to screening task, cinema.Logger
+
+SEVERE, 23:28:19 - 30/04/2019, Abnormal program termination with stack trace:
+cinema.exception.CinemaException: Employee with id 3 can't be an usher before his hire date for the screening with id 1
+	at cinema.service.AdminService.addUsherToScreening(AdminService.java:117)
+	at Main.main(Main.java:148)
+, cinema.Logger
+
+INFO, 23:28:23 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:28:26 - 30/04/2019, add usher to screening task, cinema.Logger
+
+INFO, 23:28:27 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:28:50 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:28:53 - 30/04/2019, add client task, cinema.Logger
+
+INFO, 23:29:13 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:29:17 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:29:21 - 30/04/2019, add client task, cinema.Logger
+
+INFO, 23:29:38 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:29:50 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:29:52 - 30/04/2019, add funds to client task, cinema.Logger
+
+INFO, 23:29:57 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:30:01 - 30/04/2019, Program started, cinema.Logger
+
+SEVERE, 23:30:21 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Main.main(Main.java:85)
+, cinema.Logger
+
+INFO, 23:31:32 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:31:47 - 30/04/2019, add client task, cinema.Logger
+
+SEVERE, 23:31:55 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1478)
+	at Main.main(Main.java:160)
+, cinema.Logger
+
+INFO, 23:31:58 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:32:00 - 30/04/2019, add funds to client task, cinema.Logger
+
+INFO, 23:32:01 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:33:19 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:33:22 - 30/04/2019, add funds to client task, cinema.Logger
+
+INFO, 23:33:26 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:33:33 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:33:37 - 30/04/2019, add ticket purchase for client task, cinema.Logger
+
+SEVERE, 23:34:26 - 30/04/2019, Abnormal program termination with stack trace:
+java.lang.NullPointerException
+	at cinema.service.AdminService.checkReference(AdminService.java:15)
+	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:144)
+	at Main.main(Main.java:179)
+, cinema.Logger
+
+INFO, 23:35:30 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:35:35 - 30/04/2019, add ticket purchase for client task, cinema.Logger
+
+SEVERE, 23:35:59 - 30/04/2019, Abnormal program termination with stack trace:
+cinema.exception.CinemaException: Client 2 named Cli doesn't have enough funds for the screening with movie id: 2
+	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:147)
+	at Main.main(Main.java:179)
+, cinema.Logger
+
+INFO, 23:36:10 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:36:20 - 30/04/2019, add ticket purchase for client task, cinema.Logger
+
+INFO, 23:36:31 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:37:08 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:37:12 - 30/04/2019, add food purchase for client task, cinema.Logger
+
+SEVERE, 23:37:44 - 30/04/2019, Abnormal program termination with stack trace:
+java.lang.NumberFormatException: For input string: "Popcorn"
+	at java.base/jdk.internal.math.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:2054)
+	at java.base/jdk.internal.math.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+	at java.base/java.lang.Double.parseDouble(Double.java:549)
+	at java.base/java.lang.Double.valueOf(Double.java:512)
+	at cinema.service.Converter$Food.convert(Converter.java:167)
+	at cinema.service.Converter$Food.convert(Converter.java:162)
+	at cinema.service.GetterService.getIdentifiable(GetterService.java:24)
+	at cinema.service.GetterService.getFood(GetterService.java:51)
+	at cinema.service.AdminService.purchaseFoodForClient(AdminService.java:174)
+	at Main.main(Main.java:192)
+, cinema.Logger
+
+INFO, 23:38:56 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:39:00 - 30/04/2019, add food purchase for client task, cinema.Logger
+
+INFO, 23:39:06 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:41:43 - 30/04/2019, Program started, cinema.Logger
+
+SEVERE, 23:41:46 - 30/04/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Main.main(Main.java:85)
+, cinema.Logger
+
+INFO, 23:43:43 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:43:47 - 30/04/2019, 11. AdminService: Purchase food for client, cinema.Logger
+
+INFO, 23:43:53 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:44:24 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:44:32 - 30/04/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+INFO, 23:44:34 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:48:31 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:48:35 - 30/04/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+SEVERE, 23:48:36 - 30/04/2019, Abnormal program termination with stack trace:
+java.time.format.DateTimeParseException: Text '04/04' could not be parsed at index 5
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2049)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1951)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:428)
+	at cinema.service.Converter.stringToLocalDate(Converter.java:31)
+	at cinema.service.Converter$Employee.convert(Converter.java:141)
+	at cinema.service.Converter$Employee.convert(Converter.java:133)
+	at cinema.service.GetterService.getAll(GetterService.java:83)
+	at cinema.service.GetterService.getAllEmployee(GetterService.java:128)
+	at cinema.service.AdminService.getPersonsAtScreening(AdminService.java:212)
+	at Main.main(Main.java:204)
+, cinema.Logger
+
+INFO, 23:50:18 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:50:19 - 30/04/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+INFO, 23:50:19 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:50:48 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:51:01 - 30/04/2019, 13. AdminService: Get screenings for employee, cinema.Logger
+
+INFO, 23:51:17 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:51:35 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:51:43 - 30/04/2019, 14. ClientService: Get total spent for client, cinema.Logger
+
+SEVERE, 23:51:45 - 30/04/2019, Abnormal program termination with stack trace:
+java.lang.NullPointerException
+	at cinema.data.TicketPurchase.getPrice(TicketPurchase.java:47)
+	at cinema.service.ClientService.getTotalSpent(ClientService.java:31)
+	at Main.main(Main.java:227)
+, cinema.Logger
+
+INFO, 23:53:52 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:53:53 - 30/04/2019, 14. ClientService: Get total spent for client, cinema.Logger
+
+INFO, 23:53:54 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:54:01 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:54:02 - 30/04/2019, 14. ClientService: Get total spent for client, cinema.Logger
+
+INFO, 23:54:03 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:54:09 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:54:12 - 30/04/2019, 15. ClientService: Get watched movies for client, cinema.Logger
+
+INFO, 23:54:12 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:54:18 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:54:21 - 30/04/2019, 6.  AdminService: Add Screening To Auditorium, cinema.Logger
+
+SEVERE, 23:54:42 - 30/04/2019, Abnormal program termination with stack trace:
+java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12): 20
+	at java.base/java.time.temporal.ValueRange.checkValidValue(ValueRange.java:311)
+	at java.base/java.time.temporal.ChronoField.checkValidValue(ChronoField.java:717)
+	at java.base/java.time.LocalDate.of(LocalDate.java:269)
+	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:86)
+	at Main.main(Main.java:133)
+, cinema.Logger
+
+INFO, 23:54:47 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:54:52 - 30/04/2019, 6.  AdminService: Add Screening To Auditorium, cinema.Logger
+
+INFO, 23:55:06 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:55:14 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:55:17 - 30/04/2019, 10. AdminService: Purchase ticket for client, cinema.Logger
+
+INFO, 23:55:30 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:55:42 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:55:46 - 30/04/2019, 15. ClientService: Get watched movies for client, cinema.Logger
+
+INFO, 23:55:48 - 30/04/2019, Normal program termination, cinema.Logger
+
+INFO, 23:55:58 - 30/04/2019, Program started, cinema.Logger
+
+INFO, 23:57:03 - 30/04/2019, 15. ClientService: Get watched movies for client, cinema.Logger
+
+INFO, 23:57:05 - 30/04/2019, Normal program termination, cinema.Logger
+

@@ -16,7 +16,7 @@ public class InfoService {
         return GetterService.getAllFood();
     }
 
-    public List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException {
+    public static List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException {
         LocalDate date = LocalDate.of(year, month, day);
 
         Set<Long> movieIds = new TreeSet<>();
@@ -36,7 +36,7 @@ public class InfoService {
         return ans;
     }
 
-    public List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException {
+    public static List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException {
         LocalDate date = LocalDate.of(year, month, day);
 
         Set<Long> movieIds = new TreeSet<>();
@@ -56,7 +56,7 @@ public class InfoService {
         return ans;
     }
 
-    public List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException {
+    public  static List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException {
         LocalDate date = LocalDate.of(year, month, day);
 
         List<Screening> ans = new ArrayList<>();

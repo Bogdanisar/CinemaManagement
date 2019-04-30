@@ -44,11 +44,15 @@ public final class TicketPurchase extends Purchase {
 
     @Override
     public double getPrice() {
+        this.retrieveData();
+
         return this.price;
     }
 
     @Override
     public String getName() {
+        this.retrieveData();
+
         return "TicketPurchase Purchase: " + this.movieName + ", price: " + this.price;
     }
 

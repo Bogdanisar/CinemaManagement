@@ -36,19 +36,19 @@ public class GetterService {
     }
 
     public static Screening getScreening(long id) throws IOException {
-        return (Screening) GetterService.getIdentifiable(DatabaseConstants.SCREENING_FILE ,id, new Converter.Screening());
+        return (Screening) GetterService.getIdentifiable(DatabaseConstants.SCREENING_FILE, id, new Converter.Screening());
     }
 
     public static Category getCategory(long id) throws IOException {
-        return (Category) GetterService.getIdentifiable(DatabaseConstants.CATEGORY_FILE ,id, new Converter.Category());
+        return (Category) GetterService.getIdentifiable(DatabaseConstants.CATEGORY_FILE, id, new Converter.Category());
     }
 
     public static Movie getMovie(long id) throws IOException {
-        return (Movie) GetterService.getIdentifiable(DatabaseConstants.MOVIE_FILE ,id, new Converter.Movie());
+        return (Movie) GetterService.getIdentifiable(DatabaseConstants.MOVIE_FILE, id, new Converter.Movie());
     }
 
     public static Food getFood(long id) throws IOException {
-        return (Food) GetterService.getIdentifiable(DatabaseConstants.FOOD_FILE ,id, new Converter.Food());
+        return (Food) GetterService.getIdentifiable(DatabaseConstants.FOOD_FILE, id, new Converter.Food());
     }
 
     public static Client getClient(long id) throws IOException {

@@ -109,8 +109,11 @@ public interface Converter {
             String lastName = record.get(2);
             String email = record.get(3);
             LocalDate birthDate = Converter.stringToLocalDate(record.get(4));
+            double funds = Double.valueOf(record.get(5));
 
-            return new cinema.data.Client(id, firstName, lastName, email, birthDate);
+            cinema.data.Client client = new cinema.data.Client(id, firstName, lastName, email, birthDate);
+            client.setFunds(funds);
+            return client;
         }
 
         @Override
@@ -121,7 +124,8 @@ public interface Converter {
                     here.getFirstName(),
                     here.getLastName(),
                     here.getEmail(),
-                    Converter.localDateToString(here.getBirthDate())
+                    Converter.localDateToString(here.getBirthDate()),
+                    here.getFunds()
             );
         }
     }
@@ -160,7 +164,7 @@ public interface Converter {
         public cinema.data.Food convert(CSVRecord record) {
             long id = Long.parseLong(record.get(0));
             String name = record.get(1);
-            double price = Double.valueOf(record.get(1));
+            double price = Double.valueOf(record.get(2));
 
             return new cinema.data.Food(id, name, price);
         }

@@ -159,6 +159,7 @@ public final class AdminService {
         }
 
         client.setFunds(client.getFunds() - screening.getPrice());
+        SetterService.update(client);
 
         AssociativeEntry entry = new AssociativeEntry(-1, screeningId, clientId);
         SetterService.updateScreeningClient(entry);
@@ -180,23 +181,41 @@ public final class AdminService {
         }
 
         client.setFunds(client.getFunds() - food.getPrice());
+        SetterService.update(client);
 
         LocalDate date = LocalDate.of(year, month, day);
         FoodPurchase purchase = new FoodPurchase(-1L, clientId, date, foodId, food.getPrice());
         return SetterService.update(purchase);
     }
 
-    public List<Long> getPersonsAtScreening(long screeningId) throws CinemaException, IOException {
-        List<Long> ans = new ArrayList<>();
+    public List<Person> getPersonsAtScreening(long screeningId) throws CinemaException, IOException {
+        Set<Long> idSet = new TreeSet<>();
 
-        List<AssociativeEntry> list = GetterService.getAllScreeningClient();
-        for (AssociativeEntry entry : list) {
+        for (AssociativeEntry entry : GetterService.getAllScreeningClient()) {
             if (entry.getFirstId() == screeningId) {
-                ans.add(entry.getSecondId());
+                idSet.add(entry.getSecondId());
             }
         }
 
-        return ans;
+        for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
+            if (entry.getFirstId() == screeningId) {
+                idSet.add(entry.getSecondId());
+            }
+        }
+
+        List<Person> ret = new ArrayList<>();
+        for (Person person : GetterService.getAllClient()) {
+            if (idSet.contains(person.getId())) {
+                ret.add(person);
+            }
+        }
+        for (Person person : GetterService.getAllEmployee()) {
+            if (idSet.contains(person.getId())) {
+                ret.add(person);
+            }
+        }
+
+        return ret;
     }
 
     public List<Long> getScreeningsForEmployee(long employeeId) throws CinemaException, IOException {
