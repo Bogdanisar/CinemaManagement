@@ -161,9 +161,6 @@ public final class AdminService {
         client.setFunds(client.getFunds() - screening.getPrice());
         SetterService.update(client);
 
-        AssociativeEntry entry = new AssociativeEntry(-1, screeningId, clientId);
-        SetterService.updateScreeningClient(entry);
-
         LocalDate purchaseDate = LocalDate.of(year, month, day);
         TicketPurchase purchase = new TicketPurchase(-1, clientId, purchaseDate, screeningId, seatNumber);
         return SetterService.update(purchase);
@@ -189,28 +186,29 @@ public final class AdminService {
     }
 
     public List<Person> getPersonsAtScreening(long screeningId) throws CinemaException, IOException {
-        Set<Long> idSet = new TreeSet<>();
-
-        for (AssociativeEntry entry : GetterService.getAllScreeningClient()) {
-            if (entry.getFirstId() == screeningId) {
-                idSet.add(entry.getSecondId());
-            }
-        }
-
-        for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
-            if (entry.getFirstId() == screeningId) {
-                idSet.add(entry.getSecondId());
-            }
-        }
-
         List<Person> ret = new ArrayList<>();
+
+        Set<Long> clientIdSet = new HashSet<>();
+        for (TicketPurchase purchase : GetterService.getAllTicketPurchase()) {
+            if (purchase.getScreeningId() == screeningId) {
+                clientIdSet.add(purchase.getClientId());
+            }
+        }
         for (Person person : GetterService.getAllClient()) {
-            if (idSet.contains(person.getId())) {
+            if (clientIdSet.contains(person.getId())) {
                 ret.add(person);
             }
         }
+
+        Set<Long> employeeIdSet = new HashSet<>();
+        for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
+            if (entry.getFirstId() == screeningId) {
+                employeeIdSet.add(entry.getSecondId());
+            }
+        }
+
         for (Person person : GetterService.getAllEmployee()) {
-            if (idSet.contains(person.getId())) {
+            if (employeeIdSet.contains(person.getId())) {
                 ret.add(person);
             }
         }

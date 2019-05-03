@@ -89,11 +89,7 @@ public class GetterService {
         return ret;
     }
 
-    public static List<cinema.data.AssociativeEntry> getAllScreeningClient() throws IOException {
-        return Converter.cast(
-                GetterService.getAll(DatabaseConstants.SCREENING_CLIENT_FILE, new Converter.AssociativeEntry())
-        );
-    }
+
     public static List<cinema.data.AssociativeEntry> getAllScreeningEmployee() throws IOException {
         return Converter.cast(
                 GetterService.getAll(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry())

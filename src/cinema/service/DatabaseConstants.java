@@ -9,7 +9,6 @@ public interface DatabaseConstants {
     String FOOD_FILE = "CSV/food.csv";
     String CLIENT_FILE = "CSV/client.csv";
     String EMPLOYEE_FILE = "CSV/employee.csv";
-    String SCREENING_CLIENT_FILE = "CSV/screening_client.csv";
     String SCREENING_EMPLOYEE_FILE = "CSV/screening_employee.csv";
     String TICKET_PURCHASE_FILE = "CSV/ticket_purchase.csv";
     String FOOD_PURCHASE_FILE = "CSV/food_purchase.csv";

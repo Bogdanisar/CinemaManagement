@@ -63,9 +63,6 @@ public class SetterService {
     public static long updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException {
         return SetterService.update(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry(), object);
     }
-    public static long updateScreeningClient(cinema.data.AssociativeEntry object) throws IOException {
-        return SetterService.update(DatabaseConstants.SCREENING_CLIENT_FILE, new Converter.AssociativeEntry(), object);
-    }
     public static long updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException {
         return SetterService.update(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry(), object);
     }

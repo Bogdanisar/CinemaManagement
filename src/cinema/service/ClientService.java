@@ -60,9 +60,9 @@ public class ClientService {
     public List<Screening> getScreenings() throws IOException {
         Set<Long> screeningIds = new TreeSet<>();
 
-        for (AssociativeEntry entry : GetterService.getAllScreeningClient()) {
-            if (entry.getSecondId() == this.clientId) {
-                screeningIds.add(entry.getFirstId());
+        for (TicketPurchase purchase : GetterService.getAllTicketPurchase()) {
+            if (purchase.getClientId() == this.clientId) {
+                screeningIds.add(purchase.getScreeningId());
             }
         }
 
