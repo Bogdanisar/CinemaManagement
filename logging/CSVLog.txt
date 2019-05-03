@@ -746,3 +746,9 @@ INFO, 21:27:36 - 03/05/2019, 20. InfoService: Get screenings for movie after day
 
 INFO, 21:27:40 - 03/05/2019, Normal program termination, cinema.Logger
 
+INFO, 21:53:08 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:53:17 - 03/05/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+INFO, 21:53:17 - 03/05/2019, Normal program termination, cinema.Logger
+
