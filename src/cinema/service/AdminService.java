@@ -187,6 +187,8 @@ public final class AdminService {
 
     public List<Person> getPersonsAtScreening(long screeningId) throws CinemaException, IOException {
         List<Person> ret = new ArrayList<>();
+        Screening screening = GetterService.getScreening(screeningId);
+        AdminService.checkReference(screening);
 
         Set<Long> clientIdSet = new HashSet<>();
         for (TicketPurchase purchase : GetterService.getAllTicketPurchase()) {
@@ -201,6 +203,7 @@ public final class AdminService {
         }
 
         Set<Long> employeeIdSet = new HashSet<>();
+        employeeIdSet.add(screening.getTechnicianId());
         for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
             if (entry.getFirstId() == screeningId) {
                 employeeIdSet.add(entry.getSecondId());

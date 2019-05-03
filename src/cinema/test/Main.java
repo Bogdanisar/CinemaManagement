@@ -259,7 +259,7 @@ public class Main {
             else if (choice == 19) {
                 logger.info(prompts[choice - 1]);
 
-                System.out.println(prompts[choice - 1] + ": (int year, int month, int day");
+                System.out.println(prompts[choice - 1] + ": (int year, int month, int day)");
                 int year = scanner.nextInt();
                 int month = scanner.nextInt();
                 int day = scanner.nextInt();

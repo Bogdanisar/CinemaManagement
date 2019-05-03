@@ -466,3 +466,283 @@ INFO, 00:38:02 - 01/05/2019, 18. InfoService: Get foods, cinema.Logger
 
 INFO, 00:38:02 - 01/05/2019, Normal program termination, cinema.Logger
 
+INFO, 20:38:41 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:38:47 - 03/05/2019, 1.  AdminService: Add Category, cinema.Logger
+
+INFO, 20:38:57 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 20:40:54 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:41:01 - 03/05/2019, 6.  AdminService: Add Screening To Auditorium, cinema.Logger
+
+INFO, 20:41:26 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 20:41:58 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:42:12 - 03/05/2019, 2.  AdminService: Add Food, cinema.Logger
+
+INFO, 20:42:23 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 20:43:00 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:43:02 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
+
+SEVERE, 20:43:06 - 03/05/2019, Abnormal program termination with stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at cinema.test.Main.main(Main.java:84)
+, cinema.Logger
+
+INFO, 20:43:25 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:43:27 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
+
+INFO, 20:43:48 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 20:44:49 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:44:54 - 03/05/2019, 9.  AdminService: Add funds to client, cinema.Logger
+
+INFO, 20:45:09 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 20:45:25 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:45:28 - 03/05/2019, 10. AdminService: Purchase ticket for client, cinema.Logger
+
+INFO, 20:45:46 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 20:45:57 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:46:03 - 03/05/2019, 10. AdminService: Purchase ticket for client, cinema.Logger
+
+SEVERE, 20:46:12 - 03/05/2019, Abnormal program termination with stack trace:
+java.lang.NullPointerException
+	at cinema.service.AdminService.checkReference(AdminService.java:15)
+	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:142)
+	at cinema.test.Main.main(Main.java:161)
+, cinema.Logger
+
+INFO, 20:46:35 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:46:36 - 03/05/2019, 10. AdminService: Purchase ticket for client, cinema.Logger
+
+SEVERE, 20:46:45 - 03/05/2019, Abnormal program termination with stack trace:
+cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 4
+	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:158)
+	at cinema.test.Main.main(Main.java:161)
+, cinema.Logger
+
+INFO, 20:46:55 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 20:46:57 - 03/05/2019, 10. AdminService: Purchase ticket for client, cinema.Logger
+
+INFO, 20:47:07 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:02:50 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:02:53 - 03/05/2019, 1.  AdminService: Add Category, cinema.Logger
+
+INFO, 21:03:05 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:03:29 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:03:33 - 03/05/2019, 2.  AdminService: Add Food, cinema.Logger
+
+INFO, 21:03:45 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:03:52 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:03:54 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
+
+SEVERE, 21:04:21 - 03/05/2019, Abnormal program termination with stack trace:
+cinema.exception.CinemaException: Couldn't find that category: 3
+	at cinema.service.AdminService.addMovie(AdminService.java:49)
+	at cinema.test.Main.main(Main.java:84)
+, cinema.Logger
+
+INFO, 21:04:27 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:04:30 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
+
+SEVERE, 21:04:40 - 03/05/2019, Abnormal program termination with stack trace:
+java.lang.NumberFormatException: For input string: "ID"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+	at java.base/java.lang.Long.parseLong(Long.java:699)
+	at java.base/java.lang.Long.parseLong(Long.java:824)
+	at cinema.service.Converter$Movie.convert(Converter.java:213)
+	at cinema.service.Converter$Movie.convert(Converter.java:210)
+	at cinema.service.SetterService.update(SetterService.java:24)
+	at cinema.service.SetterService.update(SetterService.java:96)
+	at cinema.service.AdminService.addMovie(AdminService.java:31)
+	at cinema.test.Main.main(Main.java:84)
+, cinema.Logger
+
+INFO, 21:08:51 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:08:59 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
+
+SEVERE, 21:09:26 - 03/05/2019, Abnormal program termination with stack trace:
+java.lang.NumberFormatException: For input string: "ID"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+	at java.base/java.lang.Long.parseLong(Long.java:699)
+	at java.base/java.lang.Long.parseLong(Long.java:824)
+	at cinema.service.Converter$Movie.convert(Converter.java:213)
+	at cinema.service.Converter$Movie.convert(Converter.java:210)
+	at cinema.service.SetterService.update(SetterService.java:24)
+	at cinema.service.SetterService.update(SetterService.java:96)
+	at cinema.service.AdminService.addMovie(AdminService.java:31)
+	at cinema.test.Main.main(Main.java:84)
+, cinema.Logger
+
+INFO, 21:11:12 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:11:22 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
+
+INFO, 21:11:27 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:12:04 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:12:11 - 03/05/2019, 5.  AdminService: Add Auditorium, cinema.Logger
+
+INFO, 21:12:13 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:12:21 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:12:23 - 03/05/2019, 6.  AdminService: Add Screening To Auditorium, cinema.Logger
+
+INFO, 21:13:06 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:13:29 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:13:37 - 03/05/2019, 8.  AdminService: Add Client, cinema.Logger
+
+SEVERE, 21:13:51 - 03/05/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1478)
+	at cinema.test.Main.main(Main.java:142)
+, cinema.Logger
+
+INFO, 21:13:55 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:13:56 - 03/05/2019, 8.  AdminService: Add Client, cinema.Logger
+
+INFO, 21:14:10 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:14:17 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:14:19 - 03/05/2019, 9.  AdminService: Add funds to client, cinema.Logger
+
+INFO, 21:14:24 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:14:42 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:17:22 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:17:27 - 03/05/2019, 11. AdminService: Purchase food for client, cinema.Logger
+
+INFO, 21:17:35 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:18:04 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:18:08 - 03/05/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+INFO, 21:18:11 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:19:39 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:19:43 - 03/05/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+INFO, 21:19:45 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:23:42 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:23:44 - 03/05/2019, 12. AdminService: Get persons at screening, cinema.Logger
+
+INFO, 21:23:45 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:23:49 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:23:55 - 03/05/2019, 13. AdminService: Get screenings for employee, cinema.Logger
+
+INFO, 21:23:56 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:24:01 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:24:05 - 03/05/2019, 14. ClientService: Get total spent for client, cinema.Logger
+
+INFO, 21:24:06 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:25:27 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:25:33 - 03/05/2019, 15. ClientService: Get watched movies for client, cinema.Logger
+
+SEVERE, 21:25:33 - 03/05/2019, found movie id: 7, cinema.Logger
+
+INFO, 21:25:33 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:25:37 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:25:39 - 03/05/2019, 16. ClientService: Get screenings for client, cinema.Logger
+
+INFO, 21:25:44 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:25:48 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:25:53 - 03/05/2019, 17. ClientService: Client is old enough for movie, cinema.Logger
+
+INFO, 21:25:56 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:26:00 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:26:03 - 03/05/2019, 17. ClientService: Client is old enough for movie, cinema.Logger
+
+INFO, 21:26:05 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:26:09 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:26:11 - 03/05/2019, 18. InfoService: Get foods, cinema.Logger
+
+INFO, 21:26:11 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:26:17 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:26:19 - 03/05/2019, 19. InfoService: Get movies after day, cinema.Logger
+
+INFO, 21:26:50 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:26:57 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:26:58 - 03/05/2019, 19. InfoService: Get movies after day, cinema.Logger
+
+INFO, 21:27:01 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:27:05 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:27:08 - 03/05/2019, 19. InfoService: Get movies after day, cinema.Logger
+
+INFO, 21:27:11 - 03/05/2019, Normal program termination, cinema.Logger
+
+INFO, 21:27:14 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:27:16 - 03/05/2019, 20. InfoService: Get screenings for movie after day, cinema.Logger
+
+SEVERE, 21:27:29 - 03/05/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at cinema.test.Main.main(Main.java:280)
+, cinema.Logger
+
+INFO, 21:27:33 - 03/05/2019, Program started, cinema.Logger
+
+INFO, 21:27:36 - 03/05/2019, 20. InfoService: Get screenings for movie after day, cinema.Logger
+
+INFO, 21:27:40 - 03/05/2019, Normal program termination, cinema.Logger
+

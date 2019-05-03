@@ -36,4 +36,9 @@ public class Client extends Person {
 
         return age;
     }
+
+    @Override
+    public String getName() {
+        return "Client: " + super.getName();
+    }
 }

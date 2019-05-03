@@ -18,7 +18,7 @@ public class GetterService {
         Identifiable ans = null;
 
         reader = new FileReader(pathName);
-        parser = new CSVParser(reader, CSVFormat.DEFAULT);
+        parser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
 
         for (CSVRecord record : parser) {
             Identifiable currentIdentifiable = converter.convert(record);
@@ -76,7 +76,7 @@ public class GetterService {
         CSVParser parser = null;
 
         reader = new FileReader(pathName);
-        parser = new CSVParser(reader, CSVFormat.DEFAULT);
+        parser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
 
         List<Identifiable> ret = new ArrayList<>();
         for (CSVRecord record : parser) {
