@@ -8,29 +8,40 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.logging.Logger;
+import java.sql.*;
 
 public final class AdminService {
+    private Connection conn;
+    private GetterService getterService;
+    private SetterService setterService;
+
+    public AdminService(Connection conn) {
+        this.conn = conn;
+        this.getterService = new GetterService(this.conn);
+        this.setterService = new SetterService(this.conn);
+    }
+
     public static void checkReference(Identifiable identifiable) throws CinemaException {
         if (identifiable == null) {
             throw new CinemaException("Couldn't find the line with that id: " + identifiable.getId());
         }
     }
 
-    public long addCategory(String name, int minimumAge) throws IOException {
+    public long addCategory(String name, int minimumAge) throws IOException, SQLException, SQLException {
         Category category = new Category(-1, name, minimumAge);
-        return SetterService.update(category);
+        return this.setterService.update(category);
     }
 
-    public long addFood(String name, double price) throws IOException {
+    public long addFood(String name, double price) throws IOException, SQLException {
         Food food = new Food(-1, name, price);
-        return SetterService.update(food);
+        return this.setterService.update(food);
     }
 
-    public long addMovie(String name, int duration, String... categoryNames) throws CinemaException, IOException {
+    public long addMovie(String name, int duration, String... categoryNames) throws CinemaException, IOException, SQLException {
         Movie movie = new Movie(-1, name, duration);
-        long newMovieId = SetterService.update(movie);
+        long newMovieId = this.setterService.update(movie);
 
-        List<Category> allCategories = GetterService.getAllCategory();
+        List<Category> allCategories = this.getterService.getAllCategory();
 
         for (String categoryName : categoryNames) {
             boolean found = false;
@@ -38,7 +49,7 @@ public final class AdminService {
             for (Category category : allCategories) {
                 if (categoryName != null && categoryName.equals(category.getName())) {
                     AssociativeEntry entry = new AssociativeEntry(-1, newMovieId, category.getId());
-                    SetterService.updateMovieCategory(entry);
+                    this.setterService.updateMovieCategory(entry);
 
                     found = true;
                     break;
@@ -55,40 +66,40 @@ public final class AdminService {
 
     public long addEmployee(String firstName, String lastName, String email,
                            int birthYear, int birthMonth, int birthDay,
-                           int hireYear, int hireMonth, int hireDay, double salary) throws IOException {
+                           int hireYear, int hireMonth, int hireDay, double salary) throws IOException, SQLException {
 
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
         LocalDate hireDate = LocalDate.of(hireYear, hireMonth, hireDay);
         Employee employee = new Employee(-1L, firstName, lastName, email, birthDate, hireDate, salary);
-        return SetterService.update(employee);
+        return this.setterService.update(employee);
     }
 
     public long addEmployee(String firstName, String lastName, String email,
-                           int birthYear, int birthMonth, int birthDay, double salary) throws IOException {
+                           int birthYear, int birthMonth, int birthDay, double salary) throws IOException, SQLException {
 
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
         LocalDate hireDate = LocalDate.now();
         Employee employee = new Employee(-1L, firstName, lastName, email, birthDate, hireDate, salary);
-        return SetterService.update(employee);
+        return this.setterService.update(employee);
     }
 
-    public long addAuditorium(int number_of_seats) throws IOException {
+    public long addAuditorium(int number_of_seats) throws IOException, SQLException {
         Auditorium auditorium = new Auditorium(-1L, number_of_seats);
-        return SetterService.update(auditorium);
+        return this.setterService.update(auditorium);
     }
 
-    public long addScreeningToAuditorium(long auditoriumId, long movieId, double price, int year, int month, int day, int hour, long technicianId) throws CinemaException, IOException {
-        Auditorium auditorium = GetterService.getAuditorium(auditoriumId);
-        Movie movie = GetterService.getMovie(movieId);
+    public long addScreeningToAuditorium(long auditoriumId, long movieId, double price, int year, int month, int day, int hour, long technicianId) throws CinemaException, IOException, SQLException {
+        Auditorium auditorium = this.getterService.getAuditorium(auditoriumId);
+        Movie movie = this.getterService.getMovie(movieId);
         checkReference(auditorium);
         checkReference(movie);
 
         LocalDate date = LocalDate.of(year, month, day);
         Screening screening = new Screening(-1, movieId, auditoriumId, price, date, hour, technicianId);
-        return SetterService.update(screening);
+        return this.setterService.update(screening);
     }
 
-    public long addScreeningToAuditorium(long auditoriumId, long movieId, double price, int hour, long technicianId) throws CinemaException, IOException {
+    public long addScreeningToAuditorium(long auditoriumId, long movieId, double price, int hour, long technicianId) throws CinemaException, IOException, SQLException {
         LocalDate d = LocalDate.now();
         return addScreeningToAuditorium(
                 auditoriumId,
@@ -101,10 +112,10 @@ public final class AdminService {
                 technicianId);
     }
 
-    public void addUsherToScreening(long screeningId, long employeeId) throws CinemaException, IOException {
-        Screening screening = GetterService.getScreening(screeningId);
+    public void addUsherToScreening(long screeningId, long employeeId) throws CinemaException, IOException, SQLException {
+        Screening screening = this.getterService.getScreening(screeningId);
         checkReference( screening );
-        Employee usher = GetterService.getEmployee(employeeId);
+        Employee usher = this.getterService.getEmployee(employeeId);
         checkReference( usher );
 
         if (employeeId == screening.getTechnicianId()) {
@@ -118,29 +129,29 @@ public final class AdminService {
         }
 
         AssociativeEntry entry = new AssociativeEntry(-1, screeningId, employeeId);
-        SetterService.updateScreeningEmployee(entry);
+        this.setterService.updateScreeningEmployee(entry);
     }
 
-    public long addClient(String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay) throws IOException {
+    public long addClient(String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay) throws IOException, SQLException {
         LocalDate birthDate = LocalDate.of(birthYear, birthMonth, birthDay);
         Client client = new Client((long) -1, firstName, lastName, email, birthDate);
 
-        return SetterService.update(client);
+        return this.setterService.update(client);
     }
 
-    public void addFundsToClient(long clientId, double amount) throws CinemaException, IOException {
-        Client client = GetterService.getClient(clientId);
+    public void addFundsToClient(long clientId, double amount) throws CinemaException, IOException, SQLException {
+        Client client = this.getterService.getClient(clientId);
         client.setFunds(client.getFunds() + amount);
 
-        SetterService.update(client);
+        this.setterService.update(client);
     }
 
-    public long purchaseTicketForClient(long clientId, int year, int month, int day, long screeningId, int seatNumber) throws CinemaException, IOException {
-        Client client = GetterService.getClient(clientId);
+    public long purchaseTicketForClient(long clientId, int year, int month, int day, long screeningId, int seatNumber) throws CinemaException, IOException, SQLException {
+        Client client = this.getterService.getClient(clientId);
         checkReference(client);
-        Screening screening = GetterService.getScreening(screeningId);
+        Screening screening = this.getterService.getScreening(screeningId);
         checkReference(screening);
-        Auditorium auditorium = GetterService.getAuditorium(screening.getAuditoriumId());
+        Auditorium auditorium = this.getterService.getAuditorium(screening.getAuditoriumId());
         checkReference(auditorium);
 
         if (client.getFunds() < screening.getPrice()) {
@@ -153,23 +164,23 @@ public final class AdminService {
         }
 
         // check if the client is old enough to see the movie
-        ClientService cs = new ClientService(clientId);
+        ClientService cs = new ClientService(this.conn, clientId);
         if (cs.isOldEnoughForAt(screening.getMovieId(), screening.getStartTime()) == false) {
             throw new CinemaException("Client with id " + clientId + " is not old enough for the movie with id: " + screening.getMovieId());
         }
 
         client.setFunds(client.getFunds() - screening.getPrice());
-        SetterService.update(client);
+        this.setterService.update(client);
 
         LocalDate purchaseDate = LocalDate.of(year, month, day);
         TicketPurchase purchase = new TicketPurchase(-1, clientId, purchaseDate, screeningId, seatNumber);
-        return SetterService.update(purchase);
+        return this.setterService.update(purchase);
     }
 
-    public long purchaseFoodForClient(long clientId, long foodId, int year, int month, int day) throws CinemaException, IOException {
-        Client client = GetterService.getClient(clientId);
+    public long purchaseFoodForClient(long clientId, long foodId, int year, int month, int day) throws CinemaException, IOException, SQLException {
+        Client client = this.getterService.getClient(clientId);
         checkReference(client);
-        Food food = GetterService.getFood(foodId);
+        Food food = this.getterService.getFood(foodId);
         checkReference(food);
 
         if (client.getFunds() < food.getPrice()) {
@@ -178,25 +189,25 @@ public final class AdminService {
         }
 
         client.setFunds(client.getFunds() - food.getPrice());
-        SetterService.update(client);
+        this.setterService.update(client);
 
         LocalDate date = LocalDate.of(year, month, day);
         FoodPurchase purchase = new FoodPurchase(-1L, clientId, date, foodId, food.getPrice());
-        return SetterService.update(purchase);
+        return this.setterService.update(purchase);
     }
 
-    public List<Person> getPersonsAtScreening(long screeningId) throws CinemaException, IOException {
+    public List<Person> getPersonsAtScreening(long screeningId) throws CinemaException, IOException, SQLException {
         List<Person> ret = new ArrayList<>();
-        Screening screening = GetterService.getScreening(screeningId);
+        Screening screening = this.getterService.getScreening(screeningId);
         AdminService.checkReference(screening);
 
         Set<Long> clientIdSet = new HashSet<>();
-        for (TicketPurchase purchase : GetterService.getAllTicketPurchase()) {
+        for (TicketPurchase purchase : this.getterService.getAllTicketPurchase()) {
             if (purchase.getScreeningId() == screeningId) {
                 clientIdSet.add(purchase.getClientId());
             }
         }
-        for (Person person : GetterService.getAllClient()) {
+        for (Person person : this.getterService.getAllClient()) {
             if (clientIdSet.contains(person.getId())) {
                 ret.add(person);
             }
@@ -204,13 +215,13 @@ public final class AdminService {
 
         Set<Long> employeeIdSet = new HashSet<>();
         employeeIdSet.add(screening.getTechnicianId());
-        for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
+        for (AssociativeEntry entry : this.getterService.getAllScreeningEmployee()) {
             if (entry.getFirstId() == screeningId) {
                 employeeIdSet.add(entry.getSecondId());
             }
         }
 
-        for (Person person : GetterService.getAllEmployee()) {
+        for (Person person : this.getterService.getAllEmployee()) {
             if (employeeIdSet.contains(person.getId())) {
                 ret.add(person);
             }
@@ -219,17 +230,17 @@ public final class AdminService {
         return ret;
     }
 
-    public List<Long> getScreeningsForEmployee(long employeeId) throws CinemaException, IOException {
+    public List<Long> getScreeningsForEmployee(long employeeId) throws CinemaException, IOException, SQLException {
         Set<Long> retSet = new TreeSet<>();
 
-        List<Screening> allScreenings = GetterService.getAllScreening();
+        List<Screening> allScreenings = this.getterService.getAllScreening();
         for (Screening screening : allScreenings) {
             if (screening.getTechnicianId() == employeeId) {
                 retSet.add(screening.getId());
             }
         }
 
-        for (AssociativeEntry entry : GetterService.getAllScreeningEmployee()) {
+        for (AssociativeEntry entry : this.getterService.getAllScreeningEmployee()) {
             if (entry.getSecondId() == employeeId) {
                 retSet.add(entry.getFirstId());
             }

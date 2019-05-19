@@ -4,6 +4,7 @@ import cinema.service.GetterService;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.sql.*;
 
 public final class FoodPurchase extends Purchase {
     protected long foodProductId;
@@ -26,7 +27,7 @@ public final class FoodPurchase extends Purchase {
 
 
     @Override
-    public double getPrice() {
+    public double getPrice(Connection conn) {
         return price;
     }
 
@@ -36,11 +37,11 @@ public final class FoodPurchase extends Purchase {
 
 
     @Override
-    public String getName() {
+    public String getName(Connection conn) {
         Food food = null;
         String name = null;
         try {
-            food = GetterService.getFood(foodProductId);
+            food = (new GetterService(conn)).getFood(foodProductId);
             name = food.getName();
         }
         catch (Exception except) {

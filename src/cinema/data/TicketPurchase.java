@@ -4,6 +4,7 @@ import cinema.service.GetterService;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.sql.Connection;
 
 public final class TicketPurchase extends Purchase {
     protected long screeningId;
@@ -22,36 +23,36 @@ public final class TicketPurchase extends Purchase {
     }
 
 
-    private void retrieveData() {
+    private void retrieveData(Connection conn) {
         if (this.price == null || this.movieName == null) {
             Screening screening = null;
             Movie movie = null;
 
             try {
-                screening = GetterService.getScreening(this.screeningId);
-                movie = GetterService.getMovie(screening.getMovieId());
+                screening = (new GetterService(conn)).getScreening(this.screeningId);
+                movie = (new GetterService(conn)).getMovie(screening.getMovieId());
 
                 this.price = screening.getPrice();
                 this.movieName = movie.getName();
             }
             catch (Exception except) {
                 this.price = -1D;
-                this.movieName = "GetterService.getScreening or getMovie error: " + except.toString();
+                this.movieName = "(new GetterService(conn)).getScreening or .getMovie error: " + except.toString();
             }
         }
     }
 
 
     @Override
-    public double getPrice() {
-        this.retrieveData();
+    public double getPrice(Connection conn) {
+        this.retrieveData(conn);
 
         return this.price;
     }
 
     @Override
-    public String getName() {
-        this.retrieveData();
+    public String getName(Connection conn) {
+        this.retrieveData(conn);
 
         return "TicketPurchase Purchase: " + this.movieName + ", price: " + this.price;
     }

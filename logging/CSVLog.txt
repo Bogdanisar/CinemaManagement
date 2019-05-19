@@ -752,3 +752,47 @@ INFO, 21:53:17 - 03/05/2019, 12. AdminService: Get persons at screening, cinema.
 
 INFO, 21:53:17 - 03/05/2019, Normal program termination, cinema.Logger
 
+INFO, 23:27:08 - 13/05/2019, Program started, cinema.Logger
+
+INFO, 23:27:23 - 13/05/2019, 8.  AdminService: Add Client, cinema.Logger
+
+INFO, 23:30:22 - 13/05/2019, Program started, cinema.Logger
+
+INFO, 23:30:26 - 13/05/2019, 8.  AdminService: Add Client, cinema.Logger
+
+SEVERE, 23:30:28 - 13/05/2019, Abnormal program termination with stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at cinema.test.Main.main(Main.java:143)
+, cinema.Logger
+
+INFO, 23:30:36 - 13/05/2019, Program started, cinema.Logger
+
+INFO, 23:30:38 - 13/05/2019, 8.  AdminService: Add Client, cinema.Logger
+
+INFO, 23:32:01 - 13/05/2019, Program started, cinema.Logger
+
+INFO, 23:32:04 - 13/05/2019, 8.  AdminService: Add Client, cinema.Logger
+
+INFO, 23:32:05 - 13/05/2019, Normal program termination, cinema.Logger
+
+INFO, 08:43:43 - 14/05/2019, Program started, cinema.Logger
+
+INFO, 08:44:09 - 14/05/2019, 18. InfoService: Get foods, cinema.Logger
+
+INFO, 08:44:09 - 14/05/2019, Normal program termination, cinema.Logger
+
+INFO, 08:44:20 - 14/05/2019, Program started, cinema.Logger
+
+SEVERE, 08:44:45 - 14/05/2019, Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at cinema.test.Main.main(Main.java:67)
+, cinema.Logger
+

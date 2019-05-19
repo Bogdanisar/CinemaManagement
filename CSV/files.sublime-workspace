@@ -342,10 +342,18 @@
 			}
 		},
 		{
-			"file": "/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/logMessages.txt",
+			"file": "/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/CSVLog.txt",
 			"settings":
 			{
-				"buffer_size": 20822,
+				"buffer_size": 33672,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/LargeLog.txt",
+			"settings":
+			{
+				"buffer_size": 37466,
 				"line_ending": "Unix"
 			}
 		},
@@ -353,7 +361,7 @@
 			"file": "category.csv",
 			"settings":
 			{
-				"buffer_size": 60,
+				"buffer_size": 120,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -362,7 +370,7 @@
 			"file": "food.csv",
 			"settings":
 			{
-				"buffer_size": 67,
+				"buffer_size": 125,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -371,7 +379,7 @@
 			"file": "movie.csv",
 			"settings":
 			{
-				"buffer_size": 60,
+				"buffer_size": 129,
 				"line_ending": "Windows"
 			}
 		},
@@ -379,7 +387,7 @@
 			"file": "employee.csv",
 			"settings":
 			{
-				"buffer_size": 294,
+				"buffer_size": 352,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -388,7 +396,7 @@
 			"file": "auditorium.csv",
 			"settings":
 			{
-				"buffer_size": 21,
+				"buffer_size": 48,
 				"line_ending": "Windows"
 			}
 		},
@@ -396,7 +404,7 @@
 			"file": "screening.csv",
 			"settings":
 			{
-				"buffer_size": 54,
+				"buffer_size": 168,
 				"line_ending": "Windows"
 			}
 		},
@@ -404,7 +412,7 @@
 			"file": "client.csv",
 			"settings":
 			{
-				"buffer_size": 98,
+				"buffer_size": 244,
 				"line_ending": "Windows"
 			}
 		},
@@ -412,7 +420,7 @@
 			"file": "ticket_purchase.csv",
 			"settings":
 			{
-				"buffer_size": 40,
+				"buffer_size": 151,
 				"line_ending": "Windows"
 			}
 		},
@@ -420,7 +428,7 @@
 			"file": "food_purchase.csv",
 			"settings":
 			{
-				"buffer_size": 44,
+				"buffer_size": 115,
 				"line_ending": "Windows"
 			}
 		},
@@ -428,15 +436,7 @@
 			"file": "movie_category.csv",
 			"settings":
 			{
-				"buffer_size": 18,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "screening_client.csv",
-			"settings":
-			{
-				"buffer_size": 12,
+				"buffer_size": 54,
 				"line_ending": "Windows"
 			}
 		},
@@ -444,7 +444,8 @@
 			"file": "screening_employee.csv",
 			"settings":
 			{
-				"buffer_size": 12,
+				"buffer_size": 40,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -497,6 +498,10 @@
 	},
 	"file_history":
 	[
+		"/home/bogdan/.cache/.fr-0v9sij/Cinematografe/CSV/food_purchase.csv",
+		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/CSV/screening_client.csv",
+		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/LargeLogging.txt",
+		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/logMessages.txt",
 		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/logMessages.txt.1",
 		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/CSV/CSV/auditorium.csv",
 		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/CSV/CSV/screening.csv",
@@ -620,11 +625,7 @@
 		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Inteligenta Artificiala/Curs/Materiale Inteligență Artificială 2018-19/Prelegerea 2 continuare/a_star .py",
 		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Inteligenta Artificiala/Laborator - 03.04.2019/connect_4.txt",
 		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/File Backups/Text files/wordDef.txt",
-		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Retele de Calculatoare/Laborator/Laborator 7/test.py",
-		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Retele de Calculatoare/Laborator/Laborator 7/test.p",
-		"/home/bogdan/.config/touchegg/touchegg.conf",
-		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Laborator 4/Proiect.txt",
-		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Retele de Calculatoare/Laborator/computer-networks/laborator2/src/tcp_client.py"
+		"/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Retele de Calculatoare/Laborator/Laborator 7/test.py"
 	],
 	"find":
 	{
@@ -643,6 +644,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			" ",
+			"\"",
+			" ",
+			"\"",
+			" ",
+			"\"",
 			"\n",
 			"\";",
 			"172.",
@@ -709,6 +716,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			" ",
 			"",
 			"there",
@@ -746,7 +754,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -782,19 +790,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/logMessages.txt",
+					"file": "/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/CSVLog.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20822,
+						"buffer_size": 33672,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								16971,
-								16971
+								0,
+								0
 							]
 						],
 						"settings":
@@ -803,27 +811,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7480.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "category.csv",
+					"file": "/mnt/8A4A9C974A9C819D/Google Drive/asparagusdietself/Cursuri/An 2, Sem 2/Programare Avansata Pe Obiecte/Laborator/Proiect/Cinematografe/logging/LargeLog.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 60,
+						"buffer_size": 37466,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								60,
-								60
+								36790,
+								36790
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 14110.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "category.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 120,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								119,
+								119
 							]
 						],
 						"settings":
@@ -834,16 +871,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "food.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 67,
+						"buffer_size": 125,
 						"regions":
 						{
 						},
@@ -862,16 +899,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "movie.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 60,
+						"buffer_size": 129,
 						"regions":
 						{
 						},
@@ -890,52 +927,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "employee.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 294,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								281,
-								281
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 6,
-					"file": "auditorium.csv",
+					"file": "employee.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21,
+						"buffer_size": 352,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5,
-								5
+								51,
+								51
 							]
 						],
 						"settings":
@@ -946,24 +955,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "screening.csv",
+					"file": "auditorium.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 54,
+						"buffer_size": 48,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5,
-								5
+								0,
+								0
 							]
 						],
 						"settings":
@@ -974,24 +983,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "client.csv",
+					"file": "screening.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 98,
+						"buffer_size": 168,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								56,
-								56
+								89,
+								89
 							]
 						],
 						"settings":
@@ -1002,24 +1011,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "ticket_purchase.csv",
+					"file": "client.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 40,
+						"buffer_size": 244,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								35,
-								35
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1035,19 +1044,75 @@
 				},
 				{
 					"buffer": 10,
-					"file": "food_purchase.csv",
+					"file": "ticket_purchase.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 44,
+						"buffer_size": 151,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3,
+								3
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "food_purchase.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 115,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								93,
+								93
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "movie_category.csv",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 54,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								3
 							]
 						],
 						"settings":
@@ -1062,68 +1127,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "movie_category.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 3.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "screening_client.csv",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
 					"buffer": 13,
 					"file": "screening_employee.csv",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12,
+						"buffer_size": 40,
 						"regions":
 						{
 						},
@@ -1142,7 +1151,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]

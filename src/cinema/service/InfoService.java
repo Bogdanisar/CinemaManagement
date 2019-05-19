@@ -5,6 +5,8 @@ import cinema.data.Movie;
 import cinema.data.Screening;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +14,30 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class InfoService {
-    public static List<Food> getAllFoods() throws IOException {
-        return GetterService.getAllFood();
+    private Connection conn;
+    private GetterService getterService;
+
+    public InfoService(Connection conn) {
+        this.conn = conn;
+        this.getterService = new GetterService(this.conn);
     }
 
-    public static List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException {
+    public List<Food> getAllFoods() throws IOException, SQLException {
+        return this.getterService.getAllFood();
+    }
+
+    public List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException, SQLException {
         LocalDate date = LocalDate.of(year, month, day);
 
         Set<Long> movieIds = new TreeSet<>();
-        for (Screening screening : GetterService.getAllScreening()) {
+        for (Screening screening : this.getterService.getAllScreening()) {
             if (screening.getStartTime().equals(date)) {
                 movieIds.add(screening.getMovieId());
             }
         }
 
         List<Movie> ans = new ArrayList<>();
-        for (Movie movie : GetterService.getAllMovie()) {
+        for (Movie movie : this.getterService.getAllMovie()) {
             if ( movieIds.contains(movie.getId()) ) {
                 ans.add(movie);
             }
@@ -36,18 +46,18 @@ public class InfoService {
         return ans;
     }
 
-    public static List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException {
+    public List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException, SQLException {
         LocalDate date = LocalDate.of(year, month, day);
 
         Set<Long> movieIds = new TreeSet<>();
-        for (Screening screening : GetterService.getAllScreening()) {
+        for (Screening screening : this.getterService.getAllScreening()) {
             if (screening.getStartTime().compareTo(date) >= 0) {
                 movieIds.add(screening.getMovieId());
             }
         }
 
         List<Movie> ans = new ArrayList<>();
-        for (Movie movie : GetterService.getAllMovie()) {
+        for (Movie movie : this.getterService.getAllMovie()) {
             if ( movieIds.contains(movie.getId()) ) {
                 ans.add(movie);
             }
@@ -56,11 +66,11 @@ public class InfoService {
         return ans;
     }
 
-    public  static List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException {
+    public List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException, SQLException {
         LocalDate date = LocalDate.of(year, month, day);
 
         List<Screening> ans = new ArrayList<>();
-        for (Screening screening : GetterService.getAllScreening()) {
+        for (Screening screening : this.getterService.getAllScreening()) {
             if (screening.getMovieId() == movieId) {
                 ans.add(screening);
             }

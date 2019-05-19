@@ -10,6 +10,9 @@ import cinema.service.LoggerService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -24,64 +27,67 @@ import java.util.logging.*;
 public class Main {
     public static Logger logger = null;
 
-    public static void main(String[] args) throws CinemaException, IOException {
-        logger = LoggerService.getInstance();
-
-
-        String[] prompts = {
-                "1.  AdminService: Add Category",
-                "2.  AdminService: Add Food",
-                "3.  AdminService: Add Movie",
-                "4.  AdminService: Add Employee",
-                "5.  AdminService: Add Auditorium",
-                "6.  AdminService: Add Screening To Auditorium",
-                "7.  AdminService: Add Usher To Screening",
-                "8.  AdminService: Add Client",
-                "9.  AdminService: Add funds to client",
-                "10. AdminService: Purchase ticket for client",
-                "11. AdminService: Purchase food for client",
-                "12. AdminService: Get persons at screening",
-                "13. AdminService: Get screenings for employee",
-                "14. ClientService: Get total spent for client",
-                "15. ClientService: Get watched movies for client",
-                "16. ClientService: Get screenings for client",
-                "17. ClientService: Client is old enough for movie",
-                "18. InfoService: Get foods",
-                "19. InfoService: Get movies after day",
-                "20. InfoService: Get screenings for movie after day"
-        };
-
-
-        logger.info("Program started");
-
-        System.out.println("Choices:");
-        for (String p : prompts) {
-            System.out.println(p);
-        }
-        System.out.println();
-
+    public static void main(String[] args) throws CinemaException, IOException, SQLException {
         boolean caughtException = false;
-        try {
-            AdminService as = new AdminService();
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_project","root","root")) {
+            logger = LoggerService.getInstance();
+
+            String[] prompts = {
+                    "1.  AdminService: Add Category",
+                    "2.  AdminService: Add Food",
+                    "3.  AdminService: Add Movie",
+                    "4.  AdminService: Add Employee",
+                    "5.  AdminService: Add Auditorium",
+                    "6.  AdminService: Add Screening To Auditorium",
+                    "7.  AdminService: Add Usher To Screening",
+                    "8.  AdminService: Add Client",
+                    "9.  AdminService: Add funds to client",
+                    "10. AdminService: Purchase ticket for client",
+                    "11. AdminService: Purchase food for client",
+                    "12. AdminService: Get persons at screening",
+                    "13. AdminService: Get screenings for employee",
+                    "14. ClientService: Get total spent for client",
+                    "15. ClientService: Get watched movies for client",
+                    "16. ClientService: Get screenings for client",
+                    "17. ClientService: Client is old enough for movie",
+                    "18. InfoService: Get foods",
+                    "19. InfoService: Get movies after day",
+                    "20. InfoService: Get screenings for movie after day"
+            };
+
+
+            logger.info("Program started");
+
+            System.out.println("Choices:");
+            for (String p : prompts) {
+                System.out.println(p);
+            }
+            System.out.println();
+
+            
+            AdminService adminService = new AdminService(conn);
+            InfoService infoService = new InfoService(conn);
+            
             Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
             if (choice == 1) {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (String name, int minimumAge)");
-                as.addCategory(scanner.next(), scanner.nextInt());
+                adminService.addCategory(scanner.next(), scanner.nextInt());
             }
             else if (choice == 2) {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (String name, double price)");
-                as.addFood(scanner.next(), scanner.nextDouble());
+                adminService.addFood(scanner.next(), scanner.nextDouble());
             }
             else if (choice == 3) {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (String name, int durationInMinutes, String categoryName)");
-                as.addMovie(scanner.next(), scanner.nextInt(), scanner.next());
+                adminService.addMovie(scanner.next(), scanner.nextInt(), scanner.next());
             }
             else if (choice == 4) {
                 logger.info(prompts[choice - 1]);
@@ -89,7 +95,7 @@ public class Main {
                 System.out.println(prompts[choice - 1] + ": (String firstName, String lastName, String email,\n" +
                         "                           int birthYear, int birthMonth, int birthDay,\n" +
                         "                           int hireYear, int hireMonth, int hireDay, double salary)");
-                as.addEmployee(
+                adminService.addEmployee(
                         scanner.next(),
                         scanner.next(),
                         scanner.next(),
@@ -106,13 +112,13 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (int numberOfSeats)");
-                as.addAuditorium(scanner.nextInt());
+                adminService.addAuditorium(scanner.nextInt());
             }
             else if (choice == 6) {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long auditoriumId, long movieId, double price, int year, int month, int day, int hour, long technicianId)");
-                as.addScreeningToAuditorium(
+                adminService.addScreeningToAuditorium(
                         scanner.nextLong(),
                         scanner.nextLong(),
                         scanner.nextDouble(),
@@ -127,7 +133,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long screeningId, long employeeId)");
-                as.addUsherToScreening(
+                adminService.addUsherToScreening(
                         scanner.nextLong(),
                         scanner.nextLong()
                 );
@@ -136,7 +142,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (String firstName, String lastName, String email, int birthYear, int birthMonth, int birthDay)");
-                as.addClient(
+                adminService.addClient(
                         scanner.next(),
                         scanner.next(),
                         scanner.next(),
@@ -149,7 +155,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long clientId, double amount)");
-                as.addFundsToClient(
+                adminService.addFundsToClient(
                         scanner.nextLong(),
                         scanner.nextDouble()
                 );
@@ -158,7 +164,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long clientId, int year, int month, int day, long screeningId, int seatNumber)");
-                as.purchaseTicketForClient(
+                adminService.purchaseTicketForClient(
                         scanner.nextLong(),
                         scanner.nextInt(),
                         scanner.nextInt(),
@@ -171,7 +177,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long clientId, long foodId, int year, int month, int day)");
-                as.purchaseFoodForClient(
+                adminService.purchaseFoodForClient(
                         scanner.nextLong(),
                         scanner.nextLong(),
                         scanner.nextInt(),
@@ -183,7 +189,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long screeningId)");
-                List<Person> personList = as.getPersonsAtScreening(scanner.nextLong());
+                List<Person> personList = adminService.getPersonsAtScreening(scanner.nextLong());
 
                 System.out.println("The following people were at this screening:");
                 for (Person person : personList) {
@@ -194,7 +200,7 @@ public class Main {
                 logger.info(prompts[choice - 1]);
 
                 System.out.println(prompts[choice - 1] + ": (long employeeId)");
-                List<Long> list = as.getScreeningsForEmployee(scanner.nextLong());
+                List<Long> list = adminService.getScreeningsForEmployee(scanner.nextLong());
 
                 System.out.println("This employee was at the screenings with the following ids: ");
                 for (Long id : list) {
@@ -206,7 +212,7 @@ public class Main {
 
                 System.out.println(prompts[choice - 1] + ": (long clientId");
                 long clientId = scanner.nextLong();
-                double totalSpent = ( new ClientService(clientId) ).getTotalSpent();
+                double totalSpent = (new ClientService(conn, clientId)).getTotalSpent();
                 System.out.println("Total spent amount of client " + clientId + " is " + totalSpent);
             }
             else if (choice == 15) {
@@ -215,7 +221,7 @@ public class Main {
                 System.out.println(prompts[choice - 1] + ": (long clientId)");
 
                 long clientId = scanner.nextLong();
-                List<Movie> list = (new ClientService(clientId)).getWatchedMovies();
+                List<Movie> list = (new ClientService(conn, clientId)).getWatchedMovies();
 
                 System.out.println("The client with id " + clientId + " watched:");
                 for (Movie movie : list) {
@@ -228,7 +234,7 @@ public class Main {
                 System.out.println(prompts[choice - 1] + ": (long clientId)");
 
                 long clientId = scanner.nextLong();
-                List<Screening> list = (new ClientService(clientId)).getScreenings();
+                List<Screening> list = (new ClientService(conn, clientId)).getScreenings();
 
                 System.out.println("The client with id " + clientId + " was at the screenings with the following ids:");
                 for (Screening screening : list) {
@@ -242,7 +248,7 @@ public class Main {
 
                 long clientId = scanner.nextLong();
                 long movieId = scanner.nextLong();
-                boolean result = (new ClientService(clientId)).isOldEnoughFor(movieId);
+                boolean result = (new ClientService(conn, clientId)).isOldEnoughFor(movieId);
                 System.out.println("Result of isClientOldEnoughForMovie: " + result);
             }
             else if (choice == 18) {
@@ -251,7 +257,7 @@ public class Main {
                 System.out.println(prompts[choice - 1] + ": Get foods: ()");
 
                 System.out.println("All available foods: ");
-                List<Food> list = InfoService.getAllFoods();
+                List<Food> list = infoService.getAllFoods();
                 for (Food food : list) {
                     System.out.println("Food name: " + food.getName() + "; Food price: " + food.getPrice());
                 }
@@ -263,7 +269,7 @@ public class Main {
                 int year = scanner.nextInt();
                 int month = scanner.nextInt();
                 int day = scanner.nextInt();
-                List<Movie> list = InfoService.getMoviesAfterDay(year, month, day);
+                List<Movie> list = infoService.getMoviesAfterDay(year, month, day);
 
                 System.out.println("Movies after the day: " + day + "/" + month + "/" + year + ":");
                 for (Movie movie : list) {
@@ -279,7 +285,7 @@ public class Main {
                 int month = scanner.nextInt();
                 int day = scanner.nextInt();
 
-                List<Screening> list = InfoService.getScreeningsForMovieAfter(movieId, year, month, day);
+                List<Screening> list = infoService.getScreeningsForMovieAfter(movieId, year, month, day);
                 System.out.println("Screenings for the movie with id " + movieId + " after " + day + "/" + month + "/" + year + ":");
                 for (Screening screening : list) {
                     LocalDate d = screening.getStartTime();

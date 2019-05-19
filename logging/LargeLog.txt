@@ -763,3 +763,107 @@ Level: INFO; Stamp: 21:53:17 - 03/05/2019; Logger name: cinema.Logger
 Normal program termination
 =================================================================================
 
+
+=================================================================================
+Level: INFO; Stamp: 23:27:08 - 13/05/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:27:23 - 13/05/2019; Logger name: cinema.Logger
+8.  AdminService: Add Client
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:30:22 - 13/05/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:30:26 - 13/05/2019; Logger name: cinema.Logger
+8.  AdminService: Add Client
+=================================================================================
+
+
+=================================================================================
+Level: SEVERE; Stamp: 23:30:28 - 13/05/2019; Logger name: cinema.Logger
+Abnormal program termination with stack trace:
+java.util.InputMismatchException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at cinema.test.Main.main(Main.java:143)
+
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:30:36 - 13/05/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:30:38 - 13/05/2019; Logger name: cinema.Logger
+8.  AdminService: Add Client
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:32:01 - 13/05/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:32:04 - 13/05/2019; Logger name: cinema.Logger
+8.  AdminService: Add Client
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 23:32:05 - 13/05/2019; Logger name: cinema.Logger
+Normal program termination
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 08:43:43 - 14/05/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 08:44:09 - 14/05/2019; Logger name: cinema.Logger
+18. InfoService: Get foods
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 08:44:09 - 14/05/2019; Logger name: cinema.Logger
+Normal program termination
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 08:44:20 - 14/05/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: SEVERE; Stamp: 08:44:45 - 14/05/2019; Logger name: cinema.Logger
+Abnormal program termination with stack trace:
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at cinema.test.Main.main(Main.java:67)
+
+=================================================================================
+

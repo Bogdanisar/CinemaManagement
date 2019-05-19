@@ -1,0 +1,169 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS category;
+CREATE TABLE IF NOT EXISTS category (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(256) NOT NULL,
+    minimum_age INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS movie;
+CREATE TABLE IF NOT EXISTS movie (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(256) NOT NULL,
+    duration INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+DROP TABLE IF EXISTS auditorium;
+CREATE TABLE IF NOT EXISTS auditorium (
+    id INT AUTO_INCREMENT,
+	number_of_seats INT NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+
+
+-- {"ID", "FIRST_NAME", "LAST_NAME", "EMAIL", "BRITH_DATE", "FUNDS"}
+DROP TABLE IF EXISTS client;
+CREATE TABLE IF NOT EXISTS client (
+    id INT AUTO_INCREMENT,
+	first_name VARCHAR(256) NOT NULL,
+	last_name VARCHAR(256) NOT NULL,
+	email VARCHAR(256) NOT NULL,
+	birth_date VARCHAR(256) NOT NULL,
+	funds DOUBLE NOT NULL,
+
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+
+
+
+-- {"ID", "FIRST_NAME", "LAST_NAME", "EMAIL", "BIRTH_DATE", "HIRE_DATE", "SALARY"};
+DROP TABLE IF EXISTS employee;
+CREATE TABLE IF NOT EXISTS employee (
+    id INT AUTO_INCREMENT,
+	first_name VARCHAR(256) NOT NULL,
+	last_name VARCHAR(256) NOT NULL,
+	email VARCHAR(256) NOT NULL,
+	birth_date VARCHAR(256) NOT NULL,
+	hire_date VARCHAR(256) NOT NULL,
+	salary DOUBLE NOT NULL,
+
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+
+-- "ID", "MOVIE_ID", "AUDITORIUM_ID", "PRICE", "START_TIME", "HOUR", "TECHNICIAN_ID"
+DROP TABLE IF EXISTS screening;
+CREATE TABLE IF NOT EXISTS screening (
+    id INT AUTO_INCREMENT,
+	movie_id INT NOT NULL,
+	auditorium_id INT NOT NULL,
+	price DOUBLE NOT NULL,
+	start_time VARCHAR(256) NOT NULL,
+	hour INT NOT NULL,
+	technician_id INT NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (movie_id)
+    	REFERENCES movie(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (auditorium_id)
+    	REFERENCES auditorium(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (technician_id)
+    	REFERENCES employee(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=INNODB;
+
+
+-- {"ID", "MOVIE_ID", "CATEGORY_ID"};
+DROP TABLE IF EXISTS movie_category;
+CREATE TABLE IF NOT EXISTS movie_category (
+    id INT AUTO_INCREMENT,
+	first_id INT NOT NULL,
+	second_id INT NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (first_id)
+    	REFERENCES movie(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (second_id)
+    	REFERENCES category(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=INNODB;
+
+
+-- "ID", "NAME", "PRICE"
+DROP TABLE IF EXISTS food;
+CREATE TABLE IF NOT EXISTS food (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(256) NOT NULL,
+    price DOUBLE NOT NULL,
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+
+
+
+
+
+-- {"ID", "SCREENING_ID", "EMPLOYEE_ID"}
+DROP TABLE IF EXISTS screening_employee;
+CREATE TABLE IF NOT EXISTS screening_employee (
+    id INT AUTO_INCREMENT,
+	first_id INT NOT NULL,
+	second_id INT NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (first_id)
+    	REFERENCES screening(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (second_id)
+    	REFERENCES employee(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=INNODB;
+
+
+
+-- {"ID", "CLIENT_ID", "PURCHASE_DATE", "SCREENING_ID", "SEAT_NUMBER"}
+DROP TABLE IF EXISTS ticket_purchase;
+CREATE TABLE IF NOT EXISTS ticket_purchase (
+    id INT AUTO_INCREMENT,
+	client_id INT NOT NULL,
+	purchase_date VARCHAR(256) NOT NULL,
+	screening_id INT NOT NULL,
+	seat_number INT NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (client_id)
+    	REFERENCES client(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (screening_id)
+    	REFERENCES screening(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=INNODB;
+
+
+-- {"ID", "CLIENT_ID", "PURCHASE_DATE", "FOOD_PRODUCT_ID", "PRICE"}
+DROP TABLE IF EXISTS food_purchase;
+CREATE TABLE IF NOT EXISTS food_purchase (
+    id INT AUTO_INCREMENT,
+	client_id INT NOT NULL,
+	purchase_date VARCHAR(256) NOT NULL,
+	food_product_id INT NOT NULL,
+	price DOUBLE NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (client_id)
+    	REFERENCES client(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (food_product_id)
+    	REFERENCES food(id)
+    	ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=INNODB;
+
+SET FOREIGN_KEY_CHECKS = 1;

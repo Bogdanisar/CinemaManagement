@@ -10,148 +10,148 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
 
 public class GetterService {
-    public static Identifiable getIdentifiable(String pathName, long targetId, Converter converter) throws IOException {
-        FileReader reader = null;
-        CSVParser parser = null;
+    private Connection conn;
+    public GetterService(Connection conn) {
+        this.conn = conn;
+    }
+
+    public Identifiable getIdentifiable(String tableName, long targetId, Converter converter) throws IOException, SQLException {
         Identifiable ans = null;
 
-        reader = new FileReader(pathName);
-        parser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
+        Statement stm = this.conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM " + tableName + " WHERE id = " + targetId + ";");
 
-        for (CSVRecord record : parser) {
-            Identifiable currentIdentifiable = converter.convert(record);
+        while (rs.next()) {
+            Identifiable currentIdentifiable = converter.convert(rs);
             if (targetId == currentIdentifiable.getId()) {
                 return currentIdentifiable;
             }
         }
-        parser.close();
 
+        stm.close();
         return ans;
     }
 
-    public static Auditorium getAuditorium(long id) throws IOException {
-        return (Auditorium) GetterService.getIdentifiable(DatabaseConstants.AUDITORIUM_FILE, id, new Converter.Auditorium());
+    public Auditorium getAuditorium(long id) throws IOException, SQLException {
+        return (Auditorium) this.getIdentifiable(DatabaseConstants.AUDITORIUM_TABLE, id, new Converter.Auditorium());
     }
 
-    public static Screening getScreening(long id) throws IOException {
-        return (Screening) GetterService.getIdentifiable(DatabaseConstants.SCREENING_FILE, id, new Converter.Screening());
+    public Screening getScreening(long id) throws IOException, SQLException {
+        return (Screening) this.getIdentifiable(DatabaseConstants.SCREENING_TABLE, id, new Converter.Screening());
     }
 
-    public static Category getCategory(long id) throws IOException {
-        return (Category) GetterService.getIdentifiable(DatabaseConstants.CATEGORY_FILE, id, new Converter.Category());
+    public Category getCategory(long id) throws IOException, SQLException {
+        return (Category) this.getIdentifiable(DatabaseConstants.CATEGORY_TABLE, id, new Converter.Category());
     }
 
-    public static Movie getMovie(long id) throws IOException {
-        return (Movie) GetterService.getIdentifiable(DatabaseConstants.MOVIE_FILE, id, new Converter.Movie());
+    public Movie getMovie(long id) throws IOException, SQLException {
+        return (Movie) this.getIdentifiable(DatabaseConstants.MOVIE_TABLE, id, new Converter.Movie());
     }
 
-    public static Food getFood(long id) throws IOException {
-        return (Food) GetterService.getIdentifiable(DatabaseConstants.FOOD_FILE, id, new Converter.Food());
+    public Food getFood(long id) throws IOException, SQLException {
+        return (Food) this.getIdentifiable(DatabaseConstants.FOOD_TABLE, id, new Converter.Food());
     }
 
-    public static Client getClient(long id) throws IOException {
-        return (Client) GetterService.getIdentifiable(DatabaseConstants.CLIENT_FILE ,id, new Converter.Client());
+    public Client getClient(long id) throws IOException, SQLException {
+        return (Client) this.getIdentifiable(DatabaseConstants.CLIENT_TABLE ,id, new Converter.Client());
     }
 
-    public static Employee getEmployee(long id) throws IOException {
-        return (Employee) GetterService.getIdentifiable(DatabaseConstants.EMPLOYEE_FILE ,id, new Converter.Employee());
+    public Employee getEmployee(long id) throws IOException, SQLException {
+        return (Employee) this.getIdentifiable(DatabaseConstants.EMPLOYEE_TABLE ,id, new Converter.Employee());
     }
 
-    public static TicketPurchase getTicketPurchase(long id) throws IOException {
-        return (TicketPurchase) GetterService.getIdentifiable(DatabaseConstants.TICKET_PURCHASE_FILE ,id, new Converter.TicketPurchase());
+    public TicketPurchase getTicketPurchase(long id) throws IOException, SQLException {
+        return (TicketPurchase) this.getIdentifiable(DatabaseConstants.TICKET_PURCHASE_TABLE ,id, new Converter.TicketPurchase());
     }
 
-    public static FoodPurchase getFoodPurchase(long id) throws IOException {
-        return (FoodPurchase) GetterService.getIdentifiable(DatabaseConstants.FOOD_PURCHASE_FILE ,id, new Converter.FoodPurchase());
+    public FoodPurchase getFoodPurchase(long id) throws IOException, SQLException {
+        return (FoodPurchase) this.getIdentifiable(DatabaseConstants.FOOD_PURCHASE_TABLE ,id, new Converter.FoodPurchase());
     }
 
 
 
 
 
-    public static List<Identifiable> getAll(String pathName, Converter converter) throws IOException {
-        FileReader reader = null;
-        CSVParser parser = null;
-
-        reader = new FileReader(pathName);
-        parser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
+    public List<Identifiable> getAll(String tableName, Converter converter) throws IOException, SQLException, SQLException {
+        Statement stm = this.conn.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT * FROM " + tableName + ";");
 
         List<Identifiable> ret = new ArrayList<>();
-        for (CSVRecord record : parser) {
-            Identifiable currentIdentifiable = converter.convert(record);
+        while (rs.next()) {
+            Identifiable currentIdentifiable = converter.convert(rs);
             ret.add(currentIdentifiable);
         }
 
-        parser.close();
-
+        stm.close();
         return ret;
     }
 
 
-    public static List<cinema.data.AssociativeEntry> getAllScreeningEmployee() throws IOException {
+    public List<cinema.data.AssociativeEntry> getAllScreeningEmployee() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry())
+                this.getAll(DatabaseConstants.SCREENING_EMPLOYEE_TABLE, new Converter.AssociativeEntry())
         );
     }
-    public static List<cinema.data.AssociativeEntry> getAllMovieCategory() throws IOException {
+    public List<cinema.data.AssociativeEntry> getAllMovieCategory() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry())
-        );
-    }
-
-    public static List<cinema.data.Auditorium> getAllAuditorium() throws IOException {
-        return Converter.cast(
-                GetterService.getAll(DatabaseConstants.AUDITORIUM_FILE, new Converter.Auditorium())
+                this.getAll(DatabaseConstants.MOVIE_CATEGORY_TABLE, new Converter.AssociativeEntry())
         );
     }
 
-    public static List<cinema.data.Category> getAllCategory() throws IOException {
+    public List<cinema.data.Auditorium> getAllAuditorium() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.CATEGORY_FILE, new Converter.Category())
+                this.getAll(DatabaseConstants.AUDITORIUM_TABLE, new Converter.Auditorium())
         );
     }
 
-    public static List<cinema.data.Client> getAllClient() throws IOException {
+    public List<cinema.data.Category> getAllCategory() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.CLIENT_FILE, new Converter.Client())
+                this.getAll(DatabaseConstants.CATEGORY_TABLE, new Converter.Category())
         );
     }
 
-    public static List<cinema.data.Employee> getAllEmployee() throws IOException {
+    public List<cinema.data.Client> getAllClient() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.EMPLOYEE_FILE, new Converter.Employee())
+                this.getAll(DatabaseConstants.CLIENT_TABLE, new Converter.Client())
         );
     }
 
-    public static List<cinema.data.Food> getAllFood() throws IOException {
+    public List<cinema.data.Employee> getAllEmployee() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.FOOD_FILE, new Converter.Food())
+                this.getAll(DatabaseConstants.EMPLOYEE_TABLE, new Converter.Employee())
         );
     }
 
-    public static List<cinema.data.FoodPurchase> getAllFoodPurchase() throws IOException {
+    public List<cinema.data.Food> getAllFood() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.FOOD_PURCHASE_FILE, new Converter.FoodPurchase())
+                this.getAll(DatabaseConstants.FOOD_TABLE, new Converter.Food())
         );
     }
 
-    public static List<cinema.data.Movie> getAllMovie() throws IOException {
+    public List<cinema.data.FoodPurchase> getAllFoodPurchase() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.MOVIE_FILE, new Converter.Movie())
+                this.getAll(DatabaseConstants.FOOD_PURCHASE_TABLE, new Converter.FoodPurchase())
         );
     }
 
-    public static List<cinema.data.Screening> getAllScreening() throws IOException {
+    public List<cinema.data.Movie> getAllMovie() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.SCREENING_FILE, new Converter.Screening())
+                this.getAll(DatabaseConstants.MOVIE_TABLE, new Converter.Movie())
         );
     }
 
-    public static List<cinema.data.TicketPurchase> getAllTicketPurchase() throws IOException {
+    public List<cinema.data.Screening> getAllScreening() throws IOException, SQLException {
         return Converter.cast(
-                GetterService.getAll(DatabaseConstants.TICKET_PURCHASE_FILE, new Converter.TicketPurchase())
+                this.getAll(DatabaseConstants.SCREENING_TABLE, new Converter.Screening())
+        );
+    }
+
+    public List<cinema.data.TicketPurchase> getAllTicketPurchase() throws IOException, SQLException {
+        return Converter.cast(
+                this.getAll(DatabaseConstants.TICKET_PURCHASE_TABLE, new Converter.TicketPurchase())
         );
     }
 }

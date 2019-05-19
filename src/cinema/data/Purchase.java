@@ -1,6 +1,7 @@
 package cinema.data;
 
 import java.time.LocalDate;
+import java.sql.Connection;
 
 public abstract class Purchase implements Identifiable {
     protected long id, clientId;
@@ -40,6 +41,6 @@ public abstract class Purchase implements Identifiable {
     }
 
 
-    public abstract String getName();
-    public abstract double getPrice();
+    public abstract String getName(Connection conn);
+    public abstract double getPrice(Connection conn);
 }

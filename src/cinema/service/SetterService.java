@@ -12,95 +12,235 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.*;
 
 public class SetterService {
-    public static long update(String pathName, Converter converter, Identifiable updateObject, Object[] header) throws IOException {
-        FileReader reader = new FileReader(pathName);
-        CSVParser parser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader());
+    private Connection conn;
+    public SetterService(Connection conn) {
+        this.conn = conn;
+    }
 
-        List<Identifiable> list = new ArrayList<>();
-        boolean matchFound = false;
-        for (CSVRecord record : parser) {
-            Identifiable currentIdentifiable = converter.convert(record);
+    public PreparedStatement getPreparedStatement(long id, String tableName, String[] columnNames) throws SQLException {
+        String stmt = "";
 
-            Identifiable nextIdentifiable = currentIdentifiable;
-            if (currentIdentifiable.getId() == updateObject.getId()) {
-                if (matchFound) {
-                    parser.close();
-                    throw new IllegalArgumentException("Two objects with the same id(" + updateObject.getId() + ") found in " + pathName);
-                }
-                else {
-                    matchFound = true;
-                    nextIdentifiable = updateObject;
-                }
-            }
+        if (id == -1) {
+            stmt = "INSERT INTO " + tableName + " ";
+            stmt += "(" + String.join(", ", columnNames) + ") ";
 
-            list.add(nextIdentifiable);
+            String questionMarks = new String(new char[columnNames.length]).replace("\0", "?, ");
+            questionMarks = questionMarks.substring(0, questionMarks.length() - 2);
+
+            stmt += "VALUES (" + questionMarks + ");";
         }
-        parser.close();
-
-        long retId = -1;
-        if (matchFound == false) {
-            if (updateObject.getId() != -1) {
-                throw new IllegalArgumentException("Object with id: " + updateObject.getId() + " not found");
-            }
-
-            updateObject.setId(list.size() + 1);
-            retId = updateObject.getId();
-            list.add(updateObject);
+        else {
+            stmt = "UPDATE " + tableName + " SET ";
+            stmt += String.join(" = ?, ", columnNames) + " = ?; ";
+            stmt += "WHERE id = " + id;
         }
 
-        CSVPrinter printer = new CSVPrinter(new FileWriter(pathName), CSVFormat.DEFAULT);
-        printer.printRecord(header);
-        for (Identifiable currIdentifiable : list) {
-            converter.parse(printer, currIdentifiable);
-        }
-        printer.close();
-        
-        return retId;
+        return conn.prepareStatement(stmt);
     }
 
+    public long updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.MOVIE_CATEGORY_TABLE;
+        final String[] columnNames = new String[] {
+                "first_id",
+                "second_id"
+        };
 
-    public static long updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException {
-        return SetterService.update(DatabaseConstants.MOVIE_CATEGORY_FILE, new Converter.AssociativeEntry(), object, DatabaseConstants.MOVIE_CATEGORY_HEADER);
-    }
-    public static long updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException {
-        return SetterService.update(DatabaseConstants.SCREENING_EMPLOYEE_FILE, new Converter.AssociativeEntry(), object, DatabaseConstants.SCREENING_EMPLOYEE_HEADER);
-    }
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setInt(1, (int)object.getFirstId());
+        pstmt.setInt(2, (int)object.getSecondId());
 
-    public static long update(cinema.data.Auditorium object) throws IOException {
-        return SetterService.update(DatabaseConstants.AUDITORIUM_FILE, new Converter.Auditorium(), object, DatabaseConstants.AUDITORIUM_HEADER);
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
     }
+    public long updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.SCREENING_EMPLOYEE_TABLE;
+        final String[] columnNames = new String[] {
+                "first_id",
+                "second_id"
+        };
 
-    public static long update(cinema.data.Category object) throws IOException {
-        return SetterService.update(DatabaseConstants.CATEGORY_FILE, new Converter.Category(), object, DatabaseConstants.CATEGORY_HEADER);
-    }
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setInt(1, (int)object.getFirstId());
+        pstmt.setInt(2, (int)object.getSecondId());
 
-    public static long update(cinema.data.Client object) throws IOException {
-        return SetterService.update(DatabaseConstants.CLIENT_FILE, new Converter.Client(), object, DatabaseConstants.CLIENT_HEADER);
-    }
-
-    public static long update(cinema.data.Employee object) throws IOException {
-        return SetterService.update(DatabaseConstants.EMPLOYEE_FILE, new Converter.Employee(), object, DatabaseConstants.EMPLOYEE_HEADER);
-    }
-
-    public static long update(cinema.data.Food object) throws IOException {
-        return SetterService.update(DatabaseConstants.FOOD_FILE, new Converter.Food(), object, DatabaseConstants.FOOD_HEADER);
-    }
-
-    public static long update(cinema.data.FoodPurchase object) throws IOException {
-        return SetterService.update(DatabaseConstants.FOOD_PURCHASE_FILE, new Converter.FoodPurchase(), object, DatabaseConstants.FOOD_PURCHASE_HEADER);
-    }
-
-    public static long update(cinema.data.Movie object) throws IOException {
-        return SetterService.update(DatabaseConstants.MOVIE_FILE, new Converter.Movie(), object, DatabaseConstants.MOVIE_HEADER);
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
     }
 
-    public static long update(cinema.data.Screening object) throws IOException {
-        return SetterService.update(DatabaseConstants.SCREENING_FILE, new Converter.Screening(), object, DatabaseConstants.SCREENING_HEADER);
+    public long update(cinema.data.Auditorium object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.AUDITORIUM_TABLE;
+        final String[] columnNames = new String[] {
+                "number_of_seats"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setInt(1, (int)object.getNumber_of_seats());
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
     }
 
-    public static long update(cinema.data.TicketPurchase object) throws IOException {
-        return SetterService.update(DatabaseConstants.TICKET_PURCHASE_FILE, new Converter.TicketPurchase(), object, DatabaseConstants.TICKET_PURCHASE_HEADER);
+    public long update(cinema.data.Category object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.CATEGORY_TABLE;
+        final String[] columnNames = new String[] {
+                "name",
+                "minimum_age"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setString(1, object.getName());
+        pstmt.setInt(2, object.getMinimumAge());
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.Client object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.CLIENT_TABLE;
+        final String[] columnNames = new String[] {
+                "first_name",
+                "last_name",
+                "email",
+                "birth_date",
+                "funds"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setString( 1, object.getFirstName() );
+        pstmt.setString( 2, object.getLastName() );
+        pstmt.setString( 3, object.getEmail() );
+        pstmt.setString( 4, Converter.localDateToString(object.getBirthDate()) );
+        pstmt.setDouble( 5, object.getFunds() );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.Employee object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.EMPLOYEE_TABLE;
+        final String[] columnNames = new String[] {
+                "first_name",
+                "last_name",
+                "email",
+                "birth_date",
+                "hire_date",
+                "salary"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setString( 1, object.getFirstName() );
+        pstmt.setString( 2, object.getLastName() );
+        pstmt.setString( 3, object.getEmail() );
+        pstmt.setString( 4, Converter.localDateToString(object.getBirthDate()) );
+        pstmt.setString( 5, Converter.localDateToString(object.getHireDate()) );
+        pstmt.setDouble( 6, object.getSalary() );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.Food object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.FOOD_TABLE;
+        final String[] columnNames = new String[] {
+                "name",
+                "price"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setString( 1, object.getName() );
+        pstmt.setDouble( 2, object.getPrice() );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.FoodPurchase object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.FOOD_PURCHASE_TABLE;
+        final String[] columnNames = new String[] {
+                "client_id",
+                "purchase_date",
+                "food_product_id",
+                "price"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setLong( 1, object.getClientId() );
+        pstmt.setString( 2, Converter.localDateToString(object.getPurchaseDate()) );
+        pstmt.setLong( 3, object.getFoodProductId() );
+        pstmt.setDouble( 4, object.getPrice(this.conn) );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.Movie object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.MOVIE_TABLE;
+        final String[] columnNames = new String[] {
+                "name",
+                "duration"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setString( 1, object.getName() );
+        pstmt.setInt( 2, object.getDurationInMinutes() );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.Screening object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.SCREENING_TABLE;
+        final String[] columnNames = new String[] {
+                "movie_id",
+                "auditorium_id",
+                "price",
+                "start_time",
+                "hour",
+                "technician_id"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setLong( 1, object.getMovieId() );
+        pstmt.setLong( 2, object.getAuditoriumId() );
+        pstmt.setDouble( 3, object.getPrice() );
+        pstmt.setString( 4, Converter.localDateToString(object.getStartTime()) );
+        pstmt.setInt( 5, object.getHour() );
+        pstmt.setLong( 6, object.getTechnicianId() );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
+    }
+
+    public long update(cinema.data.TicketPurchase object) throws IOException, SQLException {
+        long id = object.getId();
+        final String tableName = DatabaseConstants.FOOD_PURCHASE_TABLE;
+        final String[] columnNames = new String[] {
+                "client_id",
+                "purchase_date",
+                "screening_id",
+                "seat_number"
+        };
+
+        PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
+        pstmt.setLong( 1, object.getClientId() );
+        pstmt.setString( 2, Converter.localDateToString(object.getPurchaseDate()) );
+        pstmt.setLong( 3, object.getScreeningId() );
+        pstmt.setInt( 4, object.getSeatNumber() );
+
+        pstmt.execute();
+        return pstmt.getGeneratedKeys().getLong("id");
     }
 }
