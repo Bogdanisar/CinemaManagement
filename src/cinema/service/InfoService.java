@@ -3,6 +3,7 @@ package cinema.service;
 import cinema.data.Food;
 import cinema.data.Movie;
 import cinema.data.Screening;
+import cinema.exception.CinemaException;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -22,11 +23,11 @@ public class InfoService {
         this.getterService = new GetterService(this.conn);
     }
 
-    public List<Food> getAllFoods() throws IOException, SQLException {
+    public List<Food> getAllFoods() throws IOException, SQLException, CinemaException {
         return this.getterService.getAllFood();
     }
 
-    public List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException, SQLException {
+    public List<Movie> getMoviesFromDay(int year, int month, int day) throws IOException, SQLException, CinemaException {
         LocalDate date = LocalDate.of(year, month, day);
 
         Set<Long> movieIds = new TreeSet<>();
@@ -46,7 +47,7 @@ public class InfoService {
         return ans;
     }
 
-    public List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException, SQLException {
+    public List<Movie> getMoviesAfterDay(int year, int month, int day) throws IOException, SQLException, CinemaException {
         LocalDate date = LocalDate.of(year, month, day);
 
         Set<Long> movieIds = new TreeSet<>();
@@ -66,12 +67,12 @@ public class InfoService {
         return ans;
     }
 
-    public List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException, SQLException {
+    public List<Screening> getScreeningsForMovieAfter(long movieId, int year, int month, int day) throws IOException, SQLException, CinemaException {
         LocalDate date = LocalDate.of(year, month, day);
 
         List<Screening> ans = new ArrayList<>();
         for (Screening screening : this.getterService.getAllScreening()) {
-            if (screening.getMovieId() == movieId) {
+            if (screening.getMovieId() == movieId && screening.getStartTime().compareTo(date) >= 0) {
                 ans.add(screening);
             }
         }

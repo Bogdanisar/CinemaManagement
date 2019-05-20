@@ -1,6 +1,7 @@
 package cinema.service;
 
 import cinema.data.*;
+import cinema.exception.CinemaException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -18,7 +19,7 @@ public class GetterService {
         this.conn = conn;
     }
 
-    public Identifiable getIdentifiable(String tableName, long targetId, Converter converter) throws IOException, SQLException {
+    public Identifiable getIdentifiable(String tableName, long targetId, Converter converter) throws IOException, SQLException, CinemaException, CinemaException {
         Identifiable ans = null;
 
         Statement stm = this.conn.createStatement();
@@ -32,42 +33,45 @@ public class GetterService {
         }
 
         stm.close();
+        if (ans == null) {
+            throw new CinemaException("Couldn't find the entry with id " + targetId + " from the table " + tableName);
+        }
         return ans;
     }
 
-    public Auditorium getAuditorium(long id) throws IOException, SQLException {
+    public Auditorium getAuditorium(long id) throws IOException, SQLException, CinemaException {
         return (Auditorium) this.getIdentifiable(DatabaseConstants.AUDITORIUM_TABLE, id, new Converter.Auditorium());
     }
 
-    public Screening getScreening(long id) throws IOException, SQLException {
+    public Screening getScreening(long id) throws IOException, SQLException, CinemaException {
         return (Screening) this.getIdentifiable(DatabaseConstants.SCREENING_TABLE, id, new Converter.Screening());
     }
 
-    public Category getCategory(long id) throws IOException, SQLException {
+    public Category getCategory(long id) throws IOException, SQLException, CinemaException {
         return (Category) this.getIdentifiable(DatabaseConstants.CATEGORY_TABLE, id, new Converter.Category());
     }
 
-    public Movie getMovie(long id) throws IOException, SQLException {
+    public Movie getMovie(long id) throws IOException, SQLException, CinemaException {
         return (Movie) this.getIdentifiable(DatabaseConstants.MOVIE_TABLE, id, new Converter.Movie());
     }
 
-    public Food getFood(long id) throws IOException, SQLException {
+    public Food getFood(long id) throws IOException, SQLException, CinemaException {
         return (Food) this.getIdentifiable(DatabaseConstants.FOOD_TABLE, id, new Converter.Food());
     }
 
-    public Client getClient(long id) throws IOException, SQLException {
+    public Client getClient(long id) throws IOException, SQLException, CinemaException {
         return (Client) this.getIdentifiable(DatabaseConstants.CLIENT_TABLE ,id, new Converter.Client());
     }
 
-    public Employee getEmployee(long id) throws IOException, SQLException {
+    public Employee getEmployee(long id) throws IOException, SQLException, CinemaException {
         return (Employee) this.getIdentifiable(DatabaseConstants.EMPLOYEE_TABLE ,id, new Converter.Employee());
     }
 
-    public TicketPurchase getTicketPurchase(long id) throws IOException, SQLException {
+    public TicketPurchase getTicketPurchase(long id) throws IOException, SQLException, CinemaException {
         return (TicketPurchase) this.getIdentifiable(DatabaseConstants.TICKET_PURCHASE_TABLE ,id, new Converter.TicketPurchase());
     }
 
-    public FoodPurchase getFoodPurchase(long id) throws IOException, SQLException {
+    public FoodPurchase getFoodPurchase(long id) throws IOException, SQLException, CinemaException {
         return (FoodPurchase) this.getIdentifiable(DatabaseConstants.FOOD_PURCHASE_TABLE ,id, new Converter.FoodPurchase());
     }
 
@@ -75,7 +79,7 @@ public class GetterService {
 
 
 
-    public List<Identifiable> getAll(String tableName, Converter converter) throws IOException, SQLException, SQLException {
+    public List<Identifiable> getAll(String tableName, Converter converter) throws IOException, SQLException, CinemaException, SQLException, CinemaException {
         Statement stm = this.conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM " + tableName + ";");
 
@@ -90,66 +94,66 @@ public class GetterService {
     }
 
 
-    public List<cinema.data.AssociativeEntry> getAllScreeningEmployee() throws IOException, SQLException {
+    public List<cinema.data.AssociativeEntry> getAllScreeningEmployee() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.SCREENING_EMPLOYEE_TABLE, new Converter.AssociativeEntry())
         );
     }
-    public List<cinema.data.AssociativeEntry> getAllMovieCategory() throws IOException, SQLException {
+    public List<cinema.data.AssociativeEntry> getAllMovieCategory() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.MOVIE_CATEGORY_TABLE, new Converter.AssociativeEntry())
         );
     }
 
-    public List<cinema.data.Auditorium> getAllAuditorium() throws IOException, SQLException {
+    public List<cinema.data.Auditorium> getAllAuditorium() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.AUDITORIUM_TABLE, new Converter.Auditorium())
         );
     }
 
-    public List<cinema.data.Category> getAllCategory() throws IOException, SQLException {
+    public List<cinema.data.Category> getAllCategory() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.CATEGORY_TABLE, new Converter.Category())
         );
     }
 
-    public List<cinema.data.Client> getAllClient() throws IOException, SQLException {
+    public List<cinema.data.Client> getAllClient() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.CLIENT_TABLE, new Converter.Client())
         );
     }
 
-    public List<cinema.data.Employee> getAllEmployee() throws IOException, SQLException {
+    public List<cinema.data.Employee> getAllEmployee() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.EMPLOYEE_TABLE, new Converter.Employee())
         );
     }
 
-    public List<cinema.data.Food> getAllFood() throws IOException, SQLException {
+    public List<cinema.data.Food> getAllFood() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.FOOD_TABLE, new Converter.Food())
         );
     }
 
-    public List<cinema.data.FoodPurchase> getAllFoodPurchase() throws IOException, SQLException {
+    public List<cinema.data.FoodPurchase> getAllFoodPurchase() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.FOOD_PURCHASE_TABLE, new Converter.FoodPurchase())
         );
     }
 
-    public List<cinema.data.Movie> getAllMovie() throws IOException, SQLException {
+    public List<cinema.data.Movie> getAllMovie() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.MOVIE_TABLE, new Converter.Movie())
         );
     }
 
-    public List<cinema.data.Screening> getAllScreening() throws IOException, SQLException {
+    public List<cinema.data.Screening> getAllScreening() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.SCREENING_TABLE, new Converter.Screening())
         );
     }
 
-    public List<cinema.data.TicketPurchase> getAllTicketPurchase() throws IOException, SQLException {
+    public List<cinema.data.TicketPurchase> getAllTicketPurchase() throws IOException, SQLException, CinemaException {
         return Converter.cast(
                 this.getAll(DatabaseConstants.TICKET_PURCHASE_TABLE, new Converter.TicketPurchase())
         );

@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS category (
     id INT AUTO_INCREMENT,
     name VARCHAR(256) NOT NULL,
     minimum_age INT NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (name)
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS movie;
@@ -13,7 +14,8 @@ CREATE TABLE IF NOT EXISTS movie (
     id INT AUTO_INCREMENT,
     name VARCHAR(256) NOT NULL,
     duration INT NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (name)
 ) ENGINE=INNODB;
 
 DROP TABLE IF EXISTS auditorium;
@@ -103,7 +105,8 @@ CREATE TABLE IF NOT EXISTS food (
     id INT AUTO_INCREMENT,
     name VARCHAR(256) NOT NULL,
     price DOUBLE NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (name)
 ) ENGINE=INNODB;
 
 

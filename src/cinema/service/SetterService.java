@@ -34,11 +34,37 @@ public class SetterService {
         }
         else {
             stmt = "UPDATE " + tableName + " SET ";
-            stmt += String.join(" = ?, ", columnNames) + " = ?; ";
-            stmt += "WHERE id = " + id;
+            stmt += String.join(" = ?, ", columnNames) + " = ? ";
+            stmt += "WHERE id = " + id + ";";
         }
 
-        return conn.prepareStatement(stmt);
+        System.out.println("stmt = " + stmt);
+
+        return conn.prepareStatement(stmt, Statement.RETURN_GENERATED_KEYS);
+//        return conn.prepareStatement(stmt, new String[]{"id"});
+    }
+
+    public long dealWithPreparedStatement(long id, PreparedStatement pstmt) throws SQLException {
+        pstmt.execute();
+
+        if (id != -1) {
+            return id;
+        }
+
+        ResultSet rs = pstmt.getGeneratedKeys();
+
+//        System.out.println("ResultSet = " + rs.toString());
+//        ResultSetMetaData rsmd = rs.getMetaData();
+//        int columnCount = rsmd.getColumnCount();
+//
+//        // The column count starts from 1
+//        for (int i = 1; i <= columnCount; i++ ) {
+//            String name = rsmd.getColumnName(i);
+//            System.out.println("column name = " + name);
+//        }
+
+        rs.next();
+        return rs.getLong(1);
     }
 
     public long updateMovieCategory(cinema.data.AssociativeEntry object) throws IOException, SQLException {
@@ -53,8 +79,7 @@ public class SetterService {
         pstmt.setInt(1, (int)object.getFirstId());
         pstmt.setInt(2, (int)object.getSecondId());
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
     public long updateScreeningEmployee(cinema.data.AssociativeEntry object) throws IOException, SQLException {
         long id = object.getId();
@@ -68,8 +93,7 @@ public class SetterService {
         pstmt.setInt(1, (int)object.getFirstId());
         pstmt.setInt(2, (int)object.getSecondId());
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Auditorium object) throws IOException, SQLException {
@@ -82,8 +106,7 @@ public class SetterService {
         PreparedStatement pstmt = getPreparedStatement(id, tableName, columnNames);
         pstmt.setInt(1, (int)object.getNumber_of_seats());
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Category object) throws IOException, SQLException {
@@ -98,8 +121,7 @@ public class SetterService {
         pstmt.setString(1, object.getName());
         pstmt.setInt(2, object.getMinimumAge());
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Client object) throws IOException, SQLException {
@@ -120,8 +142,7 @@ public class SetterService {
         pstmt.setString( 4, Converter.localDateToString(object.getBirthDate()) );
         pstmt.setDouble( 5, object.getFunds() );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Employee object) throws IOException, SQLException {
@@ -144,8 +165,7 @@ public class SetterService {
         pstmt.setString( 5, Converter.localDateToString(object.getHireDate()) );
         pstmt.setDouble( 6, object.getSalary() );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Food object) throws IOException, SQLException {
@@ -160,8 +180,7 @@ public class SetterService {
         pstmt.setString( 1, object.getName() );
         pstmt.setDouble( 2, object.getPrice() );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.FoodPurchase object) throws IOException, SQLException {
@@ -180,8 +199,7 @@ public class SetterService {
         pstmt.setLong( 3, object.getFoodProductId() );
         pstmt.setDouble( 4, object.getPrice(this.conn) );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Movie object) throws IOException, SQLException {
@@ -196,8 +214,7 @@ public class SetterService {
         pstmt.setString( 1, object.getName() );
         pstmt.setInt( 2, object.getDurationInMinutes() );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.Screening object) throws IOException, SQLException {
@@ -220,13 +237,12 @@ public class SetterService {
         pstmt.setInt( 5, object.getHour() );
         pstmt.setLong( 6, object.getTechnicianId() );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 
     public long update(cinema.data.TicketPurchase object) throws IOException, SQLException {
         long id = object.getId();
-        final String tableName = DatabaseConstants.FOOD_PURCHASE_TABLE;
+        final String tableName = DatabaseConstants.TICKET_PURCHASE_TABLE;
         final String[] columnNames = new String[] {
                 "client_id",
                 "purchase_date",
@@ -240,7 +256,6 @@ public class SetterService {
         pstmt.setLong( 3, object.getScreeningId() );
         pstmt.setInt( 4, object.getSeatNumber() );
 
-        pstmt.execute();
-        return pstmt.getGeneratedKeys().getLong("id");
+        return dealWithPreparedStatement(id, pstmt);
     }
 }

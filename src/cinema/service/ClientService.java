@@ -24,7 +24,7 @@ public class ClientService {
         return clientId;
     }
 
-    public double getTotalSpent() throws IOException, SQLException  {
+    public double getTotalSpent() throws IOException, SQLException, CinemaException  {
         double ret = 0;
         for (Purchase purchase : this.getterService.getAllFoodPurchase()) {
             if (purchase.getClientId() == clientId) {
@@ -41,7 +41,7 @@ public class ClientService {
         return ret;
     }
 
-    public List<Movie> getWatchedMovies() throws IOException, SQLException  {
+    public List<Movie> getWatchedMovies() throws IOException, SQLException, CinemaException  {
         Set<Screening> screenings = new TreeSet<>(this.getScreenings());
 
         Set<Long> movieIds = new TreeSet<>();
@@ -63,7 +63,7 @@ public class ClientService {
         return ans;
     }
 
-    public List<Screening> getScreenings() throws IOException, SQLException  {
+    public List<Screening> getScreenings() throws IOException, SQLException, CinemaException  {
         Set<Long> screeningIds = new TreeSet<>();
 
         for (TicketPurchase purchase : this.getterService.getAllTicketPurchase()) {
@@ -82,7 +82,7 @@ public class ClientService {
         return ans;
     }
 
-    public List<Purchase> getPurchases() throws IOException, SQLException  {
+    public List<Purchase> getPurchases() throws IOException, SQLException, CinemaException  {
         List<Purchase> ans = new ArrayList<>();
 
         for (Purchase purchase : this.getterService.getAllTicketPurchase()) {
@@ -100,14 +100,12 @@ public class ClientService {
         return ans;
     }
 
-    public boolean isOldEnoughForAt(long movieId, LocalDate date) throws CinemaException, IOException, SQLException {
+    public boolean isOldEnoughForAt(long movieId, LocalDate date) throws CinemaException, IOException, SQLException, CinemaException {
         Movie movie = this.getterService.getMovie(movieId);
-        AdminService.checkReference(movie);
         Client client = this.getterService.getClient(clientId);
-        AdminService.checkReference(client);
 
         int maxMinimumAge = 0;
-        List<Long> categoryIds = new ArrayList<>();
+        Set<Long> categoryIds = new HashSet<>();
         for (AssociativeEntry entry : this.getterService.getAllMovieCategory()) {
             if (entry.getFirstId() == movieId) {
                 categoryIds.add(entry.getSecondId());
@@ -116,13 +114,15 @@ public class ClientService {
 
         List<Category> categories = new ArrayList<>();
         for (Category category : this.getterService.getAllCategory()) {
-            maxMinimumAge = Math.max(maxMinimumAge, category.getMinimumAge());
+            if ( categoryIds.contains(category.getId()) ) {
+                maxMinimumAge = Math.max(maxMinimumAge, category.getMinimumAge());
+            }
         }
 
         return client.getAgeAt(date) >= maxMinimumAge;
     }
 
-    public boolean isOldEnoughFor(long movieId) throws CinemaException, IOException, SQLException {
+    public boolean isOldEnoughFor(long movieId) throws CinemaException, IOException, SQLException, CinemaException {
         return isOldEnoughForAt(movieId, LocalDate.now());
     }
 }

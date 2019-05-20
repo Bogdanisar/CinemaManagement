@@ -28,10 +28,10 @@ public class Main {
     public static Logger logger = null;
 
     public static void main(String[] args) throws CinemaException, IOException, SQLException {
+        logger = LoggerService.getInstance();
         boolean caughtException = false;
 
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_project","root","root")) {
-            logger = LoggerService.getInstance();
 
             String[] prompts = {
                     "1.  AdminService: Add Category",
@@ -210,7 +210,7 @@ public class Main {
             else if (choice == 14) {
                 logger.info(prompts[choice - 1]);
 
-                System.out.println(prompts[choice - 1] + ": (long clientId");
+                System.out.println(prompts[choice - 1] + ": (long clientId)");
                 long clientId = scanner.nextLong();
                 double totalSpent = (new ClientService(conn, clientId)).getTotalSpent();
                 System.out.println("Total spent amount of client " + clientId + " is " + totalSpent);
