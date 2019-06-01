@@ -1662,3 +1662,18 @@ INFO, 13:08:39 - 20/05/2019, 14. ClientService: Get total spent for client, cine
 
 INFO, 13:08:40 - 20/05/2019, Normal program termination, cinema.Logger
 
+SEVERE, 18:29:46 - 01/06/2019, Abnormal program termination with stack trace:
+java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/pao_project
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:702)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
+	at cinema.test.Main.main(Main.java:34)
+, cinema.Logger
+
+INFO, 18:33:57 - 01/06/2019, Program started, cinema.Logger
+
+INFO, 18:34:02 - 01/06/2019, 18. InfoService: Get foods, cinema.Logger
+
+INFO, 18:34:02 - 01/06/2019, Normal program termination, cinema.Logger
+
+INFO, 21:29:47 - 01/06/2019, Program started, cinema.Logger
+
