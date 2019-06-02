@@ -3941,3 +3941,737 @@ Level: INFO; Stamp: 17:56:21 - 02/06/2019; Logger name: cinema.Logger
 The GUI program finished
 =================================================================================
 
+
+=================================================================================
+Level: INFO; Stamp: 18:06:12 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:06:18 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:06:31 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:06:36 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetClientInfo.run(ListAction.java:522)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:264)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:06:39 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetClientInfo.run(ListAction.java:522)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:264)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:06:45 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:06:50 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:07:05 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:07:13 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:07:19 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:08:03 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:08:32 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:09:06 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:09:24 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:09:33 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:09:59 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:10:08 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:11:40 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:13:46 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:13:54 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:13:58 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:00 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:08 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:13 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetClientInfo.run(ListAction.java:522)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:267)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:14 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:18 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:26 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:14:41 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:15:43 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:28 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:31 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:31 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:32 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:32 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:33 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:33 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:33 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:34 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:16:34 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:17:28 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:17:40 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:17:54 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:18:00 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 18:18:16 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:13:07 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:13:15 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:25:19 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:25:28 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:25:44 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ticket_purchase' WHERE id = 8' at line 1
+      
+      The stack trace:
+      
+      com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''ticket_purchase' WHERE id = 8' at line 1
+      	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+      	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+      	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+      	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+      	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+      	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+      	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+      	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
+      	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3973)
+      	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3909)
+      	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2527)
+      	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2680)
+      	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2484)
+      	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+      	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
+      	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
+      	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5116)
+      	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
+      	at cinema.service.SetterService.removeItem(SetterService.java:271)
+      	at cinema.service.ClientService.refundLastPurchase(ClientService.java:115)
+      	at cinema.graphics.ListAction$RefundLastPurchase.run(ListAction.java:740)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:268)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:30:23 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:30:31 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:30:34 - 02/06/2019; Logger name: cinema.Logger
+      Refunded last Purchase with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:30:38 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:30:45 - 02/06/2019; Logger name: cinema.Logger
+      Got Total Spent for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:30:49 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:31:12 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:31:24 - 02/06/2019; Logger name: cinema.Logger
+      Got all Screenings with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:35:01 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:35:20 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:35:23 - 02/06/2019; Logger name: cinema.Logger
+      Refunded last Purchase with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:35:25 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:35:29 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:35:44 - 02/06/2019; Logger name: cinema.Logger
+      Got Total Spent for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:39:45 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:44:30 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:44:40 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:44:46 - 02/06/2019; Logger name: cinema.Logger
+      Got all Movie_Category with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:44:49 - 02/06/2019; Logger name: cinema.Logger
+      Got all Screening_Employee with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:48:58 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:50:03 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:50:12 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      The client with id 4 has not made any purchases!
+      
+      The stack trace:
+      
+      cinema.exception.CinemaException: The client with id 4 has not made any purchases!
+      	at cinema.service.ClientService.refundLastPurchase(ClientService.java:105)
+      	at cinema.graphics.ListAction$RefundLastPurchase.run(ListAction.java:740)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:270)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:50:19 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      Couldn't find the entry with id 4 from the table client
+      
+      The stack trace:
+      
+      cinema.exception.CinemaException: Couldn't find the entry with id 4 from the table client
+      	at cinema.service.GetterService.getIdentifiable(GetterService.java:34)
+      	at cinema.service.GetterService.getClient(GetterService.java:58)
+      	at cinema.graphics.ListAction$GetClientInfo.run(ListAction.java:524)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:270)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:50:25 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      The client with id 4 has not made any purchases!
+      
+      The stack trace:
+      
+      cinema.exception.CinemaException: The client with id 4 has not made any purchases!
+      	at cinema.service.ClientService.refundLastPurchase(ClientService.java:105)
+      	at cinema.graphics.ListAction$RefundLastPurchase.run(ListAction.java:740)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:270)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:50:35 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      The client with id 4 has not made any purchases!
+      
+      The stack trace:
+      
+      cinema.exception.CinemaException: The client with id 4 has not made any purchases!
+      	at cinema.service.ClientService.refundLastPurchase(ClientService.java:105)
+      	at cinema.graphics.ListAction$RefundLastPurchase.run(ListAction.java:740)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:270)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:51:40 - 02/06/2019; Logger name: cinema.Logger
+      Refunded last Purchase with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:51:54 - 02/06/2019; Logger name: cinema.Logger
+      Refunded last Purchase with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:51:57 - 02/06/2019; Logger name: cinema.Logger
+      Refunded last Purchase with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:52:34 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:52:39 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:56:48 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:58:08 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:58:18 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:59:36 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:59:48 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2000
+      2
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:59:52 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetScreeningsAfterDay.run(ListAction.java:1174)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:274)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 19:59:55 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 20:00:19 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$AddCategory.run(ListAction.java:55)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:274)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 20:00:22 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$AddCategory.run(ListAction.java:55)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:274)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 20:00:26 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+

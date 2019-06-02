@@ -258,4 +258,16 @@ public class SetterService {
 
         return dealWithPreparedStatement(id, pstmt);
     }
+
+    public void removeItem(String tableName, long id) throws SQLException {
+        String stmt = "";
+        stmt = "DELETE FROM " + tableName + " WHERE id = ?";
+        PreparedStatement preparedStatement = conn.prepareStatement(stmt);
+        System.out.println("stmt = " + stmt); ////////////
+
+        preparedStatement.setLong(1, id);
+
+        int numLines = preparedStatement.executeUpdate();
+        System.out.println(numLines + " were removed");
+    }
 }

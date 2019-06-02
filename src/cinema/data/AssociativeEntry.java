@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.DatabaseConstants;
+
 public class AssociativeEntry implements Identifiable {
     protected long id, firstId, secondId;
 
@@ -31,5 +33,15 @@ public class AssociativeEntry implements Identifiable {
 
     public void setSecondId(long secondId) {
         this.secondId = secondId;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += firstId + DatabaseConstants.SEPARATOR;
+        ret += secondId;
+
+        return ret;
     }
 }

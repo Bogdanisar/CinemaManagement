@@ -3,6 +3,7 @@ package cinema.service;
 import cinema.data.*;
 import cinema.exception.CinemaException;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
@@ -93,7 +94,31 @@ public class ClientService {
             }
         }
 
+        ans.sort(Comparator.comparing(Purchase::getPurchaseDate));
+
         return ans;
+    }
+
+    public void refundLastPurchase() throws Exception {
+        List<Purchase> allPurchases = this.getPurchases();
+        if (allPurchases.size() == 0) {
+            throw new CinemaException("The client with id " + clientId + " has not made any purchases!");
+        }
+
+        Purchase lastPurchase = allPurchases.get(allPurchases.size() - 1);
+        SetterService setterService = new SetterService(this.conn);
+
+        if (lastPurchase instanceof FoodPurchase) {
+            setterService.removeItem(DatabaseConstants.FOOD_PURCHASE_TABLE, lastPurchase.getId());
+        }
+        else if (lastPurchase instanceof TicketPurchase) {
+            setterService.removeItem(DatabaseConstants.TICKET_PURCHASE_TABLE, lastPurchase.getId());
+        }
+
+        long clientId = lastPurchase.getClientId();
+        double amount = lastPurchase.getPrice(conn);
+        AdminService adminService = new AdminService(conn);
+        adminService.addFundsToClient(clientId, amount);
     }
 
     public boolean isOldEnoughForAt(long movieId, LocalDate date) throws CinemaException, IOException, SQLException, CinemaException {

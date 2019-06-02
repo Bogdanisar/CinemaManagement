@@ -4,9 +4,12 @@ import cinema.service.LoggerService;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -77,6 +80,7 @@ public class GUI {
         this.frame.getContentPane().setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         this.frame.pack();
 
+        frame.setIconImage(ImageIO.read(new File("res/cinema.png")));
 
         this.setupTabs();
         this.setupTextArea();
@@ -163,7 +167,8 @@ public class GUI {
                 new ListAction.GetWatchedMoviesForClient(),
                 new ListAction.GetScreeningsForClient(),
                 new ListAction.ClientIsOldEnoughForMovie(),
-                new ListAction.GetPurchasesForClient()
+                new ListAction.GetPurchasesForClient(),
+                new ListAction.RefundLastPurchase()
         };
 
         CustomPanel panel = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions);
@@ -181,6 +186,8 @@ public class GUI {
                 new ListAction.GetMovies(),
                 new ListAction.GetScreenings(),
                 new ListAction.GetTicketPurchases(),
+                new ListAction.GetMovieCategory(),
+                new ListAction.GetScreeningEmployee(),
                 new ListAction.GetMoviesAfterDay(),
                 new ListAction.GetScreeningsAfterDay()
         };
@@ -254,6 +261,14 @@ public class GUI {
 
 
             new Thread(() -> {
+//                long sum = 0;
+//                for (int i = 0; i < (int)1e7; ++i) {
+//                    sum += i;
+//                    sum -= 200;
+//                    sum *= sum;
+//                    sum -= (int)Double.parseDouble("" + (3.14 * sum));
+//                }
+
                 String[] operationStrings;
                 try {
                     operationStrings = currentAction.run(inputs, GUI.this.conn);
@@ -282,9 +297,11 @@ public class GUI {
                 message += "Result: \n";
                 message += operationResult;
 
-                this.outputMessages.add(message);
-                this.messageIndex = this.outputMessages.size() - 1;
-                this.textArea.setText(message);
+                synchronized (GUI.this) {
+                    this.outputMessages.add(message);
+                    this.messageIndex = this.outputMessages.size() - 1;
+                    this.textArea.setText(message);
+                }
 
                 this.logger.info(operationDescription);
             }).start();
