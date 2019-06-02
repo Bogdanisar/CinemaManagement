@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.DatabaseConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +41,16 @@ public final class Movie implements Identifiable {
 
     public void setDurationInMinutes(int durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
+    }
+
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += name + DatabaseConstants.SEPARATOR;
+        ret += durationInMinutes;
+
+        return ret;
     }
 }

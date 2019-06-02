@@ -2,7 +2,7 @@ package cinema.data;
 
 import java.time.LocalDate;
 
-public class Person implements Identifiable {
+public abstract class Person implements Identifiable {
     protected long id;
     protected String firstName, lastName, email;
     protected LocalDate birthDate;

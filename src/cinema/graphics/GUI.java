@@ -70,6 +70,8 @@ public class GUI {
     public GUI() throws SQLException, IOException {
         this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_project","root","root");
         this.logger = LoggerService.getInstance();
+        this.logger.info("GUI Program started");
+
 
         this.frame = new JFrame("Cinema Management");
         this.frame.getContentPane().setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
@@ -87,6 +89,11 @@ public class GUI {
                 try {
                     if (GUI.this.conn != null) {
                         GUI.this.conn.close();
+
+                        GUI.this.logger.info("The GUI program finished");
+                        System.out.println(separator);
+                        System.out.println("The connection was closed from the GUI");
+                        System.out.println(separator);
                     }
                 }
                 catch (Exception except) {
@@ -106,61 +113,9 @@ public class GUI {
     }
 
     private void setupTabs() {
-
-        ListAction a1 = new ListAction() {
-            @Override
-            public String getActionName() {
-                return "First Action";
-            }
-
-            @Override
-            public String[] getLabelNames() {
-                return new String[] { "First Label", "Second Label" };
-            }
-
-            @Override
-            public String[] run(String[] textFields, Connection conn) throws Exception {
-                return new String[] {"The first operation was executed", "OK"};
-            }
-        };
-        ListAction a2 = new ListAction() {
-            @Override
-            public String getActionName() {
-                return "User Actiksajdksaljdlksadjlksadjlksajdlksajdlkasndfkljsdhbkjgjasp';dfjbajfklaesvn;hjhsbdkxnjlc;jvbhxdsfladvxjbksdflxc;vnbkzjfxlkvljzfgkjlon";
-            }
-
-            @Override
-            public String[] getLabelNames() {
-                return new String[] { "Ceva", "Mai", "Funky" };
-            }
-
-            @Override
-            public String[] run(String[] textFields, Connection conn) throws Exception {
-                return new String[] {"LEL, YOU EXPECT SOME ACTUAL STRING?", "OK"};
-            }
-        };
-
-        ListAction[] actions1 = new ListAction[] {
-                new ListAction.AddCategory(),
-                new ListAction.AddFood(),
-                new ListAction.AddMovie(),
-                new ListAction.AddEmployee(),
-                new ListAction.AddAuditorium(),
-                new ListAction.AddScreeningToAuditorium(),
-                new ListAction.AddUsherToScreening(),
-                new ListAction.AddClient(),
-                new ListAction.AddFundsToClient(),
-                new ListAction.PurchaseTicketForClient(),
-                new ListAction.PurchaseFoodForClient(),
-                new ListAction.GetPersonsAtScreening(),
-                new ListAction.GetScreeningsForEmployee()
-
-        };
-        ListAction[] actions2 = new ListAction[] {a1, a2};
-        ListAction[] actions3 = new ListAction[] {a2, a1};
-        this.panels[0] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions1);
-        this.panels[1] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions2);
-        this.panels[2] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions2);
+        this.panels[0] = this.getAdminPanel();
+        this.panels[1] = this.getClientPanel();
+        this.panels[2] = this.getInfoPanel();
 
 
         this.tabbedPane = new JTabbedPane();
@@ -174,11 +129,67 @@ public class GUI {
         });
 
         this.tabbedPane.addTab("Admin", null, this.panels[0], "The first tab");
-        this.tabbedPane.addTab("User", null, this.panels[1], "The second tab");
+        this.tabbedPane.addTab("Client", null, this.panels[1], "The second tab");
         this.tabbedPane.addTab("Info", null, this.panels[2], "The third tab");
 
         this.frame.add(this.tabbedPane);
     }
+
+    private CustomPanel getAdminPanel() {
+        ListAction[] actions = new ListAction[] {
+                new ListAction.AddCategory(),
+                new ListAction.AddFood(),
+                new ListAction.AddMovie(),
+                new ListAction.AddEmployee(),
+                new ListAction.AddAuditorium(),
+                new ListAction.AddScreeningToAuditorium(),
+                new ListAction.AddUsherToScreening(),
+                new ListAction.AddClient(),
+                new ListAction.AddFundsToClient(),
+                new ListAction.PurchaseTicketForClient(),
+                new ListAction.PurchaseFoodForClient(),
+                new ListAction.GetPersonsAtScreening(),
+                new ListAction.GetScreeningsForEmployee()
+        };
+
+        CustomPanel panel = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions);
+        return panel;
+    }
+
+    private CustomPanel getClientPanel() {
+        ListAction[] actions = new ListAction[] {
+                new ListAction.GetClientInfo(),
+                new ListAction.GetTotalSpentForClient(),
+                new ListAction.GetWatchedMoviesForClient(),
+                new ListAction.GetScreeningsForClient(),
+                new ListAction.ClientIsOldEnoughForMovie(),
+                new ListAction.GetPurchasesForClient()
+        };
+
+        CustomPanel panel = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions);
+        return panel;
+    }
+
+    private CustomPanel getInfoPanel() {
+        ListAction[] actions = new ListAction[] {
+                new ListAction.GetAuditoriums(),
+                new ListAction.GetCategories(),
+                new ListAction.GetClients(),
+                new ListAction.GetEmployees(),
+                new ListAction.GetFoods(),
+                new ListAction.GetFoodPurchases(),
+                new ListAction.GetMovies(),
+                new ListAction.GetScreenings(),
+                new ListAction.GetTicketPurchases(),
+                new ListAction.GetMoviesAfterDay(),
+                new ListAction.GetScreeningsAfterDay()
+        };
+
+        CustomPanel panel = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions);
+        return panel;
+    }
+
+
 
     private void setupTextArea() {
         this.textArea = new JTextArea(DEFAULT_ACTION_OUTPUT_MESSAGE);
@@ -249,18 +260,18 @@ public class GUI {
                 }
                 catch (Exception except) {
                     operationStrings = new String[2];
-                    operationStrings[0] = "Error";
-
-                    operationStrings[1] = "The operation failed with this error message:\n\n";
-                    operationStrings[1] += except.getMessage();
+                    operationStrings[0] = "The operation failed with this error message:\n\n";
+                    operationStrings[0] += except.getMessage();
 
                     StringWriter sw = new StringWriter();
                     PrintWriter pw = new PrintWriter(sw);
                     except.printStackTrace(pw);
                     String sStackTrace = sw.toString();
 
-                    operationStrings[1] += "\n\nThe stack trace:\n\n";
-                    operationStrings[1] += sStackTrace;
+                    operationStrings[0] += "\n\nThe stack trace:\n\n";
+                    operationStrings[0] += sStackTrace;
+
+                    operationStrings[1] = "Error";
                 }
 
                 String operationDescription = GUI.indentMessage(operationStrings[0]);
@@ -312,14 +323,4 @@ public class GUI {
 
         return ret.toString();
     }
-
-
-
-
-
-
-    public static void main(String[] args) throws IOException, SQLException {
-        new GUI();
-    }
-
 }

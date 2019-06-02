@@ -18,7 +18,7 @@ java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12)
 	at java.base/java.time.temporal.ChronoField.checkValidValue(ChronoField.java:717)
 	at java.base/java.time.LocalDate.of(LocalDate.java:269)
 	at cinema.service.AdminService.addEmployee(AdminService.java:60)
-	at cinema.test.Main.main(cinema.test.Main.java:104)
+	at cinema.console.Main.main(cinema.console.Main.java:104)
 , cinema.Logger
 INFO, 22:58:59 - 30/04/2019, Program started, cinema.Logger
 INFO, 22:59:02 - 30/04/2019, add category task, cinema.Logger
@@ -28,7 +28,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(cinema.test.Main.java:84)
+	at cinema.console.Main.main(cinema.console.Main.java:84)
 , cinema.Logger
 INFO, 22:59:28 - 30/04/2019, Program started, cinema.Logger
 INFO, 22:59:31 - 30/04/2019, add employee task, cinema.Logger
@@ -51,7 +51,7 @@ SEVERE, 23:02:49 - 30/04/2019, Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.service.AdminService.checkReference(AdminService.java:15)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:84)
-	at cinema.test.Main.main(cinema.test.Main.java:127)
+	at cinema.console.Main.main(cinema.console.Main.java:127)
 , cinema.Logger
 INFO, 23:03:16 - 30/04/2019, Program started, cinema.Logger
 INFO, 23:16:48 - 30/04/2019, Program started, cinema.Logger
@@ -62,7 +62,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(cinema.test.Main.java:108)
+	at cinema.console.Main.main(cinema.console.Main.java:108)
 , cinema.Logger
 INFO, 23:17:23 - 30/04/2019, Program started, cinema.Logger
 INFO, 23:17:26 - 30/04/2019, add movie task, cinema.Logger
@@ -72,7 +72,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(cinema.test.Main.java:96)
+	at cinema.console.Main.main(cinema.console.Main.java:96)
 , cinema.Logger
 INFO, 23:17:44 - 30/04/2019, Program started, cinema.Logger
 INFO, 23:17:46 - 30/04/2019, add movie task, cinema.Logger
@@ -90,7 +90,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2373)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2328)
-	at cinema.test.Main.main(cinema.test.Main.java:134)
+	at cinema.console.Main.main(cinema.console.Main.java:134)
 , cinema.Logger
 INFO, 23:26:14 - 30/04/2019, Program started, cinema.Logger
 INFO, 23:26:25 - 30/04/2019, add screening to auditorium task, cinema.Logger
@@ -108,7 +108,7 @@ INFO, 23:28:04 - 30/04/2019, add usher to screening task, cinema.Logger
 SEVERE, 23:28:05 - 30/04/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Can't add usher to screening with id 1; Employee with id 2 is already a technician
 	at cinema.service.AdminService.addUsherToScreening(AdminService.java:113)
-	at cinema.test.Main.main(cinema.test.Main.java:148)
+	at cinema.console.Main.main(cinema.console.Main.java:148)
 , cinema.Logger
 
 INFO, 23:28:12 - 30/04/2019, Program started, cinema.Logger
@@ -118,7 +118,7 @@ INFO, 23:28:17 - 30/04/2019, add usher to screening task, cinema.Logger
 SEVERE, 23:28:19 - 30/04/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Employee with id 3 can't be an usher before his hire date for the screening with id 1
 	at cinema.service.AdminService.addUsherToScreening(AdminService.java:117)
-	at cinema.test.Main.main(cinema.test.Main.java:148)
+	at cinema.console.Main.main(cinema.console.Main.java:148)
 , cinema.Logger
 
 INFO, 23:28:23 - 30/04/2019, Program started, cinema.Logger
@@ -153,7 +153,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(cinema.test.Main.java:85)
+	at cinema.console.Main.main(cinema.console.Main.java:85)
 , cinema.Logger
 
 INFO, 23:31:32 - 30/04/2019, Program started, cinema.Logger
@@ -164,7 +164,7 @@ SEVERE, 23:31:55 - 30/04/2019, Abnormal program termination with stack trace:
 java.util.NoSuchElementException
 	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
 	at java.base/java.util.Scanner.next(Scanner.java:1478)
-	at cinema.test.Main.main(cinema.test.Main.java:160)
+	at cinema.console.Main.main(cinema.console.Main.java:160)
 , cinema.Logger
 
 INFO, 23:31:58 - 30/04/2019, Program started, cinema.Logger
@@ -187,7 +187,7 @@ SEVERE, 23:34:26 - 30/04/2019, Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.service.AdminService.checkReference(AdminService.java:15)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:144)
-	at cinema.test.Main.main(cinema.test.Main.java:179)
+	at cinema.console.Main.main(cinema.console.Main.java:179)
 , cinema.Logger
 
 INFO, 23:35:30 - 30/04/2019, Program started, cinema.Logger
@@ -197,7 +197,7 @@ INFO, 23:35:35 - 30/04/2019, add ticket purchase for client task, cinema.Logger
 SEVERE, 23:35:59 - 30/04/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client 2 named Cli doesn't have enough funds for the screening with movie id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:147)
-	at cinema.test.Main.main(cinema.test.Main.java:179)
+	at cinema.console.Main.main(cinema.console.Main.java:179)
 , cinema.Logger
 
 INFO, 23:36:10 - 30/04/2019, Program started, cinema.Logger
@@ -221,7 +221,7 @@ java.lang.NumberFormatException: For input string: "Popcorn"
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:24)
 	at cinema.service.GetterService.getFood(GetterService.java:51)
 	at cinema.service.AdminService.purchaseFoodForClient(AdminService.java:174)
-	at cinema.test.Main.main(cinema.test.Main.java:192)
+	at cinema.console.Main.main(cinema.console.Main.java:192)
 , cinema.Logger
 
 INFO, 23:38:56 - 30/04/2019, Program started, cinema.Logger
@@ -238,7 +238,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(cinema.test.Main.java:85)
+	at cinema.console.Main.main(cinema.console.Main.java:85)
 , cinema.Logger
 
 INFO, 23:43:43 - 30/04/2019, Program started, cinema.Logger
@@ -268,7 +268,7 @@ java.time.format.DateTimeParseException: Text '04/04' could not be parsed at ind
 	at cinema.service.GetterService.getAll(GetterService.java:83)
 	at cinema.service.GetterService.getAllEmployee(GetterService.java:128)
 	at cinema.service.AdminService.getPersonsAtScreening(AdminService.java:212)
-	at cinema.test.Main.main(cinema.test.Main.java:204)
+	at cinema.console.Main.main(cinema.console.Main.java:204)
 , cinema.Logger
 
 INFO, 23:50:18 - 30/04/2019, Program started, cinema.Logger
@@ -291,7 +291,7 @@ SEVERE, 23:51:45 - 30/04/2019, Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.data.TicketPurchase.getPrice(TicketPurchase.java:47)
 	at cinema.service.ClientService.getTotalSpent(ClientService.java:31)
-	at cinema.test.Main.main(cinema.test.Main.java:227)
+	at cinema.console.Main.main(cinema.console.Main.java:227)
 , cinema.Logger
 
 INFO, 23:53:52 - 30/04/2019, Program started, cinema.Logger
@@ -322,7 +322,7 @@ java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12)
 	at java.base/java.time.temporal.ChronoField.checkValidValue(ChronoField.java:717)
 	at java.base/java.time.LocalDate.of(LocalDate.java:269)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:86)
-	at cinema.test.Main.main(cinema.test.Main.java:133)
+	at cinema.console.Main.main(cinema.console.Main.java:133)
 , cinema.Logger
 
 INFO, 23:54:47 - 30/04/2019, Program started, cinema.Logger
@@ -451,7 +451,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2373)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2328)
-	at cinema.test.Main.main(Main.java:299)
+	at cinema.console.Main.main(Main.java:299)
 , cinema.Logger
 
 INFO, 00:20:15 - 01/05/2019, Program started, cinema.Logger
@@ -494,7 +494,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 , cinema.Logger
 
 INFO, 20:43:25 - 03/05/2019, Program started, cinema.Logger
@@ -523,7 +523,7 @@ SEVERE, 20:46:12 - 03/05/2019, Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.service.AdminService.checkReference(AdminService.java:15)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:142)
-	at cinema.test.Main.main(Main.java:161)
+	at cinema.console.Main.main(Main.java:161)
 , cinema.Logger
 
 INFO, 20:46:35 - 03/05/2019, Program started, cinema.Logger
@@ -533,7 +533,7 @@ INFO, 20:46:36 - 03/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 20:46:45 - 03/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 4
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:158)
-	at cinema.test.Main.main(Main.java:161)
+	at cinema.console.Main.main(Main.java:161)
 , cinema.Logger
 
 INFO, 20:46:55 - 03/05/2019, Program started, cinema.Logger
@@ -561,7 +561,7 @@ INFO, 21:03:54 - 03/05/2019, 3.  AdminService: Add Movie, cinema.Logger
 SEVERE, 21:04:21 - 03/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Couldn't find that category: 3
 	at cinema.service.AdminService.addMovie(AdminService.java:49)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 , cinema.Logger
 
 INFO, 21:04:27 - 03/05/2019, Program started, cinema.Logger
@@ -578,7 +578,7 @@ java.lang.NumberFormatException: For input string: "ID"
 	at cinema.service.SetterService.update(SetterService.java:24)
 	at cinema.service.SetterService.update(SetterService.java:96)
 	at cinema.service.AdminService.addMovie(AdminService.java:31)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 , cinema.Logger
 
 INFO, 21:08:51 - 03/05/2019, Program started, cinema.Logger
@@ -595,7 +595,7 @@ java.lang.NumberFormatException: For input string: "ID"
 	at cinema.service.SetterService.update(SetterService.java:24)
 	at cinema.service.SetterService.update(SetterService.java:96)
 	at cinema.service.AdminService.addMovie(AdminService.java:31)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 , cinema.Logger
 
 INFO, 21:11:12 - 03/05/2019, Program started, cinema.Logger
@@ -624,7 +624,7 @@ SEVERE, 21:13:51 - 03/05/2019, Abnormal program termination with stack trace:
 java.util.NoSuchElementException
 	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
 	at java.base/java.util.Scanner.next(Scanner.java:1478)
-	at cinema.test.Main.main(Main.java:142)
+	at cinema.console.Main.main(Main.java:142)
 , cinema.Logger
 
 INFO, 21:13:55 - 03/05/2019, Program started, cinema.Logger
@@ -737,7 +737,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:280)
+	at cinema.console.Main.main(Main.java:280)
 , cinema.Logger
 
 INFO, 21:27:33 - 03/05/2019, Program started, cinema.Logger
@@ -766,7 +766,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:143)
+	at cinema.console.Main.main(Main.java:143)
 , cinema.Logger
 
 INFO, 23:30:36 - 13/05/2019, Program started, cinema.Logger
@@ -793,14 +793,14 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:67)
+	at cinema.console.Main.main(Main.java:67)
 , cinema.Logger
 
 SEVERE, 11:51:16 - 20/05/2019, Abnormal program termination with stack trace:
 java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/pao_project
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:702)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at cinema.test.Main.main(Main.java:34)
+	at cinema.console.Main.main(Main.java:34)
 , cinema.Logger
 
 INFO, 11:52:33 - 20/05/2019, Program started, cinema.Logger
@@ -816,7 +816,7 @@ java.sql.SQLException: Generated keys not requested. You need to specify Stateme
 	at com.mysql.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1693)
 	at cinema.service.SetterService.update(SetterService.java:102)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 11:57:37 - 20/05/2019, Program started, cinema.Logger
@@ -833,7 +833,7 @@ java.sql.SQLException: Column 'id' not found.
 	at com.mysql.jdbc.ResultSetImpl.getLong(ResultSetImpl.java:2738)
 	at cinema.service.SetterService.update(SetterService.java:102)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:03:29 - 20/05/2019, Program started, cinema.Logger
@@ -851,7 +851,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:54)
 	at cinema.service.SetterService.update(SetterService.java:111)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:04:38 - 20/05/2019, Program started, cinema.Logger
@@ -869,7 +869,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:55)
 	at cinema.service.SetterService.update(SetterService.java:112)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:08:07 - 20/05/2019, Program started, cinema.Logger
@@ -887,7 +887,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:66)
 	at cinema.service.SetterService.update(SetterService.java:123)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:09:17 - 20/05/2019, Program started, cinema.Logger
@@ -905,7 +905,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:67)
 	at cinema.service.SetterService.update(SetterService.java:124)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:10:25 - 20/05/2019, Program started, cinema.Logger
@@ -918,7 +918,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:10:35 - 20/05/2019, Program started, cinema.Logger
@@ -936,7 +936,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:67)
 	at cinema.service.SetterService.update(SetterService.java:124)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:11:01 - 20/05/2019, Program started, cinema.Logger
@@ -965,7 +965,7 @@ java.sql.SQLException: Generated keys not requested. You need to specify Stateme
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:54)
 	at cinema.service.SetterService.update(SetterService.java:124)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:14:49 - 20/05/2019, Program started, cinema.Logger
@@ -987,7 +987,7 @@ INFO, 12:15:26 - 20/05/2019, 3.  AdminService: Add Movie, cinema.Logger
 SEVERE, 12:15:50 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Couldn't find that category: Thriller
 	at cinema.service.AdminService.addMovie(AdminService.java:60)
-	at cinema.test.Main.main(Main.java:90)
+	at cinema.console.Main.main(Main.java:90)
 , cinema.Logger
 
 INFO, 12:15:56 - 20/05/2019, Program started, cinema.Logger
@@ -1009,7 +1009,7 @@ INFO, 12:19:43 - 20/05/2019, 3.  AdminService: Add Movie, cinema.Logger
 SEVERE, 12:19:49 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Couldn't find that category: good
 	at cinema.service.AdminService.addMovie(AdminService.java:54)
-	at cinema.test.Main.main(Main.java:90)
+	at cinema.console.Main.main(Main.java:90)
 , cinema.Logger
 
 INFO, 12:22:43 - 20/05/2019, Program started, cinema.Logger
@@ -1026,7 +1026,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:73)
+	at cinema.console.Main.main(Main.java:73)
 , cinema.Logger
 
 INFO, 12:23:04 - 20/05/2019, Program started, cinema.Logger
@@ -1053,7 +1053,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Dupl
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:52)
 	at cinema.service.SetterService.update(SetterService.java:123)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 , cinema.Logger
 
 INFO, 12:23:14 - 20/05/2019, Program started, cinema.Logger
@@ -1070,7 +1070,7 @@ SEVERE, 12:23:37 - 20/05/2019, Abnormal program termination with stack trace:
 java.util.NoSuchElementException
 	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
 	at java.base/java.util.Scanner.next(Scanner.java:1478)
-	at cinema.test.Main.main(Main.java:90)
+	at cinema.console.Main.main(Main.java:90)
 , cinema.Logger
 
 INFO, 12:23:41 - 20/05/2019, Program started, cinema.Logger
@@ -1125,7 +1125,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:115)
+	at cinema.console.Main.main(Main.java:115)
 , cinema.Logger
 
 INFO, 12:27:43 - 20/05/2019, Program started, cinema.Logger
@@ -1136,7 +1136,7 @@ SEVERE, 12:28:07 - 20/05/2019, Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.service.AdminService.checkReference(AdminService.java:26)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:102)
-	at cinema.test.Main.main(Main.java:121)
+	at cinema.console.Main.main(Main.java:121)
 , cinema.Logger
 
 INFO, 12:30:24 - 20/05/2019, Program started, cinema.Logger
@@ -1148,7 +1148,7 @@ cinema.exception.CinemaException: Couldn't find the entry with id 3 from the tab
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:37)
 	at cinema.service.GetterService.getMovie(GetterService.java:55)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:100)
-	at cinema.test.Main.main(Main.java:121)
+	at cinema.console.Main.main(Main.java:121)
 , cinema.Logger
 
 INFO, 12:30:50 - 20/05/2019, Program started, cinema.Logger
@@ -1159,7 +1159,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:73)
+	at cinema.console.Main.main(Main.java:73)
 , cinema.Logger
 
 INFO, 12:32:34 - 20/05/2019, Program started, cinema.Logger
@@ -1172,7 +1172,7 @@ java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12)
 	at java.base/java.time.temporal.ChronoField.checkValidValue(ChronoField.java:717)
 	at java.base/java.time.LocalDate.of(LocalDate.java:269)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:96)
-	at cinema.test.Main.main(Main.java:121)
+	at cinema.console.Main.main(Main.java:121)
 , cinema.Logger
 
 INFO, 12:32:58 - 20/05/2019, Program started, cinema.Logger
@@ -1182,7 +1182,7 @@ INFO, 12:33:00 - 20/05/2019, 7.  AdminService: Add Usher To Screening, cinema.Lo
 SEVERE, 12:33:05 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Can't add usher to screening with id 1; Employee with id 1 is already a technician
 	at cinema.service.AdminService.addUsherToScreening(AdminService.java:121)
-	at cinema.test.Main.main(Main.java:136)
+	at cinema.console.Main.main(Main.java:136)
 , cinema.Logger
 
 INFO, 12:33:11 - 20/05/2019, Program started, cinema.Logger
@@ -1239,7 +1239,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in 
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:48)
 	at cinema.service.SetterService.update(SetterService.java:145)
 	at cinema.service.AdminService.addFundsToClient(AdminService.java:142)
-	at cinema.test.Main.main(Main.java:158)
+	at cinema.console.Main.main(Main.java:158)
 , cinema.Logger
 
 INFO, 12:38:54 - 20/05/2019, Program started, cinema.Logger
@@ -1278,7 +1278,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'scree
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:48)
 	at cinema.service.SetterService.update(SetterService.java:259)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:170)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:41:48 - 20/05/2019, Program started, cinema.Logger
@@ -1296,7 +1296,7 @@ cinema.exception.CinemaException: Couldn't find the entry with id 2 from the tab
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:37)
 	at cinema.service.GetterService.getClient(GetterService.java:63)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:146)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:42:37 - 20/05/2019, Program started, cinema.Logger
@@ -1307,7 +1307,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:73)
+	at cinema.console.Main.main(Main.java:73)
 , cinema.Logger
 
 INFO, 12:44:42 - 20/05/2019, Program started, cinema.Logger
@@ -1317,7 +1317,7 @@ INFO, 12:44:48 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:44:53 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: The seat id 1 is already taken for that screening
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:162)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:45:01 - 20/05/2019, Program started, cinema.Logger
@@ -1330,7 +1330,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:269)
+	at cinema.console.Main.main(Main.java:269)
 , cinema.Logger
 
 INFO, 12:45:14 - 20/05/2019, Program started, cinema.Logger
@@ -1410,7 +1410,7 @@ cinema.exception.CinemaException: Couldn't find the entry with id 2 from the tab
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:37)
 	at cinema.service.GetterService.getScreening(GetterService.java:47)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:147)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:49:58 - 20/05/2019, Program started, cinema.Logger
@@ -1423,7 +1423,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:128)
+	at cinema.console.Main.main(Main.java:128)
 , cinema.Logger
 
 INFO, 12:50:30 - 20/05/2019, Program started, cinema.Logger
@@ -1439,7 +1439,7 @@ INFO, 12:51:02 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:51:10 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client 2 named tanar doesn't have enough funds for the screening with movie id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:151)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:51:23 - 20/05/2019, Program started, cinema.Logger
@@ -1455,7 +1455,7 @@ INFO, 12:51:41 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:51:43 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:51:48 - 20/05/2019, Program started, cinema.Logger
@@ -1543,7 +1543,7 @@ INFO, 12:57:31 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:57:43 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:57:59 - 20/05/2019, Program started, cinema.Logger
@@ -1553,7 +1553,7 @@ INFO, 12:58:02 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:58:20 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: The seat id 1 is already taken for that screening10
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:162)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:58:25 - 20/05/2019, Program started, cinema.Logger
@@ -1563,7 +1563,7 @@ INFO, 12:58:26 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:58:34 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 12:58:40 - 20/05/2019, Program started, cinema.Logger
@@ -1579,7 +1579,7 @@ INFO, 12:59:33 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 12:59:45 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 13:01:32 - 20/05/2019, Program started, cinema.Logger
@@ -1589,7 +1589,7 @@ INFO, 13:01:34 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 13:02:10 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 13:02:33 - 20/05/2019, Program started, cinema.Logger
@@ -1605,7 +1605,7 @@ INFO, 13:02:47 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 13:02:49 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 13:02:58 - 20/05/2019, Program started, cinema.Logger
@@ -1615,7 +1615,7 @@ INFO, 13:03:04 - 20/05/2019, 10. AdminService: Purchase ticket for client, cinem
 SEVERE, 13:06:25 - 20/05/2019, Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 , cinema.Logger
 
 INFO, 13:06:35 - 20/05/2019, Program started, cinema.Logger
@@ -1628,7 +1628,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2373)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2328)
-	at cinema.test.Main.main(Main.java:168)
+	at cinema.console.Main.main(Main.java:168)
 , cinema.Logger
 
 INFO, 13:06:45 - 20/05/2019, Program started, cinema.Logger
@@ -1641,7 +1641,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:169)
+	at cinema.console.Main.main(Main.java:169)
 , cinema.Logger
 
 INFO, 13:06:57 - 20/05/2019, Program started, cinema.Logger
@@ -1666,7 +1666,7 @@ SEVERE, 18:29:46 - 01/06/2019, Abnormal program termination with stack trace:
 java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/pao_project
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:702)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at cinema.test.Main.main(Main.java:34)
+	at cinema.console.Main.main(Main.java:34)
 , cinema.Logger
 
 INFO, 18:33:57 - 01/06/2019, Program started, cinema.Logger
@@ -1895,4 +1895,314 @@ INFO, 15:06:26 - 02/06/2019,       LEL, YOU EXPECT SOME ACTUAL STRING?, cinema.L
 
 INFO, 15:08:05 - 02/06/2019,       Got Screenings for Employee with:
       2, cinema.Logger
+
+INFO, 16:21:37 - 02/06/2019,       Error, cinema.Logger
+
+INFO, 16:57:46 - 02/06/2019,       Got client info with:
+      1, cinema.Logger
+
+INFO, 16:57:50 - 02/06/2019,       Got client info with:
+      2, cinema.Logger
+
+INFO, 16:57:52 - 02/06/2019,       Got client info with:
+      3, cinema.Logger
+
+INFO, 16:57:55 - 02/06/2019,       Got Total Spent for Client with:
+      3, cinema.Logger
+
+INFO, 16:57:59 - 02/06/2019,       Error, cinema.Logger
+
+INFO, 16:59:56 - 02/06/2019,       Got client info with:
+      3, cinema.Logger
+
+INFO, 16:59:59 - 02/06/2019,       Got Total Spent for Client with:
+      2, cinema.Logger
+
+INFO, 17:00:01 - 02/06/2019,       Got Watched Movies for Client with:
+      2, cinema.Logger
+
+INFO, 17:00:04 - 02/06/2019,       Got Watched Movies for Client with:
+      1, cinema.Logger
+
+INFO, 17:00:06 - 02/06/2019,       Got Watched Movies for Client with:
+      3, cinema.Logger
+
+INFO, 17:00:08 - 02/06/2019,       Got Screenings for Client with:
+      3, cinema.Logger
+
+INFO, 17:00:11 - 02/06/2019,       Got Screenings for Client with:
+      2, cinema.Logger
+
+INFO, 17:00:13 - 02/06/2019,       Got Screenings for Client with:
+      1, cinema.Logger
+
+INFO, 17:00:17 - 02/06/2019,       Error, cinema.Logger
+
+INFO, 17:00:22 - 02/06/2019,       Error, cinema.Logger
+
+INFO, 17:00:27 - 02/06/2019,       Client is Old enough for Movie with:
+      2
+      2, cinema.Logger
+
+INFO, 17:00:30 - 02/06/2019,       Client is Old enough for Movie with:
+      2
+      3, cinema.Logger
+
+INFO, 17:00:32 - 02/06/2019,       Client is Old enough for Movie with:
+      2
+      1, cinema.Logger
+
+INFO, 17:00:34 - 02/06/2019,       Client is Old enough for Movie with:
+      3
+      1, cinema.Logger
+
+INFO, 17:00:35 - 02/06/2019,       Client is Old enough for Movie with:
+      3
+      3, cinema.Logger
+
+INFO, 17:00:43 - 02/06/2019,       Client is Old enough for Movie with:
+      3
+      1, cinema.Logger
+
+INFO, 17:17:11 - 02/06/2019,       Got all Categories with:
+      , cinema.Logger
+
+INFO, 17:17:15 - 02/06/2019,       Got all Foods with:
+      , cinema.Logger
+
+INFO, 17:17:20 - 02/06/2019,       Got all Movies with:
+      , cinema.Logger
+
+INFO, 17:24:29 - 02/06/2019,       Got all Auditoriums with:
+      , cinema.Logger
+
+INFO, 17:24:32 - 02/06/2019,       Got all Categories with:
+      , cinema.Logger
+
+INFO, 17:24:40 - 02/06/2019,       Got all Clients with:
+      , cinema.Logger
+
+INFO, 17:25:15 - 02/06/2019,       Got all Clients with:
+      , cinema.Logger
+
+INFO, 17:26:57 - 02/06/2019,       Got all Auditoriums with:
+      , cinema.Logger
+
+INFO, 17:27:00 - 02/06/2019,       Got all Categories with:
+      , cinema.Logger
+
+INFO, 17:27:02 - 02/06/2019,       Got all Clients with:
+      , cinema.Logger
+
+INFO, 17:27:21 - 02/06/2019,       Got all Clients with:
+      , cinema.Logger
+
+INFO, 17:27:36 - 02/06/2019,       Got all Employees with:
+      , cinema.Logger
+
+INFO, 17:27:42 - 02/06/2019,       Got all Foods with:
+      , cinema.Logger
+
+INFO, 17:27:46 - 02/06/2019,       Got all Food Purchases with:
+      , cinema.Logger
+
+INFO, 17:27:51 - 02/06/2019,       Got all Movies with:
+      , cinema.Logger
+
+INFO, 17:27:55 - 02/06/2019,       Got all Screenings with:
+      , cinema.Logger
+
+INFO, 17:27:59 - 02/06/2019,       Got all Ticket Purchases with:
+      , cinema.Logger
+
+INFO, 17:35:18 - 02/06/2019,       Got Movies after Day with:
+      2000
+      1
+      1, cinema.Logger
+
+INFO, 17:35:24 - 02/06/2019,       Got Movies after Day with:
+      2005
+      1
+      1, cinema.Logger
+
+INFO, 17:35:27 - 02/06/2019,       Got Movies after Day with:
+      2010
+      1
+      1, cinema.Logger
+
+INFO, 17:35:30 - 02/06/2019,       Got Movies after Day with:
+      2015
+      1
+      1, cinema.Logger
+
+INFO, 17:35:32 - 02/06/2019,       Got Movies after Day with:
+      2018
+      1
+      1, cinema.Logger
+
+INFO, 17:35:35 - 02/06/2019,       Got Movies after Day with:
+      2019
+      1
+      1, cinema.Logger
+
+INFO, 17:35:39 - 02/06/2019,       Got Movies after Day with:
+      20122
+      1
+      1, cinema.Logger
+
+INFO, 17:35:43 - 02/06/2019,       Error, cinema.Logger
+
+INFO, 17:36:20 - 02/06/2019,       Got Movies after Day with:
+      2000
+      2
+      2, cinema.Logger
+
+INFO, 17:37:35 - 02/06/2019,       Got Movies after Day with:
+      2000
+      2
+      2, cinema.Logger
+
+INFO, 17:37:45 - 02/06/2019,       Got all Movies with:
+      2000, cinema.Logger
+
+INFO, 17:37:58 - 02/06/2019,       Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      1, cinema.Logger
+
+INFO, 17:38:01 - 02/06/2019,       Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      4, cinema.Logger
+
+INFO, 17:38:09 - 02/06/2019,       Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      3, cinema.Logger
+
+INFO, 17:38:12 - 02/06/2019,       Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      1, cinema.Logger
+
+INFO, 17:38:15 - 02/06/2019,       Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      2, cinema.Logger
+
+INFO, 17:42:16 - 02/06/2019, Program started, cinema.Logger
+
+INFO, 17:42:34 - 02/06/2019,       Got all Movies with:
+      , cinema.Logger
+
+INFO, 17:42:40 - 02/06/2019,       Error, cinema.Logger
+
+INFO, 17:44:21 - 02/06/2019, Program started, cinema.Logger
+
+INFO, 17:44:27 - 02/06/2019,       The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetClientInfo.run(ListAction.java:521)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:258)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      , cinema.Logger
+
+INFO, 17:44:33 - 02/06/2019,       Got client info with:
+      1, cinema.Logger
+
+INFO, 17:44:50 - 02/06/2019, The program finished, cinema.Logger
+
+INFO, 17:44:57 - 02/06/2019, Program started, cinema.Logger
+
+INFO, 17:45:17 - 02/06/2019,       Got all Employees with:
+      , cinema.Logger
+
+INFO, 17:45:24 - 02/06/2019,       The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetScreeningsAfterDay.run(ListAction.java:1037)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:258)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      , cinema.Logger
+
+INFO, 17:45:31 - 02/06/2019,       Got all Foods with:
+      , cinema.Logger
+
+INFO, 17:45:37 - 02/06/2019,       Got Movies after Day with:
+      2018
+      2
+      2, cinema.Logger
+
+INFO, 17:45:47 - 02/06/2019,       Got Persons at Screening with:
+      1, cinema.Logger
+
+INFO, 17:46:03 - 02/06/2019,       Got Persons at Screening with:
+      1, cinema.Logger
+
+INFO, 17:46:24 - 02/06/2019, The program finished, cinema.Logger
+
+INFO, 17:50:32 - 02/06/2019, GUI Program started, cinema.Logger
+
+INFO, 17:50:38 - 02/06/2019,       Got Purchases for Client with:
+      1, cinema.Logger
+
+INFO, 17:50:48 - 02/06/2019,       Got Purchases for Client with:
+      2, cinema.Logger
+
+INFO, 17:50:55 - 02/06/2019,       Got Purchases for Client with:
+      3, cinema.Logger
+
+INFO, 17:51:49 - 02/06/2019, The GUI program finished, cinema.Logger
+
+INFO, 17:54:01 - 02/06/2019, GUI Program started, cinema.Logger
+
+INFO, 17:54:10 - 02/06/2019,       Got Purchases for Client with:
+      1, cinema.Logger
+
+INFO, 17:54:27 - 02/06/2019, GUI Program started, cinema.Logger
+
+INFO, 17:54:30 - 02/06/2019, The GUI program finished, cinema.Logger
+
+INFO, 17:54:38 - 02/06/2019, GUI Program started, cinema.Logger
+
+INFO, 17:54:47 - 02/06/2019,       Got Purchases for Client with:
+      1, cinema.Logger
+
+INFO, 17:55:54 - 02/06/2019, GUI Program started, cinema.Logger
+
+INFO, 17:56:00 - 02/06/2019,       Got Purchases for Client with:
+      1, cinema.Logger
+
+INFO, 17:56:06 - 02/06/2019,       Got Purchases for Client with:
+      2, cinema.Logger
+
+INFO, 17:56:09 - 02/06/2019,       Got Purchases for Client with:
+      3, cinema.Logger
+
+INFO, 17:56:14 - 02/06/2019,       Got Purchases for Client with:
+      1, cinema.Logger
+
+INFO, 17:56:17 - 02/06/2019,       Got client info with:
+      1, cinema.Logger
+
+INFO, 17:56:21 - 02/06/2019, The GUI program finished, cinema.Logger
 

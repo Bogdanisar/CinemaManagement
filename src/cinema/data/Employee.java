@@ -1,5 +1,8 @@
 package cinema.data;
 
+import cinema.service.Converter;
+import cinema.service.DatabaseConstants;
+
 import java.time.LocalDate;
 
 public class Employee extends Person {
@@ -33,5 +36,21 @@ public class Employee extends Person {
     @Override
     public String getName() {
         return "Employee: " + super.getName();
+    }
+
+
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += firstName + DatabaseConstants.SEPARATOR;
+        ret += lastName + DatabaseConstants.SEPARATOR;
+        ret += email + DatabaseConstants.SEPARATOR;
+        ret += Converter.localDateToString(birthDate) + DatabaseConstants.SEPARATOR;
+        ret += Converter.localDateToString(hireDate) + DatabaseConstants.SEPARATOR;
+        ret += String.format("%.2f", salary);
+
+        return ret;
     }
 }

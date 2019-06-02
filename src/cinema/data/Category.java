@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.DatabaseConstants;
+
 public final class Category implements Identifiable {
     protected long id;
     protected String name;
@@ -36,5 +38,15 @@ public final class Category implements Identifiable {
 
     public void setMinimumAge(int minimumAge) {
         this.minimumAge = minimumAge;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += name + DatabaseConstants.SEPARATOR;
+        ret += minimumAge;
+
+        return ret;
     }
 }

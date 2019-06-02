@@ -20,8 +20,6 @@ public class GetterService {
     }
 
     public Identifiable getIdentifiable(String tableName, long targetId, Converter converter) throws IOException, SQLException, CinemaException, CinemaException {
-        Identifiable ans = null;
-
         Statement stm = this.conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT * FROM " + tableName + " WHERE id = " + targetId + ";");
 
@@ -33,10 +31,7 @@ public class GetterService {
         }
 
         stm.close();
-        if (ans == null) {
-            throw new CinemaException("Couldn't find the entry with id " + targetId + " from the table " + tableName);
-        }
-        return ans;
+        throw new CinemaException("Couldn't find the entry with id " + targetId + " from the table " + tableName);
     }
 
     public Auditorium getAuditorium(long id) throws IOException, SQLException, CinemaException {

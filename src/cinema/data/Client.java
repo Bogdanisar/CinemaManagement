@@ -1,5 +1,8 @@
 package cinema.data;
 
+import cinema.service.Converter;
+import cinema.service.DatabaseConstants;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,5 +43,19 @@ public class Client extends Person {
     @Override
     public String getName() {
         return "Client: " + super.getName();
+    }
+
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += firstName + DatabaseConstants.SEPARATOR;
+        ret += lastName + DatabaseConstants.SEPARATOR;
+        ret += email + DatabaseConstants.SEPARATOR;
+        ret += Converter.localDateToString(birthDate) + DatabaseConstants.SEPARATOR;
+        ret += String.format("%.2f", this.getFunds());
+
+        return ret;
     }
 }

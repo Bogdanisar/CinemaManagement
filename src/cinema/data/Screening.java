@@ -1,5 +1,8 @@
 package cinema.data;
 
+import cinema.service.Converter;
+import cinema.service.DatabaseConstants;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -81,5 +84,20 @@ public class Screening implements Identifiable {
 
     public void setTechnicianId(long technicianId) {
         this.technicianId = technicianId;
+    }
+
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += movieId + DatabaseConstants.SEPARATOR;
+        ret += auditoriumId + DatabaseConstants.SEPARATOR;
+        ret += price + DatabaseConstants.SEPARATOR;
+        ret += Converter.localDateToString(startTime) + DatabaseConstants.SEPARATOR;
+        ret += hour + DatabaseConstants.SEPARATOR;
+        ret += technicianId;
+
+        return ret;
     }
 }

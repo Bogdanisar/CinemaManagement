@@ -88,7 +88,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 
 =================================================================================
 
@@ -165,7 +165,7 @@ Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.service.AdminService.checkReference(AdminService.java:15)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:142)
-	at cinema.test.Main.main(Main.java:161)
+	at cinema.console.Main.main(Main.java:161)
 
 =================================================================================
 
@@ -187,7 +187,7 @@ Level: SEVERE; Stamp: 20:46:45 - 03/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 4
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:158)
-	at cinema.test.Main.main(Main.java:161)
+	at cinema.console.Main.main(Main.java:161)
 
 =================================================================================
 
@@ -263,7 +263,7 @@ Level: SEVERE; Stamp: 21:04:21 - 03/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Couldn't find that category: 3
 	at cinema.service.AdminService.addMovie(AdminService.java:49)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 
 =================================================================================
 
@@ -292,7 +292,7 @@ java.lang.NumberFormatException: For input string: "ID"
 	at cinema.service.SetterService.update(SetterService.java:24)
 	at cinema.service.SetterService.update(SetterService.java:96)
 	at cinema.service.AdminService.addMovie(AdminService.java:31)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 
 =================================================================================
 
@@ -321,7 +321,7 @@ java.lang.NumberFormatException: For input string: "ID"
 	at cinema.service.SetterService.update(SetterService.java:24)
 	at cinema.service.SetterService.update(SetterService.java:96)
 	at cinema.service.AdminService.addMovie(AdminService.java:31)
-	at cinema.test.Main.main(Main.java:84)
+	at cinema.console.Main.main(Main.java:84)
 
 =================================================================================
 
@@ -398,7 +398,7 @@ Abnormal program termination with stack trace:
 java.util.NoSuchElementException
 	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
 	at java.base/java.util.Scanner.next(Scanner.java:1478)
-	at cinema.test.Main.main(Main.java:142)
+	at cinema.console.Main.main(Main.java:142)
 
 =================================================================================
 
@@ -723,7 +723,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:280)
+	at cinema.console.Main.main(Main.java:280)
 
 =================================================================================
 
@@ -796,7 +796,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:143)
+	at cinema.console.Main.main(Main.java:143)
 
 =================================================================================
 
@@ -863,7 +863,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:67)
+	at cinema.console.Main.main(Main.java:67)
 
 =================================================================================
 
@@ -874,7 +874,7 @@ Abnormal program termination with stack trace:
 java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/pao_project
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:702)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at cinema.test.Main.main(Main.java:34)
+	at cinema.console.Main.main(Main.java:34)
 
 =================================================================================
 
@@ -902,7 +902,7 @@ java.sql.SQLException: Generated keys not requested. You need to specify Stateme
 	at com.mysql.jdbc.StatementImpl.getGeneratedKeys(StatementImpl.java:1693)
 	at cinema.service.SetterService.update(SetterService.java:102)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -931,7 +931,7 @@ java.sql.SQLException: Column 'id' not found.
 	at com.mysql.jdbc.ResultSetImpl.getLong(ResultSetImpl.java:2738)
 	at cinema.service.SetterService.update(SetterService.java:102)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -961,7 +961,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:54)
 	at cinema.service.SetterService.update(SetterService.java:111)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -991,7 +991,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:55)
 	at cinema.service.SetterService.update(SetterService.java:112)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1021,7 +1021,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:66)
 	at cinema.service.SetterService.update(SetterService.java:123)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1051,7 +1051,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:67)
 	at cinema.service.SetterService.update(SetterService.java:124)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1076,7 +1076,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1106,7 +1106,7 @@ java.sql.SQLException: Column 'id' not found.
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:67)
 	at cinema.service.SetterService.update(SetterService.java:124)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1171,7 +1171,7 @@ java.sql.SQLException: Generated keys not requested. You need to specify Stateme
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:54)
 	at cinema.service.SetterService.update(SetterService.java:124)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1229,7 +1229,7 @@ Level: SEVERE; Stamp: 12:15:50 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Couldn't find that category: Thriller
 	at cinema.service.AdminService.addMovie(AdminService.java:60)
-	at cinema.test.Main.main(Main.java:90)
+	at cinema.console.Main.main(Main.java:90)
 
 =================================================================================
 
@@ -1287,7 +1287,7 @@ Level: SEVERE; Stamp: 12:19:49 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Couldn't find that category: good
 	at cinema.service.AdminService.addMovie(AdminService.java:54)
-	at cinema.test.Main.main(Main.java:90)
+	at cinema.console.Main.main(Main.java:90)
 
 =================================================================================
 
@@ -1324,7 +1324,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:73)
+	at cinema.console.Main.main(Main.java:73)
 
 =================================================================================
 
@@ -1363,7 +1363,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Dupl
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:52)
 	at cinema.service.SetterService.update(SetterService.java:123)
 	at cinema.service.AdminService.addCategory(AdminService.java:32)
-	at cinema.test.Main.main(Main.java:78)
+	at cinema.console.Main.main(Main.java:78)
 
 =================================================================================
 
@@ -1404,7 +1404,7 @@ Abnormal program termination with stack trace:
 java.util.NoSuchElementException
 	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
 	at java.base/java.util.Scanner.next(Scanner.java:1478)
-	at cinema.test.Main.main(Main.java:90)
+	at cinema.console.Main.main(Main.java:90)
 
 =================================================================================
 
@@ -1555,7 +1555,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:115)
+	at cinema.console.Main.main(Main.java:115)
 
 =================================================================================
 
@@ -1578,7 +1578,7 @@ Abnormal program termination with stack trace:
 java.lang.NullPointerException
 	at cinema.service.AdminService.checkReference(AdminService.java:26)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:102)
-	at cinema.test.Main.main(Main.java:121)
+	at cinema.console.Main.main(Main.java:121)
 
 =================================================================================
 
@@ -1602,7 +1602,7 @@ cinema.exception.CinemaException: Couldn't find the entry with id 3 from the tab
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:37)
 	at cinema.service.GetterService.getMovie(GetterService.java:55)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:100)
-	at cinema.test.Main.main(Main.java:121)
+	at cinema.console.Main.main(Main.java:121)
 
 =================================================================================
 
@@ -1621,7 +1621,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:73)
+	at cinema.console.Main.main(Main.java:73)
 
 =================================================================================
 
@@ -1646,7 +1646,7 @@ java.time.DateTimeException: Invalid value for MonthOfYear (valid values 1 - 12)
 	at java.base/java.time.temporal.ChronoField.checkValidValue(ChronoField.java:717)
 	at java.base/java.time.LocalDate.of(LocalDate.java:269)
 	at cinema.service.AdminService.addScreeningToAuditorium(AdminService.java:96)
-	at cinema.test.Main.main(Main.java:121)
+	at cinema.console.Main.main(Main.java:121)
 
 =================================================================================
 
@@ -1668,7 +1668,7 @@ Level: SEVERE; Stamp: 12:33:05 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Can't add usher to screening with id 1; Employee with id 1 is already a technician
 	at cinema.service.AdminService.addUsherToScreening(AdminService.java:121)
-	at cinema.test.Main.main(Main.java:136)
+	at cinema.console.Main.main(Main.java:136)
 
 =================================================================================
 
@@ -1797,7 +1797,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in 
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:48)
 	at cinema.service.SetterService.update(SetterService.java:145)
 	at cinema.service.AdminService.addFundsToClient(AdminService.java:142)
-	at cinema.test.Main.main(Main.java:158)
+	at cinema.console.Main.main(Main.java:158)
 
 =================================================================================
 
@@ -1872,7 +1872,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'scree
 	at cinema.service.SetterService.dealWithPreparedStatement(SetterService.java:48)
 	at cinema.service.SetterService.update(SetterService.java:259)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:170)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -1914,7 +1914,7 @@ cinema.exception.CinemaException: Couldn't find the entry with id 2 from the tab
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:37)
 	at cinema.service.GetterService.getClient(GetterService.java:63)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:146)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -1933,7 +1933,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:73)
+	at cinema.console.Main.main(Main.java:73)
 
 =================================================================================
 
@@ -1955,7 +1955,7 @@ Level: SEVERE; Stamp: 12:44:53 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: The seat id 1 is already taken for that screening
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:162)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -1980,7 +1980,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:269)
+	at cinema.console.Main.main(Main.java:269)
 
 =================================================================================
 
@@ -2208,7 +2208,7 @@ cinema.exception.CinemaException: Couldn't find the entry with id 2 from the tab
 	at cinema.service.GetterService.getIdentifiable(GetterService.java:37)
 	at cinema.service.GetterService.getScreening(GetterService.java:47)
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:147)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2233,7 +2233,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:128)
+	at cinema.console.Main.main(Main.java:128)
 
 =================================================================================
 
@@ -2273,7 +2273,7 @@ Level: SEVERE; Stamp: 12:51:10 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client 2 named tanar doesn't have enough funds for the screening with movie id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:151)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2313,7 +2313,7 @@ Level: SEVERE; Stamp: 12:51:43 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2569,7 +2569,7 @@ Level: SEVERE; Stamp: 12:57:43 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 2
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2591,7 +2591,7 @@ Level: SEVERE; Stamp: 12:58:20 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: The seat id 1 is already taken for that screening10
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:162)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2613,7 +2613,7 @@ Level: SEVERE; Stamp: 12:58:34 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2653,7 +2653,7 @@ Level: SEVERE; Stamp: 12:59:45 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2675,7 +2675,7 @@ Level: SEVERE; Stamp: 13:02:10 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2715,7 +2715,7 @@ Level: SEVERE; Stamp: 13:02:49 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2737,7 +2737,7 @@ Level: SEVERE; Stamp: 13:06:25 - 20/05/2019; Logger name: cinema.Logger
 Abnormal program termination with stack trace:
 cinema.exception.CinemaException: Client with id 2 is not old enough for the movie with id: 1
 	at cinema.service.AdminService.purchaseTicketForClient(AdminService.java:169)
-	at cinema.test.Main.main(Main.java:167)
+	at cinema.console.Main.main(Main.java:167)
 
 =================================================================================
 
@@ -2762,7 +2762,7 @@ java.util.InputMismatchException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2373)
 	at java.base/java.util.Scanner.nextLong(Scanner.java:2328)
-	at cinema.test.Main.main(Main.java:168)
+	at cinema.console.Main.main(Main.java:168)
 
 =================================================================================
 
@@ -2787,7 +2787,7 @@ java.util.NoSuchElementException
 	at java.base/java.util.Scanner.next(Scanner.java:1594)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at cinema.test.Main.main(Main.java:169)
+	at cinema.console.Main.main(Main.java:169)
 
 =================================================================================
 
@@ -2852,7 +2852,7 @@ Abnormal program termination with stack trace:
 java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/pao_project
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:702)
 	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:228)
-	at cinema.test.Main.main(Main.java:34)
+	at cinema.console.Main.main(Main.java:34)
 
 =================================================================================
 
@@ -3277,5 +3277,667 @@ Level: INFO; Stamp: 15:06:26 - 02/06/2019; Logger name: cinema.Logger
 Level: INFO; Stamp: 15:08:05 - 02/06/2019; Logger name: cinema.Logger
       Got Screenings for Employee with:
       2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:21:37 - 02/06/2019; Logger name: cinema.Logger
+      Error
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:57:46 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:57:50 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:57:52 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:57:55 - 02/06/2019; Logger name: cinema.Logger
+      Got Total Spent for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:57:59 - 02/06/2019; Logger name: cinema.Logger
+      Error
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:59:56 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 16:59:59 - 02/06/2019; Logger name: cinema.Logger
+      Got Total Spent for Client with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:01 - 02/06/2019; Logger name: cinema.Logger
+      Got Watched Movies for Client with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:04 - 02/06/2019; Logger name: cinema.Logger
+      Got Watched Movies for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:06 - 02/06/2019; Logger name: cinema.Logger
+      Got Watched Movies for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:08 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:11 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Client with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:13 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:17 - 02/06/2019; Logger name: cinema.Logger
+      Error
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:22 - 02/06/2019; Logger name: cinema.Logger
+      Error
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:27 - 02/06/2019; Logger name: cinema.Logger
+      Client is Old enough for Movie with:
+      2
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:30 - 02/06/2019; Logger name: cinema.Logger
+      Client is Old enough for Movie with:
+      2
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:32 - 02/06/2019; Logger name: cinema.Logger
+      Client is Old enough for Movie with:
+      2
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:34 - 02/06/2019; Logger name: cinema.Logger
+      Client is Old enough for Movie with:
+      3
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:35 - 02/06/2019; Logger name: cinema.Logger
+      Client is Old enough for Movie with:
+      3
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:00:43 - 02/06/2019; Logger name: cinema.Logger
+      Client is Old enough for Movie with:
+      3
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:17:11 - 02/06/2019; Logger name: cinema.Logger
+      Got all Categories with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:17:15 - 02/06/2019; Logger name: cinema.Logger
+      Got all Foods with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:17:20 - 02/06/2019; Logger name: cinema.Logger
+      Got all Movies with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:24:29 - 02/06/2019; Logger name: cinema.Logger
+      Got all Auditoriums with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:24:32 - 02/06/2019; Logger name: cinema.Logger
+      Got all Categories with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:24:40 - 02/06/2019; Logger name: cinema.Logger
+      Got all Clients with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:25:15 - 02/06/2019; Logger name: cinema.Logger
+      Got all Clients with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:26:57 - 02/06/2019; Logger name: cinema.Logger
+      Got all Auditoriums with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:00 - 02/06/2019; Logger name: cinema.Logger
+      Got all Categories with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:02 - 02/06/2019; Logger name: cinema.Logger
+      Got all Clients with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:21 - 02/06/2019; Logger name: cinema.Logger
+      Got all Clients with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:36 - 02/06/2019; Logger name: cinema.Logger
+      Got all Employees with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:42 - 02/06/2019; Logger name: cinema.Logger
+      Got all Foods with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:46 - 02/06/2019; Logger name: cinema.Logger
+      Got all Food Purchases with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:51 - 02/06/2019; Logger name: cinema.Logger
+      Got all Movies with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:55 - 02/06/2019; Logger name: cinema.Logger
+      Got all Screenings with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:27:59 - 02/06/2019; Logger name: cinema.Logger
+      Got all Ticket Purchases with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:18 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2000
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:24 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2005
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:27 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2010
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:30 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2015
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:32 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2018
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:35 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2019
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:39 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      20122
+      1
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:35:43 - 02/06/2019; Logger name: cinema.Logger
+      Error
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:36:20 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2000
+      2
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:37:35 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2000
+      2
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:37:45 - 02/06/2019; Logger name: cinema.Logger
+      Got all Movies with:
+      2000
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:37:58 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:38:01 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      4
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:38:09 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:38:12 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:38:15 - 02/06/2019; Logger name: cinema.Logger
+      Got Screenings for Movie after Day with:
+      2000
+      2
+      2
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:42:16 - 02/06/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:42:34 - 02/06/2019; Logger name: cinema.Logger
+      Got all Movies with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:42:40 - 02/06/2019; Logger name: cinema.Logger
+      Error
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:44:21 - 02/06/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:44:27 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetClientInfo.run(ListAction.java:521)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:258)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:44:33 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:44:50 - 02/06/2019; Logger name: cinema.Logger
+The program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:44:57 - 02/06/2019; Logger name: cinema.Logger
+Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:45:17 - 02/06/2019; Logger name: cinema.Logger
+      Got all Employees with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:45:24 - 02/06/2019; Logger name: cinema.Logger
+      The operation failed with this error message:
+      
+      For input string: ""
+      
+      The stack trace:
+      
+      java.lang.NumberFormatException: For input string: ""
+      	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+      	at java.base/java.lang.Integer.parseInt(Integer.java:776)
+      	at cinema.graphics.ListAction$GetScreeningsAfterDay.run(ListAction.java:1037)
+      	at cinema.graphics.GUI.lambda$setupSecondButton$1(GUI.java:258)
+      	at java.base/java.lang.Thread.run(Thread.java:835)
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:45:31 - 02/06/2019; Logger name: cinema.Logger
+      Got all Foods with:
+      
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:45:37 - 02/06/2019; Logger name: cinema.Logger
+      Got Movies after Day with:
+      2018
+      2
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:45:47 - 02/06/2019; Logger name: cinema.Logger
+      Got Persons at Screening with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:46:03 - 02/06/2019; Logger name: cinema.Logger
+      Got Persons at Screening with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:46:24 - 02/06/2019; Logger name: cinema.Logger
+The program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:50:32 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:50:38 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:50:48 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:50:55 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:51:49 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:54:01 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:54:10 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:54:27 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:54:30 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:54:38 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:54:47 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:55:54 - 02/06/2019; Logger name: cinema.Logger
+GUI Program started
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:56:00 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:56:06 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      2
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:56:09 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      3
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:56:14 - 02/06/2019; Logger name: cinema.Logger
+      Got Purchases for Client with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:56:17 - 02/06/2019; Logger name: cinema.Logger
+      Got client info with:
+      1
+=================================================================================
+
+
+=================================================================================
+Level: INFO; Stamp: 17:56:21 - 02/06/2019; Logger name: cinema.Logger
+The GUI program finished
 =================================================================================
 

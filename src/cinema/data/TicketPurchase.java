@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.Converter;
+import cinema.service.DatabaseConstants;
 import cinema.service.GetterService;
 
 import java.io.IOException;
@@ -73,5 +75,18 @@ public final class TicketPurchase extends Purchase {
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
+    }
+
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += clientId + DatabaseConstants.SEPARATOR;
+        ret += Converter.localDateToString(purchaseDate) + DatabaseConstants.SEPARATOR;
+        ret += screeningId + DatabaseConstants.SEPARATOR;
+        ret += seatNumber;
+
+        return ret;
     }
 }

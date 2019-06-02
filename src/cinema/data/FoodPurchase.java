@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.Converter;
+import cinema.service.DatabaseConstants;
 import cinema.service.GetterService;
 
 import java.io.IOException;
@@ -51,4 +53,15 @@ public final class FoodPurchase extends Purchase {
         return "FoodPurchase Purchase: " + name + ", price: " + price;
     }
 
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += clientId + DatabaseConstants.SEPARATOR;
+        ret += Converter.localDateToString(purchaseDate) + DatabaseConstants.SEPARATOR;
+        ret += foodProductId + DatabaseConstants.SEPARATOR;
+        ret += price;
+
+        return ret;
+    }
 }

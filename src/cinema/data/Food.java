@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.DatabaseConstants;
+
 public final class Food implements Identifiable {
     protected long id;
     protected String name;
@@ -34,5 +36,15 @@ public final class Food implements Identifiable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += name + DatabaseConstants.SEPARATOR;
+        ret += price;
+
+        return ret;
     }
 }

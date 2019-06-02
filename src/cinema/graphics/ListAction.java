@@ -1,9 +1,11 @@
 package cinema.graphics;
 
-import cinema.data.Person;
-import cinema.service.AdminService;
-import cinema.service.ClientService;
+import cinema.data.*;
+import cinema.service.*;
 
+import javax.xml.crypto.Data;
+import java.io.ObjectInputStream;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -26,6 +28,12 @@ public interface ListAction {
         return message;
     }
 
+
+
+
+
+
+    // Admin Tab
 
     public class AddCategory implements ListAction {
         @Override
@@ -486,4 +494,613 @@ public interface ListAction {
             return ret;
         }
     }
+
+
+
+
+
+
+
+
+    // Client Tab
+
+    public class GetClientInfo implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Client Info";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Client id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            int clientId = Integer.parseInt(textFields[0]);
+            GetterService getterService = new GetterService(conn);
+            Client client = getterService.getClient(clientId);
+
+            String operationResult = "";
+            operationResult += client.toString() + "\n";
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got client info with:", textFields, 1),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetTotalSpentForClient implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Total Spent for Client";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Client id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            int clientId = Integer.parseInt(textFields[0]);
+            ClientService clientService = new ClientService(conn, clientId);
+            double totalSpent = clientService.getTotalSpent();
+
+            String operationResult = "The client with id " + clientId + "spent a total of " + totalSpent;
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got Total Spent for Client with:", textFields, 1),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetWatchedMoviesForClient implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Watched Movies for Client";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Client id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            int clientId = Integer.parseInt(textFields[0]);
+            ClientService clientService = new ClientService(conn, clientId);
+
+            String operationResult = "";
+
+            List<Movie> list = clientService.getWatchedMovies();
+            operationResult += "The client with id " + clientId + " watched:\n";
+            for (Movie movie : list) {
+                operationResult += movie.getName() + "\n";
+            }
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got Watched Movies for Client with:", textFields, 1),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetScreeningsForClient implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Screenings for Client";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Client id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            int clientId = Integer.parseInt(textFields[0]);
+            ClientService clientService = new ClientService(conn, clientId);
+
+            String operationResult = "";
+
+            List<Screening> list = clientService.getScreenings();
+            operationResult += "The client with id " + clientId + " was at the screenings with the following ids:\n";
+            for (Screening screening : list) {
+                operationResult += screening.getId() + ", ";
+            }
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got Screenings for Client with:", textFields, 1),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class ClientIsOldEnoughForMovie implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Client is Old enough for Movie";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Client id (int)",
+                    "Movie id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            int clientId = Integer.parseInt(textFields[0]);
+            int movieId = Integer.parseInt(textFields[1]);
+            ClientService clientService = new ClientService(conn, clientId);
+
+            String operationResult = "";
+
+            boolean result = clientService.isOldEnoughFor(movieId);
+            operationResult += "Result of isClientOldEnoughForMovie: " + result + "\n";
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Client is Old enough for Movie with:", textFields, 2),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetPurchasesForClient implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Purchases for Client";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Client id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            int clientId = Integer.parseInt(textFields[0]);
+            ClientService clientService = new ClientService(conn, clientId);
+
+            String operationResult = "";
+            final String foodPurchaseStart = "FoodPurchase:          ";
+            final String tickPurchaseStart = "TicketPurchase:        ";
+            operationResult += foodPurchaseStart + String.join(DatabaseConstants.SEPARATOR, DatabaseConstants.FOOD_PURCHASE_HEADER) + "\n";
+            operationResult += tickPurchaseStart + String.join(DatabaseConstants.SEPARATOR, DatabaseConstants.TICKET_PURCHASE_HEADER) + "\n\n\n";
+
+            List<Purchase> list = clientService.getPurchases();
+            operationResult += "The client with id " + clientId + " has the following purchases:\n";
+            for (Purchase purchase : list) {
+                if (purchase instanceof FoodPurchase) {
+                    operationResult += foodPurchaseStart;
+                }
+                else {
+                    operationResult += tickPurchaseStart;
+                }
+                operationResult += purchase.toString() + "\n";
+            }
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got Purchases for Client with:", textFields, 1),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+
+
+
+
+
+
+    // Info Tab
+
+
+    private static String getTable(String[] header, List<?> objects) {
+        StringBuilder ret = new StringBuilder();
+        ret.append( String.join(DatabaseConstants.SEPARATOR, header) );
+        ret.append( '\n' );
+
+        for (Object object : objects) {
+            ret.append( object.toString() );
+            ret.append( '\n' );
+        }
+
+        return ret.toString();
+    }
+
+
+
+    public class GetAuditoriums implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Auditoriums";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.AUDITORIUM_HEADER,
+                    getterService.getAllAuditorium()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Auditoriums with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+    public class GetCategories implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Categories";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.CATEGORY_HEADER,
+                    getterService.getAllCategory()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Categories with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+    public class GetFoods implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Foods";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.FOOD_HEADER,
+                    getterService.getAllFood()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Foods with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+    public class GetMovies implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Movies";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.MOVIE_HEADER,
+                    getterService.getAllMovie()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Movies with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+    public class GetClients implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Clients";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.CLIENT_HEADER,
+                    getterService.getAllClient()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Clients with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetEmployees implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Employee";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.EMPLOYEE_HEADER,
+                    getterService.getAllEmployee()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Employees with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetFoodPurchases implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Food Purchases";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.FOOD_PURCHASE_HEADER,
+                    getterService.getAllFoodPurchase()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Food Purchases with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetTicketPurchases implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Ticket Purchases";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.TICKET_PURCHASE_HEADER,
+                    getterService.getAllTicketPurchase()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Ticket Purchases with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetScreenings implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Screenings";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            GetterService getterService = new GetterService(conn);
+
+            String operationResult = ListAction.getTable(
+                    DatabaseConstants.SCREENING_HEADER,
+                    getterService.getAllScreening()
+            );
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got all Screenings with:", textFields, 0),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+
+    public class GetMoviesAfterDay implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Movies after Day";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Year (int)",
+                    "Month (int)",
+                    "Day (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            InfoService infoService = new InfoService(conn);
+            int year = Integer.parseInt(textFields[0]);
+            int month  = Integer.parseInt(textFields[1]);
+            int day = Integer.parseInt(textFields[2]);
+
+            String operationResult = "";
+
+            List<Movie> list = infoService.getMoviesAfterDay(year, month, day);
+            operationResult +=  "Movies after the day: " + day + "/" + month + "/" + year + ":\n";
+            for (Movie movie : list) {
+                operationResult += movie.getName() + "\n";
+            }
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got Movies after Day with:", textFields, 3),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
+    public class GetScreeningsAfterDay implements ListAction {
+        @Override
+        public String getActionName() {
+            return "Get Screenings for Movie after Day";
+        }
+
+        @Override
+        public String[] getLabelNames() {
+            return new String[]{
+                    "Year (int)",
+                    "Month (int)",
+                    "Day (int)",
+                    "Movie Id (int)"
+            };
+        }
+
+        @Override
+        public String[] run(String[] textFields, Connection conn) throws Exception {
+            InfoService infoService = new InfoService(conn);
+            int year = Integer.parseInt(textFields[0]);
+            int month  = Integer.parseInt(textFields[1]);
+            int day = Integer.parseInt(textFields[2]);
+            int movieId = Integer.parseInt(textFields[3]);
+
+            String operationResult = "";
+
+            List<Screening> list = infoService.getScreeningsForMovieAfter(movieId, year, month, day);
+            operationResult += "Screenings for the movie with id " + movieId + " after " + day + "/" + month + "/" + year + ":\n";
+            for (Screening screening : list) {
+                LocalDate d = screening.getStartTime();
+                operationResult += "Screening id: " + screening.getId() + "; on " + d.getDayOfMonth() + "/" + d.getMonthValue() + "/" + d.getYear() + "\n";
+            }
+
+            String[] ret = new String[]{
+                    ListAction.getMessage("Got Screenings for Movie after Day with:", textFields, 4),
+                    operationResult
+            };
+
+            return ret;
+        }
+    }
+
+
 }

@@ -1,4 +1,4 @@
-package cinema.test;
+package cinema.console;
 
 import cinema.data.*;
 import cinema.exception.CinemaException;
@@ -13,14 +13,8 @@ import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.*;
 

@@ -1,5 +1,7 @@
 package cinema.data;
 
+import cinema.service.DatabaseConstants;
+
 public class Auditorium implements Identifiable {
     protected long id;
     protected int number_of_seats;
@@ -24,5 +26,14 @@ public class Auditorium implements Identifiable {
 
     public void setNumber_of_seats(int number_of_seats) {
         this.number_of_seats = number_of_seats;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "";
+        ret += id + DatabaseConstants.SEPARATOR;
+        ret += number_of_seats;
+
+        return ret;
     }
 }
