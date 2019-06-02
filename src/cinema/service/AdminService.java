@@ -15,7 +15,7 @@ public final class AdminService {
     private GetterService getterService;
     private SetterService setterService;
 
-    public AdminService(Connection conn) {
+    public AdminService(Connection conn) throws SQLException {
         this.conn = conn;
         this.getterService = new GetterService(this.conn);
         this.setterService = new SetterService(this.conn);

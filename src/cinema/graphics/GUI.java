@@ -1,12 +1,21 @@
 package cinema.graphics;
 
+import cinema.service.LoggerService;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.sql.Connection;
+
 import javax.swing.*;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.ArrayList;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.awt.*;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class GUI {
@@ -14,6 +23,7 @@ public class GUI {
 
     private static final int FRAME_WIDTH = 900;
     private static final int FRAME_HEIGHT = 600;
+    private static final int TAB_ITEM_HEIGHT = 30;
     private static final double TEXT_AREA_PERCENT = 0.25;
     private static final double BUTTON_AREA_PERCENT = 0.15;
     private static final int TEXT_AREA_MARGIN = 10;
@@ -48,6 +58,8 @@ public class GUI {
     }
 
 
+    private Connection conn;
+    private Logger logger;
     private JFrame frame;
     private JTabbedPane tabbedPane;
     private CustomPanel[] panels = new CustomPanel[3];
@@ -55,7 +67,10 @@ public class GUI {
     private volatile List<String> outputMessages = Arrays.stream(new String[] {DEFAULT_ACTION_OUTPUT_MESSAGE}).collect(Collectors.toList());
     private volatile int messageIndex = 0;
 
-    public GUI() {
+    public GUI() throws SQLException, IOException {
+        this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pao_project","root","root");
+        this.logger = LoggerService.getInstance();
+
         this.frame = new JFrame("Cinema Management");
         this.frame.getContentPane().setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         this.frame.pack();
@@ -64,6 +79,23 @@ public class GUI {
         this.setupTabs();
         this.setupTextArea();
         this.setupButtons();
+
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    if (GUI.this.conn != null) {
+                        GUI.this.conn.close();
+                    }
+                }
+                catch (Exception except) {
+
+                }
+
+                super.windowClosing(e);
+            }
+        });
 
 
         this.frame.setLayout(null);
@@ -87,8 +119,8 @@ public class GUI {
             }
 
             @Override
-            public String run(String[] textFields) throws Exception {
-                return "The first operation was executed";
+            public String[] run(String[] textFields, Connection conn) throws Exception {
+                return new String[] {"The first operation was executed", "OK"};
             }
         };
         ListAction a2 = new ListAction() {
@@ -103,20 +135,43 @@ public class GUI {
             }
 
             @Override
-            public String run(String[] textFields) throws Exception {
-                return "LEL, YOU EXPECT SOME ACTUAL STRING?";
+            public String[] run(String[] textFields, Connection conn) throws Exception {
+                return new String[] {"LEL, YOU EXPECT SOME ACTUAL STRING?", "OK"};
             }
         };
 
-        ListAction[] actions1 = new ListAction[] {a1, a2};
-        ListAction[] actions2 = new ListAction[] {a2, a1};
-        this.panels[0] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight(), actions1);
-        this.panels[1] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight(), actions2);
-        this.panels[2] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight(), actions2);
+        ListAction[] actions1 = new ListAction[] {
+                new ListAction.AddCategory(),
+                new ListAction.AddFood(),
+                new ListAction.AddMovie(),
+                new ListAction.AddEmployee(),
+                new ListAction.AddAuditorium(),
+                new ListAction.AddScreeningToAuditorium(),
+                new ListAction.AddUsherToScreening(),
+                new ListAction.AddClient(),
+                new ListAction.AddFundsToClient(),
+                new ListAction.PurchaseTicketForClient(),
+                new ListAction.PurchaseFoodForClient(),
+                new ListAction.GetPersonsAtScreening(),
+                new ListAction.GetScreeningsForEmployee()
+
+        };
+        ListAction[] actions2 = new ListAction[] {a1, a2};
+        ListAction[] actions3 = new ListAction[] {a2, a1};
+        this.panels[0] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions1);
+        this.panels[1] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions2);
+        this.panels[2] = new CustomPanel(FRAME_WIDTH, GUI.getTabsHeight() - TAB_ITEM_HEIGHT, actions2);
 
 
         this.tabbedPane = new JTabbedPane();
         this.tabbedPane.setBounds(0, 0, FRAME_WIDTH, GUI.getTabsHeight());
+
+        tabbedPane.setUI(new javax.swing.plaf.basic.BasicTabbedPaneUI() {
+             @Override
+             protected int calculateTabHeight(int tabPlacement, int tabIndex, int fontHeight) {
+                 return GUI.TAB_ITEM_HEIGHT - 10;
+             }
+        });
 
         this.tabbedPane.addTab("Admin", null, this.panels[0], "The first tab");
         this.tabbedPane.addTab("User", null, this.panels[1], "The second tab");
@@ -183,31 +238,44 @@ public class GUI {
             JTextField[] textFields = tab.getInputs();
             String[] inputs = new String[textFields.length];
             for (int i = 0; i < textFields.length; ++i) {
-                inputs[i] = textFields[i].getText();
+                inputs[i] = textFields[i].getText().toLowerCase();
             }
 
 
             new Thread(() -> {
-                String operationOutput;
+                String[] operationStrings;
                 try {
-                    operationOutput = currentAction.run(inputs);
+                    operationStrings = currentAction.run(inputs, GUI.this.conn);
                 }
                 catch (Exception except) {
-                    operationOutput = "The operation failed with this error message:\n\n";
-                    operationOutput += except.getMessage();
+                    operationStrings = new String[2];
+                    operationStrings[0] = "Error";
+
+                    operationStrings[1] = "The operation failed with this error message:\n\n";
+                    operationStrings[1] += except.getMessage();
 
                     StringWriter sw = new StringWriter();
                     PrintWriter pw = new PrintWriter(sw);
                     except.printStackTrace(pw);
                     String sStackTrace = sw.toString();
 
-                    operationOutput += "\n\nThe stack trace:\n\n";
-                    operationOutput += sStackTrace;
+                    operationStrings[1] += "\n\nThe stack trace:\n\n";
+                    operationStrings[1] += sStackTrace;
                 }
 
-                this.outputMessages.add(operationOutput);
+                String operationDescription = GUI.indentMessage(operationStrings[0]);
+                String operationResult = GUI.indentMessage(operationStrings[1]);
+
+                String message = "Description:\n";
+                message += operationDescription + "\n\n";
+                message += "Result: \n";
+                message += operationResult;
+
+                this.outputMessages.add(message);
                 this.messageIndex = this.outputMessages.size() - 1;
-                this.textArea.setText(operationOutput);
+                this.textArea.setText(message);
+
+                this.logger.info(operationDescription);
             }).start();
         });
 
@@ -228,7 +296,30 @@ public class GUI {
         buttonsPanel.add(button);
     }
 
-    public static void main(String[] args) {
+
+    public static String INDENTATION = new String(new char[6]).replace('\0', ' ');
+
+    public static String indentMessage(String message) {
+        StringBuilder ret = new StringBuilder();
+        ret.append(INDENTATION);
+        for (char c : message.toCharArray()) {
+            ret.append(c);
+
+            if (c == '\n') {
+                ret.append(INDENTATION);
+            }
+        }
+
+        return ret.toString();
+    }
+
+
+
+
+
+
+    public static void main(String[] args) throws IOException, SQLException {
         new GUI();
     }
+
 }
